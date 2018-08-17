@@ -14,6 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+     //jalo mi pull request????
     protected $fillable = [
         'name', 'email', 'password',
     ];
