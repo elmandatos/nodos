@@ -89,6 +89,19 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = DB::table("users")->where("id", $id)->update([
+            "nombres" => ucwords($request->input("nombres")),
+            "apellidos" => ucwords($request->input("apellidos")),
+            "telefono" => $request->input("telefono"),
+            "correo" => strtolower($request->input("correo")),
+            "matricula" => strtoupper($request->input("matricula")),
+            "carrera" => $request->input("carrera"),
+            "rol" => $request->input("rol"),
+            "foto" => $request->input("foto"),
+            "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
+            "updated_at" => Carbon::now(),
+        ]);
+        return redirect()->route("users.index");
     }
 
     /**
@@ -99,6 +112,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table("users")->where("id", $id)->delete();
+        return redirect()->route("users.index");
     }
 }

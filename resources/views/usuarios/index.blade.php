@@ -35,7 +35,12 @@
                     <td>{{$user->telefono}}</td>
                     <td>{{$user->tipo_de_usuario}}</td>
                     <td>
-                        <a href="users/{{$user->id}}/edit">Editar</a>
+                        <a href="{{route("users.edit",$user->id)}}">Editar</a>
+                        <form class="" action="{{route("users.destroy",$user->id)}}" method="post">
+                            {{method_field("DELETE")}}
+                            {!!csrf_field()!!}
+                            <input type="submit" name="" value="Eliminar">
+                        </form>
                     </td>
                 </tr>
             @endforeach
