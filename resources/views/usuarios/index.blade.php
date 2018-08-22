@@ -2,9 +2,10 @@
 @section('contenido')
 
     <table width="100%" border="1">
-        <div class="">
+        <form class="" action="index.html" method="post">
             <input type="text" name="searchUser" placeholder="Buscar" value="">
-        </div>
+            <input type="submit" name="" value="Buscar">
+        </form>
         <div class="">
             <a href="{{route("users.create")}}">Nuevo Usuario</a>
         </div>
@@ -41,6 +42,7 @@
                             {!!csrf_field()!!}
                             <input type="submit" name="" value="Eliminar">
                         </form>
+                        <a href="{{route("hours.index",$user->id)}}">Entrada/Salida</a>
                     </td>
                 </tr>
             @endforeach

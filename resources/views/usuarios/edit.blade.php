@@ -108,6 +108,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <label for="password">Contraseña:</label>
+                    </td>
+                    <td>
+                        <input type="password" name="password" id="password" value="{{$user->password}}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label for="foto">Foto:</label>
                     </td>
                     <td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use Carbon\Carbon;
@@ -15,7 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = DB::table("users")->get();
+        // $users = DB::table("users")->get();
+        $users =  User::all();
         return view("usuarios.index", compact("users"));
     }
 
@@ -50,8 +52,6 @@ class UsersController extends Controller
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
         ]);
-
-        // return $request->all();
         return redirect()->route("users.index");
     }
 
@@ -86,21 +86,15 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateUserRequest $request, $id)
     {
-        //
-        $user = DB::table("users")->where("id", $id)->update([
-            "nombres" => ucwords($request->input("nombres")),
-            "apellidos" => ucwords($request->input("apellidos")),
-            "telefono" => $request->input("telefono"),
-            "correo" => strtolower($request->input("correo")),
-            "matricula" => strtoupper($request->input("matricula")),
-            "carrera" => $request->input("carrera"),
-            "rol" => $request->input("rol"),
-            "foto" => $request->input("foto"),
-            "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
-            "updated_at" => Carbon::now(),
-        ]);
+        $user = User::findOrFail($id);
+        $user->nombres = ucfirst($request->input("nombres"));
+        $user->apellidos = ucfirst($request->input("apellidos"));
+        $user->correo = strtolower($request->input("correo"));
+        $user->matricula = ucfirst($request->input("matricula"));
+        $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
+        $user->update($request->all());
         return redirect()->route("users.index");
     }
 
