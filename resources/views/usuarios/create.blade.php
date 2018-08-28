@@ -5,7 +5,7 @@
             <h4>{{session("info")}}</h4>
         </div>
     @else
-        <form class="" action="{{route("users.store")}}" method="post">
+        <form id="formulario" action="{{route("users.store")}}" method="post">
             {!!csrf_field()!!}
             <table>
                 <tr>
@@ -94,25 +94,18 @@
                     </td>
                     <td>
                         <label for="administrador">Administrador</label>
-                        <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{old("tipoDeUsuario") == "administrador" ? "checked" : "" }}>
+                        <input class="radioTypeUser" type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{old("tipoDeUsuario") == "administrador" ? "checked" : "" }}>
 
                         <label for="asistente">Asistente</label>
-                        <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{old("tipoDeUsuario") == "asistente" ? "checked" : "" }}>
+                        <input class="radioTypeUser" type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{old("tipoDeUsuario") == "asistente" ? "checked" : "" }}>
 
                         <label for="usuario">Usuario</label>
-                        <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{old("tipoDeUsuario") == "usuario" ? "checked" : "" }}>
+                        <input class="radioTypeUser" type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{old("tipoDeUsuario") == "usuario" ? "checked" : "" }}>
 
                         {!! $errors->first("tipoDeUsuario", "<span class=error>:message</span>")!!}
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label for="password">Contraseña:</label>
-                    </td>
-                    <td>
-                        <input type="password" name="password" id="password">
-                    </td>
-                </tr>
+                <tr id="parentPass"></tr>
                 <tr>
                     <td>
                         <label for="foto">Foto:</label>
@@ -126,4 +119,5 @@
             <input type="submit" name="" value="Registrar">
         </form>
     @endif
+    <script src="/js/password.js" type="text/javascript"></script>
 @stop
