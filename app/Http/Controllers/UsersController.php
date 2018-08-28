@@ -43,11 +43,12 @@ class UsersController extends Controller
             "nombres" => ucwords($request->input("nombres")),
             "apellidos" => ucwords($request->input("apellidos")),
             "telefono" => $request->input("telefono"),
-            "correo" => strtolower($request->input("correo")),
+            "email" => strtolower($request->input("email")),
             "matricula" => strtoupper($request->input("matricula")),
             "carrera" => $request->input("carrera"),
             "rol" => $request->input("rol"),
             "foto" => $request->input("foto"),
+            "password" => bcrypt($request->input("password")),
             "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
@@ -91,7 +92,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->nombres = ucfirst($request->input("nombres"));
         $user->apellidos = ucfirst($request->input("apellidos"));
-        $user->correo = strtolower($request->input("correo"));
+        $user->correo = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
         $user->update($request->all());

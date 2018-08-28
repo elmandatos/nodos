@@ -22,7 +22,9 @@
                 </a>
                 <a  href="{{route("home")}}">Leer QR</a>
                 <a  href="{{route("users.index")}}">Usuarios</a>
-                <a href="">Cerrar Sesión</a>
+                @if(auth()->guest())
+                    <a href="/login">Iniciar Sesión</a>
+                @endif
             </nav>
         </header>
         @yield('contenido')

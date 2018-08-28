@@ -38,11 +38,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="correo">Correo:</label>
+                        <label for="email">Correo:</label>
                     </td>
                     <td>
-                        <input type="email" id="correo" name="correo" value="{{$user->correo}}">
-                        {!! $errors->first("correo", "<span class=error>:message</span>")!!}
+                        <input type="email" id="email" name="email" value="{{$user->email}}">
+                        {!! $errors->first("email", "<span class=error>:message</span>")!!}
                     </td>
                 </tr>
                 <tr>
@@ -104,14 +104,6 @@
                         <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
 
                         {!! $errors->first("tipoDeUsuario", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="password">Contraseña:</label>
-                    </td>
-                    <td>
-                        <input type="password" name="password" id="password" value="{{$user->password}}">
                     </td>
                 </tr>
                 <tr>

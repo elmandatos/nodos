@@ -37,11 +37,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="correo">Correo:</label>
+                        <label for="email">Correo:</label>
                     </td>
                     <td>
-                        <input type="email" id="correo" name="correo" value="{{old("correo")}}">
-                        {!! $errors->first("correo", "<span class=error>:message</span>")!!}
+                        <input type="email" id="email" name="email" value="{{old("email")}}">
+                        {!! $errors->first("email", "<span class=error>:message</span>")!!}
                     </td>
                 </tr>
                 <tr>

@@ -11,9 +11,40 @@
 |
 */
 
+// Route::get("test", function(){
+//     $user = new App\User;
+//     $user->nombres = "Daniel";
+//     $user->apellidos = "Jimenez";
+//     $user->telefono = "9341127035";
+//     $user->correo = "mandatos@gmail.com";
+//     $user->carrera = "carrera";
+//     $user->rol = "Servicio";
+//     $user->tipo_de_usuario= "admin";
+//     $user->password = bcrypt("mandatos");
+//     $user->save();
+//     return $user;
+//
+// });
+
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
+//Users Routes
 Route::resource("users", "UsersController");
-Route::resource("hours", "HoursController");
+// Route::resource("hours", "HoursController");
+
+// Authentication Routes...
+$this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('login', 'Auth\LoginController@login');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// // Registration Routes...
+// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+// $this->post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 

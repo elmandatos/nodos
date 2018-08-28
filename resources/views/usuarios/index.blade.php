@@ -32,7 +32,7 @@
                     <td>{{$user->carrera}}</td>
                     <td>{{$user->matricula}}</td>
                     <td>{{$user->rol}}</td>
-                    <td>{{$user->correo}}</td>
+                    <td>{{$user->email}}</td>
                     <td>{{$user->telefono}}</td>
                     <td>{{$user->tipo_de_usuario}}</td>
                     <td>
@@ -42,7 +42,7 @@
                             {!!csrf_field()!!}
                             <input type="submit" name="" value="Eliminar">
                         </form>
-                        <a href="{{route("hours.index",$user->id)}}">Entrada/Salida</a>
+                        <a href="">Entrada/Salida</a>
                     </td>
                 </tr>
             @endforeach

@@ -18,6 +18,7 @@ class User extends Authenticatable
         'nombres',
         'apellidos',
         'telefono',
+        'email',
         'matricula',
         'carrera',
         'rol',

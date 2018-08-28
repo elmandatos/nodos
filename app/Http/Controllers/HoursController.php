@@ -46,7 +46,7 @@ class HoursController extends Controller
      */
     public function show($id)
     {
-        //
+        //// TODO: recuperar registro de horas de un usuario
     }
 
     /**
@@ -69,7 +69,7 @@ class HoursController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //// TODO: registrar hora de salida de un usuario
     }
 
     /**
