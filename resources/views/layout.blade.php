@@ -24,6 +24,8 @@
                 <a  href="{{route("users.index")}}">Usuarios</a>
                 @if(auth()->guest())
                     <a href="/login">Iniciar Sesión</a>
+                @else
+                    <a href="/logout">Cerrar Sesión</a>
                 @endif
             </nav>
         </header>
