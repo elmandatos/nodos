@@ -20,7 +20,8 @@
                 <th>Correo</th>
                 <th>Teléfono</th>
                 <th>Tipo de Usuario</th>
-                <th>Acciones</th>
+                <th>Registro</th>
+                <th>Administrar</th>
             </tr>
         </thead>
         <tbody>
@@ -36,13 +37,16 @@
                     <td>{{$user->telefono}}</td>
                     <td>{{$user->tipo_de_usuario}}</td>
                     <td>
+                        <a href="">Entrada</a><br>
+                        <a href="">Salida</a>
+                    </td>
+                    <td>
                         <a href="{{route("users.edit",$user->id)}}">Editar</a>
                         <form class="" action="{{route("users.destroy",$user->id)}}" method="post">
                             {{method_field("DELETE")}}
                             {!!csrf_field()!!}
                             <input type="submit" name="" value="Eliminar">
                         </form>
-                        <a href="">Entrada/Salida</a>
                     </td>
                 </tr>
             @endforeach

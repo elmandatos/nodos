@@ -92,7 +92,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->nombres = ucfirst($request->input("nombres"));
         $user->apellidos = ucfirst($request->input("apellidos"));
-        $user->correo = strtolower($request->input("email"));
+        $user->email = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
         $user->update($request->all());

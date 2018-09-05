@@ -30,7 +30,7 @@ class CreateUserRequest extends FormRequest
             "email" => "required|email",
             "carrera" => "required",
             "rol" => "required",
-            "password" => "required",
+            "password" => "",
             "matricula" => "",
             "tipoDeUsuario" => "required|in:administrador,asistente,usuario",
             "foto" => "",
