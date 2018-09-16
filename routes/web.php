@@ -12,9 +12,12 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
+Route::post('/user/{id}/get_in', ['as' => 'get_in', 'uses' => 'HoursController@get_in']);
+Route::post('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@get_out']);
+
+
 //Users Routes
 Route::resource("users", "UsersController");
-// Route::resource("hours", "HoursController");
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

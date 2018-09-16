@@ -15,6 +15,7 @@ class CreateHoursTable extends Migration
     {
         Schema::create('hours', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
+            $table->increments('hours_id');
             $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade');
             $table->date("fecha");

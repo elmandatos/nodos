@@ -37,8 +37,14 @@
                     <td>{{$user->telefono}}</td>
                     <td>{{$user->tipo_de_usuario}}</td>
                     <td>
-                        <a href="">Entrada</a><br>
-                        <a href="">Salida</a>
+                        <form class="" action="{{route("get_in",$user->id)}}" method="post">
+                            {!!csrf_field()!!}
+                            <input type="submit" name="" value="Entrada">
+                        </form><br>
+                        <form class="" action="{{route("get_out",$user->id)}}" method="post">
+                            {!!csrf_field()!!}
+                            <input type="submit" name="" value="Salir">
+                        </form>
                     </td>
                     <td>
                         <a href="{{route("users.edit",$user->id)}}">Editar</a>

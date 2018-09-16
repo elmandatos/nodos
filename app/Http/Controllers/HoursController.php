@@ -3,83 +3,28 @@
 namespace App\Http\Controllers;
 
 use DB;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\ Http\Request;
 
 class HoursController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
 
+    public function get_in($id){
+        date_default_timezone_set("America/Mexico_City");
+        DB::table("hours")->insert([
+            "user_id" => $id,
+            "fecha" => Carbon::now()->toDateString(),
+            "hora_entrada" => Carbon::now()->toTimeString(),
+            // "hora_salida" => Carbon::now()->toTimeString(),
+        ]);
+        return redirect()->route("users.index");
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //// TODO: recuperar registro de horas de un usuario
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //// TODO: registrar hora de salida de un usuario
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    function get_out($id){
+        date_default_timezone_set("America/Mexico_City");
+        //actualizar hora de salida, de un usuario
+        DB::table("hours")
+        ->where("hours_id",$id)
+        ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
+        return redirect()->route("users.index");
     }
 }
