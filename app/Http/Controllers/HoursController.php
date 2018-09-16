@@ -21,9 +21,14 @@ class HoursController extends Controller
     }
     function get_out($id){
         date_default_timezone_set("America/Mexico_City");
+        $currentDate = Carbon::now()->toDateString();
         //actualizar hora de salida, de un usuario
         DB::table("hours")
-        ->where("hours_id",$id)
+        ->where([
+            "user_id" => $id,
+            "fecha" => $currentDate,
+            "hora_salida" => null
+        ])
         ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
         return redirect()->route("users.index");
     }
