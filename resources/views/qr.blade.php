@@ -6,5 +6,13 @@
     <form action="" method="post">
         <input type="text" name="id" placeholder="ID del usuario">
     </form>
+
+    <div>
+          <video id="preview"></video>
+    </div>
+
+    <script src="/js/camera.js"></script>
+
+  
     
 @stop
