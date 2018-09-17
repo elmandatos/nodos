@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use Carbon\Carbon;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 class UsersController extends Controller
 {
     /**
@@ -78,6 +80,11 @@ class UsersController extends Controller
     {
         $user = DB::table("users")->where("id", $id)->first();
         return view("usuarios.edit", compact("user"));
+    }
+
+    public function generateQr($id)
+    {
+        return QrCode::size(399)->generate($id);
     }
 
     /**
