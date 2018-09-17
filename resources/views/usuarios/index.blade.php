@@ -53,9 +53,11 @@
                             {!!csrf_field()!!}
                             <input type="submit" name="" value="Eliminar">
                         </form>
+                        <a href="{{route("users.generateQr",$user->id)}}">QR code</a>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <a href="{{route("sendEmails")}}">correos</a>
 @stop
