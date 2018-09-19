@@ -8,7 +8,6 @@ use Illuminate\ Http\Request;
 
 class HoursController extends Controller
 {
-
     public function get_in($id){
         date_default_timezone_set("America/Mexico_City");
         DB::table("hours")->insert([
@@ -19,6 +18,7 @@ class HoursController extends Controller
         ]);
         return redirect()->route("users.index");
     }
+
     function get_out($id){
         date_default_timezone_set("America/Mexico_City");
         $currentDate = Carbon::now()->toDateString();
@@ -30,7 +30,6 @@ class HoursController extends Controller
             "hora_salida" => null
         ])
         ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
-        
         return redirect()->route("users.index");
     }
 }
