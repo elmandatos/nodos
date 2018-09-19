@@ -30,6 +30,7 @@ class HoursController extends Controller
             "hora_salida" => null
         ])
         ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
+        
         return redirect()->route("users.index");
     }
 }
