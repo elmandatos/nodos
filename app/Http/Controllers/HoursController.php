@@ -9,7 +9,6 @@ use Illuminate\ Http\Request;
 class HoursController extends Controller
 {
 
-    
     public function get_in($id){
         date_default_timezone_set("America/Mexico_City");
         DB::table("hours")->insert([
@@ -23,21 +22,14 @@ class HoursController extends Controller
     function get_out($id){
         date_default_timezone_set("America/Mexico_City");
         $currentDate = Carbon::now()->toDateString();
-
-        $hora = DB::table("hours")
-            ->where([
-                "user_id" => $id,
-                "fecha" => $currentDate,
-            ])->orderBy('hours_id', 'desc')->first();
-       // $hora->update(["hora_salida"=>Carbon::now()->toTimeString()]);
-
-        if($hora->hora_salida == null){
-            DB::table("hours")->where([
-                "hours_id" => $hora->hours_id,
-            ])->update(["hora_salida"=>Carbon::now()->toTimeString()]);
-        }
-
-
-        //return redirect()->route("users.index");
+        //actualizar hora de salida, de un usuario
+        DB::table("hours")
+        ->where([
+            "user_id" => $id,
+            "fecha" => $currentDate,
+            "hora_salida" => null
+        ])
+        ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
+        return redirect()->route("users.index");
     }
 }
