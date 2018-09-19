@@ -60,12 +60,18 @@
                     <td>
                         <select class="" id="carrera" name="carrera">
                             <option value=""></option>
-
-                            <option value="Ing. Bioquimica" {{old("carrera") == "Ing. Bioquimica" ? "selected" : "" }}>Ing. Bioquimica</option>
-
-                            <option value="Ing. Sistemas Computacionales" {{old("carrera") == "Ing. Sistemas Computacionales" ? "selected" : "" }}>Ing. Sistemas Computacionales</option>
-                            <option value="Ing. Electronica" {{old("carrera") == "Ing. Electronica" ? "selected" : "" }}>Ing. Electronica</option>
-                            <option value="Ing. Bioquimica" {{old("carrera") == "Ing. Bioquimica" ? "selected" : "" }}>Ing. Bioquimica</option>
+                            <option value="Ing. en Gestión Empresarial" {{old("carrera") == "Ing. en Gestión Empresarial" ? "selected" : "" }}>Ing. en Gestión Empresarial</option>
+                            <option value="Ing. Ambiental" {{old("carrera") == "Ing. Ambiental" ? "selected" : "" }}>Ing. Ambiental</option>
+                            <option value="Ing. Bioquímica" {{old("carrera") == "Ing. Bioquímica" ? "selected" : "" }}>Ing. Bioquímica</option>
+                            <option value="Ing. Biomédica" {{old("carrera") == "Ing. Biomédica" ? "selected" : "" }}>Ing. Biomédica</option>
+                            <option value="Ing. Química" {{old("carrera") == "Ing. Química" ? "selected" : "" }}>Ing. Química</option>
+                            <option value="Ing. Eléctrica" {{old("carrera") == "Ing. Eléctrica" ? "selected" : "" }}>Ing. Eléctrica</option>
+                            <option value="Ing. Electrónica" {{old("carrera") == "Ing. Electrónica" ? "selected" : "" }}>Ing. Electrónica</option>
+                            <option value="Ing. Mecánica" {{old("carrera") == "Ing. Mecánica" ? "selected" : "" }}>Ing. Mecánica</option>
+                            <option value="Ing. Civil" {{old("carrera") == "Ing. Civil" ? "selected" : "" }}>Ing. Civil</option>
+                            <option value="Ing. Industrial" {{old("carrera") == "Ing. Industrial" ? "selected" : "" }}>Ing. Industrial</option>
+                            <option value="Ing. en Sistemas Computacionales" {{old("carrera") == "Ing. en Sistemas Computacionales" ? "selected" : "" }}>Ing. en Sistemas Computacionales</option>
+                            <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
                         </select>
                         {!! $errors->first("carrera", "<span class=error>:message</span>")!!}
                     </td>
