@@ -25,6 +25,7 @@ class EmailsController extends Controller
                 $message ->attach('../public/qrcodes/qrcode_id.png');
                 $message->to($user->email)->subject('test email');
             });
-        }      
+        }
+        return redirect()->route("users.index");
     }
 }
