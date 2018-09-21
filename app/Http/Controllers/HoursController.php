@@ -16,7 +16,7 @@ class HoursController extends Controller
             "hora_entrada" => Carbon::now()->toTimeString(),
             // "hora_salida" => Carbon::now()->toTimeString(),
         ]);
-        return redirect()->route("users.index");
+        return redirect()->route("home");
     }
 
     function get_out($id){
@@ -30,6 +30,6 @@ class HoursController extends Controller
             "hora_salida" => null
         ])
         ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
-        return redirect()->route("users.index");
+        return redirect()->route("home");
     }
 }
