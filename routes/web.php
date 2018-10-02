@@ -16,7 +16,7 @@ Route::post('/user/{id}/get_in', ['as' => 'get_in', 'uses' => 'HoursController@g
 Route::post('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@get_out']);
 
 Route::get('sendAllEmails', ['as' => 'sendEmails', 'uses' => 'EmailsController@sendAllEmails']);
-
+Route::get('/{id}/sendUserEmail', ['as' => 'sendEmail', 'uses' => 'EmailsController@sendUserEmail']);
 //Users Routes
 Route::get('users/{id}/qr', "UsersController@generateQr")->name('users.generateQr');
 Route::resource("users", "UsersController");
