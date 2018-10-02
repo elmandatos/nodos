@@ -5,8 +5,16 @@
             <h4>{{session("info")}}</h4>
         </div>
     @else
+        <video width="0" height="0"></video>
+        <div>
+            <div id="canvasParent"></div>
+            <img id="desplegar" src="" alt="">
+            <button id="capturar">Capturar Foto</button>
+        </div>
+        
         <form id="formulario" action="{{route("users.store")}}" method="post">
             {!!csrf_field()!!}
+            
             <table>
                 <tr>
                     <td>
@@ -117,13 +125,13 @@
                         <label for="foto">Foto:</label>
                     </td>
                     <td>
-                        <input type="file" id="foto" name="foto" value="{{old("foto")}}">
+                        <input type="text" id="foto" name="foto" value="{{old("foto")}}">
                         {!! $errors->first("foto", "<span class=error>:message</span>")!!}
                     </td>
                 </tr>
             </table>
             <input type="submit" name="" value="Registrar">
         </form>
+        <script src="/js/webcam.js" type="text/javascript"></script>
     @endif
-    <script src="/js/password.js" type="text/javascript"></script>
 @stop
