@@ -38,6 +38,15 @@ class UsersController extends Controller
         return view("usuarios.create");
     }
 
+    public function createFile($matricula, $foto) {
+        define('UPLOAD_DIR', '../public/usersImg/'); //Obtenemos la ruta donde guardaremos la foto
+        $data = base64_decode($foto);   //Decodificamos la foto
+        $file = UPLOAD_DIR . $matricula . '.png'; //Generamos la ruta completa del archivo
+        $img = str_replace('../public/', '/', $file);   //Ruta Front-End
+        $success = file_put_contents($file, $data); //Creamos la foto en el servidor
+        return $img;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,13 +56,8 @@ class UsersController extends Controller
     public function store(CreateUserRequest $request)
     {
         //Procesamiento de Foto
-        define('UPLOAD_DIR', '../public/usersImg/'); //Obtenemos la ruta donde guardaremos la foto
-
-        $foto = $request->input("foto"); //guardamos los metadatos de la foto
-        $data = base64_decode($foto);   //Decodificamos la foto
-        $file = UPLOAD_DIR . $request->input("matricula") . '.png'; //Generamos la ruta completa del archivo
-        $img = str_replace('../public/', '/', $file);   //Ruta Front-End
-        $success = file_put_contents($file, $data); //Creamos la foto en el servidor
+        $img = $this->createFile($request->input("matricula"), $request->input("foto"));
+        
                
         DB::table("users")->insert([
             "nombres" => ucwords($request->input("nombres")),
@@ -110,13 +114,16 @@ class UsersController extends Controller
      */
     public function update(CreateUserRequest $request, $id)
     {
+        
         $user = User::findOrFail($id);
+        
         $user->nombres = ucfirst($request->input("nombres"));
         $user->apellidos = ucfirst($request->input("apellidos"));
         $user->email = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
+        $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
-        $user->update($request->all());
+        $user->update();
         return redirect()->route("users.index");
     }
 
