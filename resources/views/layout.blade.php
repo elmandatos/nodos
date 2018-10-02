@@ -15,7 +15,10 @@
         <title></title>
         <script src="/js/jquery-3.3.1.min.js"></script>
         <script src="/js/instascan.min.js"></script>
-
+        <script src="/js/password.js" type="text/javascript"></script>
+        <script src="/js/p5.js" type="text/javascript"></script>
+        <script src="/js/p5.dom.js" type="text/javascript"></script>
+        <script src="/js/p5.sound.js" type="text/javascript"></script>
     </head>
     <body>
         <header>
