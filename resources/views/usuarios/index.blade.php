@@ -27,7 +27,7 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{$user->foto}}</td>
+                    <td><img src="{{$user->foto}}" alt=""></td>
                     <td>{{$user->nombres}}</td>
                     <td>{{$user->apellidos}}</td>
                     <td>{{$user->carrera}}</td>
@@ -59,5 +59,5 @@
             @endforeach
         </tbody>
     </table>
-    <a href="{{route("sendEmails")}}">correos</a>
+    <a href="{{route("sendEmails")}}">correos</a> 
 @stop
