@@ -5,6 +5,12 @@
             <h4>{{session("info")}}</h4>
         </div>
     @else
+        <video width="0" height="0"></video>
+        <div>
+            <div id="canvasParent"></div>
+            <img id="desplegar" src="" alt="">
+            <button id="capturar">Capturar Foto</button>
+        </div>
         <form class="" action="{{route("users.update", $user->id)}}" method="post">
             {{method_field("PUT")}}
             {!!csrf_field()!!}
@@ -117,12 +123,13 @@
                         <label for="foto">Foto:</label>
                     </td>
                     <td>
-                        <input type="file" id="foto" name="foto" value="{{old("foto")}}">
+                        <input type="text" id="foto" name="foto" value="{{$user->foto}}">
                         {!! $errors->first("foto", "<span class=error>:message</span>")!!}
                     </td>
                 </tr>
             </table>
             <input type="submit" name="" value="Actualizar">
         </form>
+        <script src="/js/webcam.js" type="text/javascript"></script>
     @endif
 @stop
