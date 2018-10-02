@@ -46,6 +46,15 @@ class UsersController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
+        //Procesamiento de Foto
+        define('UPLOAD_DIR', '../public/usersImg/'); //Obtenemos la ruta donde guardaremos la foto
+
+        $foto = $request->input("foto"); //guardamos los metadatos de la foto
+        $data = base64_decode($foto);   //Decodificamos la foto
+        $file = UPLOAD_DIR . $request->input("matricula") . '.png'; //Generamos la ruta completa del archivo
+        $img = str_replace('../public/', '/', $file);   //Ruta Front-End
+        $success = file_put_contents($file, $data); //Creamos la foto en el servidor
+               
         DB::table("users")->insert([
             "nombres" => ucwords($request->input("nombres")),
             "apellidos" => ucwords($request->input("apellidos")),
@@ -54,7 +63,7 @@ class UsersController extends Controller
             "matricula" => strtoupper($request->input("matricula")),
             "carrera" => $request->input("carrera"),
             "rol" => $request->input("rol"),
-            "foto" => $request->input("foto"),
+            "foto" => $img,    //Guardamos la ruta en la BD
             "password" => bcrypt($request->input("password")),
             "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
             "created_at" => Carbon::now(),
