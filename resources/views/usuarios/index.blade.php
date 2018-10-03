@@ -8,6 +8,7 @@
         </form>
         <div class="">
             <a href="{{route("users.create")}}">Nuevo Usuario</a>
+            <a href="{{route("usersData.index")}}">Importar Usuarios</a>
         </div>
         <thead>
             <tr>
