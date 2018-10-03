@@ -12,7 +12,7 @@
                 font-size: 12px;
             }
         </style>
-        <title></title>
+        <title>Nodos</title>
         <script src="/js/jquery-3.3.1.min.js"></script>
         <script src="/js/instascan.min.js"></script>
         <script src="/js/password.js" type="text/javascript"></script>
