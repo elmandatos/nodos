@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\User;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
+use Excel;
 
 class UserData extends Controller
 {
@@ -23,13 +23,18 @@ class UserData extends Controller
             // iteracción
             $reader->each(function($row) {    
                 $user = new User;
-                $user->nombres = $row->nombre;
-                $user->apellidos = $row->email;
-                $user->telefonos = bcrypt('secret');
+                $user->nombres = $row->nombres;
+                $user->apellidos = $row->apellidos;
+                $user->telefono = $row->telefono;
+                $user->email = $row->email;
+                $user->matricula = $row->matricula;
+                $user->carrera = $row->carrera;
+                $user->rol = $row->tipo;
+                $user->tipo_de_usuario = "Usuario";
                 $user->save();
             });
         });
 
-        return "Terminado";
+        return redirect()->route("users.index");
     }
 }
