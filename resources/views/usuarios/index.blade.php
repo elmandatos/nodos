@@ -9,6 +9,7 @@
         <div class="">
             <a href="{{route("users.create")}}">Nuevo Usuario</a>
             <a href="{{route("usersData.index")}}">Importar Usuarios</a>
+            <a href="{{route("usersData.export")}}">Exportar Datos</a>
         </div>
         <thead>
             <tr>
