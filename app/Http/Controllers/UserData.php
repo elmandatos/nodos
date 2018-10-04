@@ -6,24 +6,22 @@ use DB;
 use App\User;
 use Illuminate\Http\Request;
 use Excel;
-use Carbon\Carbon;
-
 
 class UserData extends Controller
 {
-    public function index() 
+    public function index()
     {
         return view("usersData.index");
     }
 
-    public function importUsers(Request $request) 
+    public function importUsers(Request $request)
     {
         \Excel::load($request->excel, function($reader) {
- 
+
             $excel = $reader->get();
-    
+
             // iteracción
-            $reader->each(function($row) {    
+            $reader->each(function($row) {
                 $user = new User;
                 $user->nombres = $row->nombres;
                 $user->apellidos = $row->apellidos;
@@ -42,7 +40,7 @@ class UserData extends Controller
 
     public function exportUsersHours()
     {
-        \Excel::create('Users', function($excel) {
+        Excel::create('Users', function($excel) {
             $hour = DB::table('hours')
             ->select('hours_id', DB::raw('time(sum(TIMEDIFF(hora_salida, hora_entrada))) as total'))
             ->whereNotNull('hora_salida')
@@ -63,18 +61,24 @@ class UserData extends Controller
                     'C'=>'dd/mm/yy',
                     'D'=>'h:mm:ss',
                     'E'=>'h:mm:ss',
-                    'F'=>'h:mm:ss'
+                    'F'=>'[h]:mm:ss'
                 ));
-                
+
                 $i = 2;
+                $totalHorasFormula="=";
+
                 foreach($users as $user){
                     $sheet->setCellValue('F'.$i,'=E'.$i.'-D'.$i);
+                    if( $totalHorasFormula == "=" )
+                        $totalHorasFormula.="F$i";
+                    else
+                        $totalHorasFormula.="+F$i";
                     $i++;
                 }
-                
-                $sheet->setCellValue('F'.$i,'=sum(F2:F'.($i-1).')');
+
+                $sheet->setCellValue('F'.$i,$totalHorasFormula);
                 $sheet->fromArray($users);
             });
-        })->export('csv');
+        })->export('xlsx');
     }
 }
