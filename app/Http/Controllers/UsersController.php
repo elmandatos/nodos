@@ -124,7 +124,8 @@ class UsersController extends Controller
         $user->apellidos = ucfirst($request->input("apellidos"));
         $user->email = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
-        $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
+        if($request->input("foto") != $user->foto)
+            $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
         $user->update();
         return redirect()->route("users.index");
