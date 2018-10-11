@@ -1,6 +1,6 @@
 /node_modules
 /public/hot
-/public/usersImg/E14081438.png
+/public/usersImg/
 /public/storage
 /storage/*.key
 /vendor
@@ -13,3 +13,5 @@ npm-debug.log
 yarn-error.log
 .env
 .DS_Store
+
+composer\.lock

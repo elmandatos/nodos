@@ -14,7 +14,7 @@
     </div>
     <div class="col l4">
       <label style="font-size:15px;">Foto actual</label>
-      <img id="desplegar" src="{{$user->foto}}" alt="">
+      <img class="col l12" id="desplegar" src="{{$user->foto}}" alt="">
     </div>
 </div>
 
@@ -103,7 +103,7 @@
         </div>
 
         <div class="input-field col s12 l6">
-          <input id="foto" name="foto" type="text" value="{{$user->foto}}">
+          <input hidden id="foto" name="foto" type="text" value="{{$user->foto}}">
           <label for="telefono">Foto</label>
         </div>
 

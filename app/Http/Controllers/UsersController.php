@@ -59,7 +59,7 @@ class UsersController extends Controller
         if($request->input("foto")!="")
             $img = $this->createFile($request->input("matricula"), $request->input("foto"));
         else
-            $img = "..public/usersImg/user.png";
+            $img = "/user.png";
 
 
         DB::table("users")->insert([
@@ -126,7 +126,7 @@ class UsersController extends Controller
         if($request->input("foto") != $user->foto)
             $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
         else
-            $user->foto = "usersImg/user.png";
+            $user->foto = "/user.png";
 
         $user->carrera = ucfirst($request->input("carrera"));
         $user->rol = $request->input("rol");
