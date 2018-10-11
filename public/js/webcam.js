@@ -5,8 +5,8 @@ function setup() {
     canvas.parent("canvasParent");
     background(0);
     capture = createCapture(VIDEO);
-    capture.size(320, 240);  
-    capture.hide();                
+    capture.size(320, 240);
+    capture.hide();
 }
 
 function draw() {

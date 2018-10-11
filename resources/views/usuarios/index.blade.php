@@ -1,5 +1,6 @@
 @extends('layout')
 @section('contenido')
+  <div class="row"></div>
 <div class="row">
     <form class="" action="index.html" method="post">
         <div class="input-field col s12">
@@ -10,15 +11,9 @@
 </div>
 
 
-{{-- <div class="row">
-  <a class="btn s12 l2" href="{{route("users.create")}}">Nuevo Usuario</a>
-  <a class="btn s12 l2" href="{{route("usersData.index")}}">Importar Usuarios</a>
-  <a class="btn s12 l2" href="{{route("usersData.export")}}">Exportar Datos</a>
-</div> --}}
-
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
-    <i class="large material-icons">mode_edit</i>
+    <i class="large material-icons">more_vert</i>
   </a>
   <ul>
     <li><a href="{{route("sendEmails")}}" class="btn-floating red tooltipped"  data-position="left" data-tooltip="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>

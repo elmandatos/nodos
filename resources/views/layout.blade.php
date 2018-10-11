@@ -7,7 +7,7 @@
 
     <title>Nodos</title>
     <!--Import Google Icon Font-->
-    <link rel="stylesheet" href="css/materialize-icons.css">
+    <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
     <script src="{{asset('/js/instascan.min.js')}}"></script>
@@ -35,12 +35,13 @@
       @yield('contenido')
     </div>
     <!--JavaScript at end of body for optimized loading-->
-    <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
-    <script src="js/materialize.min.js" type="text/javascript"></script>
-    <script src="/js/password.js" type="text/javascript"></script>
-    <script src="/js/p5.js" type="text/javascript"></script>
-    <script src="/js/p5.dom.js" type="text/javascript"></script>
-    <script src="/js/p5.sound.js" type="text/javascript"></script>
+    <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/materialize.min.js')}}/" type="text/javascript"></script>
+    <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.dom.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.sound.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
       // dropdown
       $('.dropdown-trigger').dropdown();
@@ -53,6 +54,11 @@
       //tooltip
       $(document).ready(function(){
         $('.tooltipped').tooltip();
+      });
+
+      //formSelect
+      $(document).ready(function(){
+        $('select').formSelect();
       });
     </script>
 </body>
