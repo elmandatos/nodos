@@ -1,135 +1,122 @@
 @extends('layout')
 @section('contenido')
-    @if( session()->has("info"))
-        <div class="notificacion">
-            <h4>{{session("info")}}</h4>
+
+{{-- <video width="0" height="0"></video> --}}
+<div class="row"></div>
+<div class="row">
+    <div class="col l4">
+
+      <label style="font-size:15px;">Camara</label>
+        <div id="canvasParent"></div>
+        <button class="btn" id="capturar">Capturar
+          <i class="material-icons right">photo_camera</i>
+        </button>
+    </div>
+    <div class="col l4">
+      <label style="font-size:15px;">Foto actual</label>
+      <img class="col l12" id="desplegar" src="{{$user->foto}}" alt="">
+    </div>
+</div>
+
+<form class="" action="{{route("users.update", $user->id)}}" method="post">
+    {{method_field("PUT")}}
+    {!!csrf_field()!!}
+    <div class="row">
+
+
+        <div class="input-field col s12 l6">
+          <input id="nombres" name="nombres" type="text" value="{{$user->nombres}}">
+          <label for="nombres">Nombres</label>
         </div>
-    @else
-        <video width="0" height="0"></video>
-        <div>
-            <div id="canvasParent"></div>
-            <img id="desplegar" src="" alt="">
-            <button id="capturar">Capturar Foto</button>
+
+        <div class="input-field col s12 l6">
+          <input id="apellidos" name="apellidos" type="text" value="{{$user->apellidos}}">
+          <label for="apellidos">Apellidos</label>
         </div>
-        <form class="" action="{{route("users.update", $user->id)}}" method="post">
-            {{method_field("PUT")}}
-            {!!csrf_field()!!}
-            <table>
-                <tr>
-                    <td>
-                        <label for="nombres">Nombres:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="nombres" name="nombres" value="{{$user->nombres}}">
-                        {!! $errors->first("nombres", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="apellidos">Apellidos:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="apellidos" name="apellidos" value="{{$user->apellidos}}">
-                        {!! $errors->first("apellidos", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="telefono">Telefono:</label>
-                    </td>
-                    <td>
-                        <input type="tel" id="telefono" name="telefono" value="{{$user->telefono}}">
-                        {!! $errors->first("telefono", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="email">Correo:</label>
-                    </td>
-                    <td>
-                        <input type="email" id="email" name="email" value="{{$user->email}}">
-                        {!! $errors->first("email", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="matricula">Matricula:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="matricula" name="matricula" value="{{$user->matricula}}">
-                        {!! $errors->first("matricula", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="carrera">Carrera:</label>
-                    </td>
-                    <td>
-                        <select class="" id="carrera" name="carrera">
-                            <option value=""></option>
-                            <option value="Ing. en Gestión Empresarial" {{ $user->carrera == "Ing. en Gestión Empresarial" ? "selected" : "" }}>Ing. en Gestión Empresarial</option>
-                            <option value="Ing. Ambiental" {{ $user->carrera == "Ing. Ambiental" ? "selected" : "" }}>Ing. Ambiental</option>
-                            <option value="Ing. Bioquímica" {{ $user->carrera == "Ing. Bioquímica" ? "selected" : "" }}>Ing. Bioquímica</option>
-                            <option value="Ing. Biomédica" {{ $user->carrera == "Ing. Biomédica" ? "selected" : "" }}>Ing. Biomédica</option>
-                            <option value="Ing. Química" {{ $user->carrera == "Ing. Química" ? "selected" : "" }}>Ing. Química</option>
-                            <option value="Ing. Eléctrica" {{ $user->carrera == "Ing. Eléctrica" ? "selected" : "" }}>Ing. Eléctrica</option>
-                            <option value="Ing. Electrónica" {{ $user->carrera == "Ing. Electrónica" ? "selected" : "" }}>Ing. Electrónica</option>
-                            <option value="Ing. Mecánica" {{ $user->carrera == "Ing. Mecánica" ? "selected" : "" }}>Ing. Mecánica</option>
-                            <option value="Ing. Civil" {{ $user->carrera == "Ing. Civil" ? "selected" : "" }}>Ing. Civil</option>
-                            <option value="Ing. Industrial" {{ $user->carrera == "Ing. Industrial" ? "selected" : "" }}>Ing. Industrial</option>
-                            <option value="Ing. en Sistemas Computacionales" {{$user->carrera  == "Ing. en Sistemas Computacionales" ? "selected" : "" }}>Ing. en Sistemas Computacionales</option>
-                            <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
-                        </select>
-                        {!! $errors->first("carrera", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="rol">Rol:</label>
-                    </td>
-                    <td>
-                        <select class="" id="rol" name="rol">
-                            <option value=""></option>
-                            <option value="Servicio Social" {{$user->rol == "Servicio Social" ? "selected" : "" }}>Servicio Social</option>
-                            <option value="Residencia" {{$user->rol == "Residencia" ? "selected" : "" }}>Residencia</option>
-                            <option value="Maestro" {{$user->rol == "Maestro" ? "selected" : "" }}>Maestro</option>
-                            <option value="Celulas de Innovación" {{$user->rol == "Celulas de Innovación" ? "selected" : "" }}>Celulas de Innovación</option>
-                            <option value="Celulas de Innovación - Coach" {{$user->rol == "Celulas de Innovación - Coach" ? "selected" : "" }}>Celulas de Innovación - Coach</option>
-                            <option value="Incubadora de innovación" {{$user->rol == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
-                            <option value="Alumnos Doctor Chan" {{$user->rol == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
-                        </select>
-                        {!! $errors->first("rol", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label>Tipo:</label>
-                    </td>
-                    <td>
-                        <label for="administrador">Administrador</label>
-                        <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower($user->tipo_de_usuario) == "administrador" ? "checked" : "" }}>
 
-                        <label for="asistente">Asistente</label>
-                        <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>
+        <div class="input-field col s12 l6">
+          <input id="matricula" name="matricula" type="tel" value="{{$user->matricula}}">
+          <label for="matricula">Matrícula</label>
+        </div>
 
-                        <label for="usuario">Usuario</label>
-                        <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
 
-                        {!! $errors->first("tipoDeUsuario", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="foto">Foto:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="foto" name="foto" value="{{$user->foto}}">
-                        {!! $errors->first("foto", "<span class=error>:message</span>")!!}
-                    </td>
-                </tr>
-            </table>
-            <input type="submit" name="" value="Actualizar">
-        </form>
-        <script src="/js/webcam.js" type="text/javascript"></script>
-    @endif
+        <div class="input-field col s12 l6">
+          <select class="" id="carrera" name="carrera">
+            <option value="" disabled selected>Selecciona carrera</option>
+            <option value="Ing. en Gestión Empresarial" {{ $user->carrera == "Ing. en Gestión Empresarial" ? "selected" : "" }}>Ing. en Gestión Empresarial</option>
+            <option value="Ing. Ambiental" {{ $user->carrera == "Ing. Ambiental" ? "selected" : "" }}>Ing. Ambiental</option>
+            <option value="Ing. Bioquímica" {{ $user->carrera == "Ing. Bioquímica" ? "selected" : "" }}>Ing. Bioquímica</option>
+            <option value="Ing. Biomédica" {{ $user->carrera == "Ing. Biomédica" ? "selected" : "" }}>Ing. Biomédica</option>
+            <option value="Ing. Química" {{ $user->carrera == "Ing. Química" ? "selected" : "" }}>Ing. Química</option>
+            <option value="Ing. Eléctrica" {{ $user->carrera == "Ing. Eléctrica" ? "selected" : "" }}>Ing. Eléctrica</option>
+            <option value="Ing. Electrónica" {{ $user->carrera == "Ing. Electrónica" ? "selected" : "" }}>Ing. Electrónica</option>
+            <option value="Ing. Mecánica" {{ $user->carrera == "Ing. Mecánica" ? "selected" : "" }}>Ing. Mecánica</option>
+            <option value="Ing. Civil" {{ $user->carrera == "Ing. Civil" ? "selected" : "" }}>Ing. Civil</option>
+            <option value="Ing. Industrial" {{ $user->carrera == "Ing. Industrial" ? "selected" : "" }}>Ing. Industrial</option>
+            <option value="Ing. en Sistemas Computacionales" {{$user->carrera  == "Ing. en Sistemas Computacionales" ? "selected" : "" }}>Ing. en Sistemas Computacionales</option>
+            <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
+          </select>
+          {!! $errors->first("carrera", "<span class=error>:message</span>")!!}
+          <label>Carrera</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <input id="email" name="email" type="tel" value="{{$user->email}}">
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <input id="telefono" name="telefono" type="tel" value="{{$user->telefono}}">
+          <label for="telefono">Teléfono</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <select class="" id="rol" name="rol">
+              <option value="" disabled selected>Selecciona Rol</option>
+              <option value="Servicio Social" {{$user->rol == "Servicio Social" ? "selected" : "" }}>Servicio Social</option>
+              <option value="Residencia" {{$user->rol == "Residencia" ? "selected" : "" }}>Residencia</option>
+              <option value="Maestro" {{$user->rol == "Maestro" ? "selected" : "" }}>Maestro</option>
+              <option value="Celulas de Innovación" {{$user->rol == "Celulas de Innovación" ? "selected" : "" }}>Celulas de Innovación</option>
+              <option value="Celulas de Innovación - Coach" {{$user->rol == "Celulas de Innovación - Coach" ? "selected" : "" }}>Celulas de Innovación - Coach</option>
+              <option value="Incubadora de innovación" {{$user->rol == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
+              <option value="Alumnos Doctor Chan" {{$user->rol == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
+          </select>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <p>
+            <label>
+              <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower($user->tipo_de_usuario) == "administrador" ? "checked" : "" }}>
+              <span>Administrador</span>
+            </label>
+
+            <label>
+              <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>
+              <span>Asistente</span>
+            </label>
+
+            <label>
+              <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
+              <span>Usuario</span>
+            </label>
+          </p>
+        </div>
+
+        <div class="input-field col s12 l6">
+          <input hidden id="foto" name="foto" type="text" value="{{$user->foto}}">
+          <label for="telefono">Foto</label>
+        </div>
+
+    </div>
+
+    <button class="btn" type="submit">
+      Actualizar
+      <i class="material-icons right">save</i>
+    </button>
+
+    {{-- <input class="btn" type="submit" name="" value="Actualizar"> --}}
+    <div class="row">
+
+    </div>
+</form>
 @stop

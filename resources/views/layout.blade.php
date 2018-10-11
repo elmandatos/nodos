@@ -1,41 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <style>
-            a:link{
-                text-decoration: none;
-            }
 
-            .error{
-                color: red;
-                font-size: 12px;
-            }
-        </style>
-        <title></title>
-        <script src="/js/jquery-3.3.1.min.js"></script>
-        <script src="/js/instascan.min.js"></script>
-        <script src="/js/password.js" type="text/javascript"></script>
-        <script src="/js/p5.js" type="text/javascript"></script>
-        <script src="/js/p5.dom.js" type="text/javascript"></script>
-        <script src="/js/p5.sound.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <a href="{{route("home")}}">
-                    <img src="/descarga.jpg" alt="">
-                </a>
-                <a  href="{{route("home")}}">Leer QR</a>
-                <a  href="{{route("users.index")}}">Usuarios</a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nodos</title>
+    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <script src="{{asset('/js/instascan.min.js')}}"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container nav-wrapper">
+              <a href="{{route("home")}}" class="brand-logo">Logo</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{{route("home")}}">Leer QR</a></li>
+                <li><a href="{{route("users.index")}}">Usuarios</a></li>
                 @if(auth()->guest())
-                    <a href="/login">Iniciar Sesión</a>
+                  <li><a href="/login">Iniciar Sesión</a></li>
                 @else
-                    <a href="/logout">Cerrar Sesión</a>
+                  <li><a href="/logout">Cerrar Sesión</a></li>
                 @endif
-            </nav>
-        </header>
-        @yield('contenido')
-        <footer>Copyright {{ date('Y')}}</footer>
-    </body>
+              </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+      @yield('contenido')
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/materialize.min.js')}}/" type="text/javascript"></script>
+    <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.dom.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/p5.sound.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+      // dropdown
+      $('.dropdown-trigger').dropdown();
+
+      //floating ActionButton
+      $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+      });
+
+      //tooltip
+      $(document).ready(function(){
+        $('.tooltipped').tooltip();
+      });
+
+      //formSelect
+      $(document).ready(function(){
+        $('select').formSelect();
+      });
+    </script>
+</body>
+
 </html>

@@ -56,9 +56,12 @@ class UsersController extends Controller
     public function store(CreateUserRequest $request)
     {
         //Procesamiento de Foto
-        $img = $this->createFile($request->input("matricula"), $request->input("foto"));
-        
-               
+        if($request->input("foto")!="")
+            $img = $this->createFile($request->input("matricula"), $request->input("foto"));
+        else
+            $img = "/user.png";
+
+
         DB::table("users")->insert([
             "nombres" => ucwords($request->input("nombres")),
             "apellidos" => ucwords($request->input("apellidos")),
@@ -114,14 +117,20 @@ class UsersController extends Controller
      */
     public function update(CreateUserRequest $request, $id)
     {
-        
         $user = User::findOrFail($id);
-        
-        $user->nombres = ucfirst($request->input("nombres"));
-        $user->apellidos = ucfirst($request->input("apellidos"));
+
+        $user->nombres = ucwords($request->input("nombres"));
+        $user->apellidos = ucwords($request->input("apellidos"));
         $user->email = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
-        $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
+        if($request->input("foto") != $user->foto)
+            $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
+        else
+            $user->foto = "/user.png";
+
+        $user->carrera = ucfirst($request->input("carrera"));
+        $user->rol = $request->input("rol");
+        $user->telefono = $request->input("telefono");
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
         $user->update();
         return redirect()->route("users.index");

@@ -32,4 +32,19 @@ class EmailsController extends Controller
         }
         return redirect()->route("users.index");
     }
+
+    public function sendUserEmail($id) {
+        $user = DB::table("users")->where("id", $id)->first();
+        
+        $qr = QrCode::format('png')->size(399)->generate($user->id, '../public/qrcodes/qrcode_id.png');
+        Mail::send("email.all",
+        ['qr' => $qr],
+        function($message) use ($user){
+            $message->from('ivan.lopez3k@gmail.com', 'probando 1 2 3');
+            $message ->attach('../public/qrcodes/qrcode_id.png');
+            $message->to($user->email)->subject('test email');
+        });
+        
+        return redirect()->route("users.index");
+    }
 }
