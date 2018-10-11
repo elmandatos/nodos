@@ -1,16 +1,25 @@
 @extends('layout')
 @section('contenido')
-    @if( session()->has("info"))
-        <div class="notificacion">
-            <h4>{{session("info")}}</h4>
-        </div>
-    @else
+
         <video width="0" height="0"></video>
         <div>
             <div id="canvasParent"></div>
             <img id="desplegar" src="" alt="">
             <button id="capturar">Capturar Foto</button>
         </div>
+        <div class="row">
+          <div class="card col l6">
+            <div class="col l4 cyan">
+              <img class="card-image col l12" src="{{$user->foto}}" alt="">
+            </div>
+
+            <div class="l8 red">
+              ddss
+            </div>
+
+          </div>
+        </div>
+
         <form class="" action="{{route("users.update", $user->id)}}" method="post">
             {{method_field("PUT")}}
             {!!csrf_field()!!}
@@ -131,5 +140,4 @@
             <input type="submit" name="" value="Actualizar">
         </form>
         <script src="/js/webcam.js" type="text/javascript"></script>
-    @endif
 @stop

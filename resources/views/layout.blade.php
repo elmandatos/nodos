@@ -7,9 +7,11 @@
 
     <title>Nodos</title>
     <!--Import Google Icon Font-->
-    <link rel="stylesheet" href="{{asset('css/materialize-icons.woff2')}}">
+    <link rel="stylesheet" href="css/materialize-icons.css">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <script src="{{asset('/js/instascan.min.js')}}"></script>
+
 </head>
 
 <body>
@@ -35,11 +37,24 @@
     <!--JavaScript at end of body for optimized loading-->
     <script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
     <script src="js/materialize.min.js" type="text/javascript"></script>
-    <script src="/js/instascan.min.js"></script>
     <script src="/js/password.js" type="text/javascript"></script>
     <script src="/js/p5.js" type="text/javascript"></script>
     <script src="/js/p5.dom.js" type="text/javascript"></script>
     <script src="/js/p5.sound.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      // dropdown
+      $('.dropdown-trigger').dropdown();
+
+      //floating ActionButton
+      $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+      });
+
+      //tooltip
+      $(document).ready(function(){
+        $('.tooltipped').tooltip();
+      });
+    </script>
 </body>
 
 </html>

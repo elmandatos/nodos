@@ -12,8 +12,8 @@
 */
 
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
-Route::post('/user/{id}/get_in', ['as' => 'get_in', 'uses' => 'HoursController@get_in']);
-Route::post('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@get_out']);
+Route::get('/user/{id}/get_in', ['as' => 'get_in', 'uses' => 'HoursController@get_in']);
+Route::get('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@get_out']);
 
 Route::get('sendAllEmails', ['as' => 'sendEmails', 'uses' => 'EmailsController@sendAllEmails']);
 Route::get('/{id}/sendUserEmail', ['as' => 'sendEmail', 'uses' => 'EmailsController@sendUserEmail']);
