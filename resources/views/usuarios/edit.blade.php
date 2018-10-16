@@ -1,4 +1,5 @@
 @extends('layout')
+
 @section('contenido')
 
 {{-- <video width="0" height="0"></video> --}}
@@ -113,10 +114,12 @@
       Actualizar
       <i class="material-icons right">save</i>
     </button>
-
-    {{-- <input class="btn" type="submit" name="" value="Actualizar"> --}}
     <div class="row">
-
     </div>
+
 </form>
-@stop
+@endsection
+
+@section("scripts")
+  <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
+@endsection

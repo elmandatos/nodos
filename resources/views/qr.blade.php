@@ -10,9 +10,8 @@
     <div>
           <video id="preview"></video>
     </div>
+@endsection
 
-    <script src="/js/camera.js"></script>
-
-  
-    
-@stop
+@section("scripts")
+  <script src="{{asset('/js/camera.js')}}" type="text/javascript"></script>
+@endsection

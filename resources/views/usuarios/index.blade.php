@@ -120,5 +120,8 @@
   </div>
   <div class="row"></div>
 @endforeach
+@endsection
 
-@stop
+@section("scripts")
+  @extends("scripts/p5")
+@endsection

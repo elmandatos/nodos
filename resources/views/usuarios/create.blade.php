@@ -1,8 +1,5 @@
 @extends('layout')
 @section('contenido')
-
-
-
   <div class="row"></div>
   <div class="row">
       <div class="col l4">
@@ -123,10 +120,13 @@
         Registrar
         <i class="material-icons right">save</i>
       </button>
-
-      {{-- <input class="btn" type="submit" name="" value="Actualizar"> --}}
       <div class="row">
-
       </div>
   </form>
-@stop
+@endsection
+
+@section("scripts")
+  @extends('scripts/p5')
+  <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+@endsection
