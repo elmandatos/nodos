@@ -12,7 +12,7 @@
       </div>
       <div class="col l4">
         <label style="font-size:15px;">Foto actual</label>
-        <img class="col l12" id="desplegar" src="" alt="">
+        <img class="col l12" id="desplegar" src="{{asset("user.png")}}" alt="">
       </div>
   </div>
 

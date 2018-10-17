@@ -105,7 +105,6 @@
 
         <div class="input-field col s12 l6">
           <input hidden id="foto" name="foto" type="text" value="{{$user->foto}}">
-          <label for="telefono">Foto</label>
         </div>
 
     </div>
@@ -121,5 +120,6 @@
 @endsection
 
 @section("scripts")
+  @extends('scripts/p5')
   <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
 @endsection
