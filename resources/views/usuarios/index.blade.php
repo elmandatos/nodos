@@ -23,20 +23,32 @@
   </ul>
 </div>
 
+@php
+$cardNumber = 0;
+@endphp
 @foreach ($users as $user)
+  @php
+  $cardNumber += 1;
+  $Cardname = "cardNumber".$cardNumber;
+  @endphp
+  <div id="cards">
 
-  <div class="card z-depth-2">
-    <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
-      <div class="col s12 m12 l12">
-        <div class="row">
+    <div class="card z-depth-2" name="{{$Cardname}}">
+      <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
+        <div class="col s12 m12 l12">
+          <div class="row">
+            {{--Boton delete user--}}
+            {{method_field("DELETE")}}
+            {!!csrf_field()!!}
+            {{-- <!-- Modal Trigger -->
+            <button data-target="userDeleteModal" class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red modal-trigger"  id="btnUserDelete" value="{{$user->id}}">
+            <i class="material-icons">delete</i>
+          </button> --}}
+          <!-- Modal Trigger -->
+          <a onclick="dialogConfirm({{$user->id}}, '{{csrf_token()}}', '{{$Cardname}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
+            <i class="material-icons">delete</i>
+          </a>
 
-          <form class="" action="{{route("users.destroy",$user->id)}}" method="post">
-              {{method_field("DELETE")}}
-              {!!csrf_field()!!}
-              <button class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red" type="submit" name="">
-                <i class="material-icons">delete</i>
-              </button>
-          </form>
 
         </div>
       </div>
@@ -45,7 +57,6 @@
     <div class="row">
       <div style="padding:0;" class="card-image col s12 l5">
         <img style="padding:0;" class="" src="{{$user->foto}}">
-
         <a class="btn-floating left halfway-fab waves-effect waves-light" href="{{route("users.edit",$user->id)}}">
           <i class="material-icons">edit</i>
         </a>
@@ -103,7 +114,7 @@
           </div>
           <!-- Dropdown Trigger ACCESO -->
           <div class="col s12 l6">
-            <a class="dropdown-trigger  btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
+            <a class="dropdown-trigger btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="{{route("get_in",$user->id)}}">Entrada</a></li>
@@ -118,10 +129,12 @@
       </div>
     </div>
   </div>
+  </div>
   <div class="row"></div>
 @endforeach
 @endsection
 
 @section("scripts")
   @extends("scripts/p5")
+  <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
 @endsection
