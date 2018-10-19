@@ -55,30 +55,32 @@ class UsersController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
+        
 
-        //
-        // //Procesamiento de Foto
-        // if($request->input("foto")!="")
-        //     $img = $this->createFile($request->input("matricula"), $request->input("foto"));
-        // else
-        //     $img = "/user.png";
-        //
-        //
-        // DB::table("users")->insert([
-        //     "nombres" => ucwords($request->input("nombres")),
-        //     "apellidos" => ucwords($request->input("apellidos")),
-        //     "telefono" => $request->input("telefono"),
-        //     "email" => strtolower($request->input("email")),
-        //     "matricula" => strtoupper($request->input("matricula")),
-        //     "carrera" => $request->input("carrera"),
-        //     "rol" => $request->input("rol"),
-        //     "foto" => $img,    //Guardamos la ruta en la BD
-        //     "password" => bcrypt($request->input("password")),
-        //     "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
-        //     "created_at" => Carbon::now(),
-        //     "updated_at" => Carbon::now(),
-        // ]);
-        // return redirect()->route("users.index");
+        
+        //Procesamiento de Foto
+        if($request->input("foto")!="")
+            $img = $this->createFile($request->input("matricula"), $request->input("foto"));
+        else
+            $img = "/user.png";
+        
+        
+        DB::table("users")->insert([
+            "nombres" => ucwords($request->input("nombres")),
+            "apellidos" => ucwords($request->input("apellidos")),
+            "telefono" => $request->input("telefono"),
+            "email" => strtolower($request->input("email")),
+            "matricula" => strtoupper($request->input("matricula")),
+            "carrera" => $request->input("carrera"),
+            "rol" => $request->input("rol"),
+            "foto" => $img,    //Guardamos la ruta en la BD
+            "password" => bcrypt($request->input("password")),
+            "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
+            "created_at" => Carbon::now(),
+            "updated_at" => Carbon::now(),
+        ]);
+       
+        return $request;
     }
 
     /**
