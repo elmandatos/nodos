@@ -3,7 +3,6 @@
   <div class="row"></div>
   <div class="row">
       <div class="col l4">
-
         <label style="font-size:15px;">Camara</label>
           <div id="canvasParent"></div>
           <button class="btn" id="capturar">Capturar
@@ -116,7 +115,7 @@
 
       </div>
 
-      <button class="btn" type="submit">
+      <button class="btn" type="submit" name="store">
         Registrar
         <i class="material-icons right">save</i>
       </button>
@@ -129,4 +128,6 @@
   @extends('scripts/p5')
   <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
   <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{asset('/js/ajaxForModal/storeUserModal.js')}}"></script>
+
 @endsection

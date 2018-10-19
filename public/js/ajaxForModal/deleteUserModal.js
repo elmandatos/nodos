@@ -11,13 +11,6 @@ function dialogConfirm(id, token, cardName){
   				className:"red",
   				text:"Cerrar",
   				callback:function(){
-                    M.toast({
-                      html: "Upps, algo salió mal...",
-
-                    });
-                    setTimeout(function() {
-                      location.reload();
-                    },4000)
   				}
   			},
 
@@ -38,7 +31,7 @@ function dialogConfirm(id, token, cardName){
 
                           $("div[name="+cardName+"]").remove();
                           M.toast({html: "Usuario Eliminado",displayLength:2000});
-                          location.reload();
+                          // location.reload();
 
                       },
                       error: function(result) {
