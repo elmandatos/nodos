@@ -16,7 +16,7 @@
 
 <body>
     <header>
-        <nav>
+        <nav class="teal">
             <div class="container nav-wrapper">
               <a href="{{route("home")}}" class="brand-logo">Logo</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
