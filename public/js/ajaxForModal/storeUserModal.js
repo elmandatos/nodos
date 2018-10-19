@@ -1,3 +1,4 @@
+
 let btnStore = $("button[name='store']");
 let url = $("#formulario").attr("action");
 let token = $("input[name='_token']").attr("value");
@@ -8,22 +9,26 @@ btnStore.click(function(e) {
 });
 
 function storeUser() {
-    $.ajax({
-        type: "post",
-        url: "/users",
-        data: {
-            _token: token,
-            form : $("#formulario").serialize()
-
-        },
-        success: function(result) {
-            M.toast({html: "Usuario Creado"});
-            // $(location).attr('href', url);
-        },
-        error: function(result) {
-            M.toast({html: "Upps, algo salió mal..."});
-        }
+    let formData = $("#formulario").serializeArray();
+    let data = {};
+    console.log(formData);
+    $.each(formData, function(){
+        data[this.name] = this.value;
+        
     });
+
+    axios.post('/users', data)
+        .then(function (response) {
+            console.log(response);
+            M.toast({ html: "Usuario Creado" });
+            setTimeout(function() {
+                window.location.href = "/users"; 
+            }, 2000);
+        })
+        .catch(function (error) {
+            console.error(error.response.data);
+            M.toast({ html: "Upps, algo salió mal..." });
+        });
 }
 
 
