@@ -3,8 +3,10 @@
     <h1 style="font-family: monospace;">INTRODUZCA QR PARA INGRESAR</h1>
     <?php // TODO: Utilizar ajax una vez leido el id del qr para buscar el usuario en la bd
     //y ver si informacion en el apartado edit.blade ?>
-    <form action="" method="post">
-        <input type="text" name="id" placeholder="ID del usuario">
+    <form action="{{route("users.search")}}" method="post">
+        {!!csrf_field()!!}
+
+        <input type="text" name="search" placeholder="ID del usuario">
     </form>
 
     <div>
