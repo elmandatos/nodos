@@ -151,4 +151,24 @@ class UsersController extends Controller
         DB::table("users")->where("id", $id)->delete();
         return redirect()->route("users.index");
     }
+
+    public function search(Request $request) {
+
+        $query = $request->search;
+        $userExists = DB::table('users')
+        ->where('nombres', 'LIKE', '%' . $query . '%')
+        ->orWhere('apellidos', 'LIKE', '%' . $query . '%')
+        ->exists();
+
+        if($userExists) {
+            $users = DB::table('users')
+            ->where('nombres', 'LIKE', '%' . $query . '%')
+            ->orWhere('apellidos', 'LIKE', '%' . $query . '%')->get();
+            return view('usuarios.search', compact("users"));
+            
+        }else {
+            return "usuario no existe";
+        }
+        
+    }
 }
