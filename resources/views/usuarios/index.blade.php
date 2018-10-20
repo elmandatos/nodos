@@ -17,10 +17,10 @@
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-    <li><a href="{{route("sendEmails")}}" class="btn-floating red btnTest"  data-position="left" data-tooltip="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
-    <li><a href="{{route("usersData.index")}}" class="btn-floating green btnTest" data-position="left" data-tooltip="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
-    <li><a href="{{route("usersData.export")}}" class="btn-floating blue btnTest" data-position="left" data-tooltip="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
-    <li><a href="{{route("users.create")}}" class="btn-floating btnTest" data-position="left" data-tooltip="Nuevos usuario"><i class="material-icons">add</i></a></li>
+    <li><a href="{{route("sendEmails")}}" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
+    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+    <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
+    <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
   </ul>
 </div>
 
@@ -138,9 +138,5 @@ $cardNumber = 0;
 @section("scripts")
   @extends("scripts/p5")
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
-  <script>
-    tippy('.btnTest', {
-      content: "PRUEBA TOOLTIP"
-    });
   </script>
 @endsection
