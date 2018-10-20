@@ -2,9 +2,10 @@
 @section('contenido')
   <div class="row"></div>
 <div class="row">
-    <form class="" action="index.html" method="post">
+    <form action="{{route("users.search")}}" method="post">
+        {!!csrf_field()!!}
         <div class="input-field col s12">
-          <input class="col s12 l6" type="text" name="searchUser" id="searchUser" value="">
+          <input class="col s12 l6" type="text" name="search" id="searchUser" value="">
           <label for="last_name">Buscar</label>
         </div>
     </form>
