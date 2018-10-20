@@ -2,10 +2,9 @@
 @section('contenido')
   <div class="row"></div>
 <div class="row">
-    <form action="{{route("users.search")}}" method="post">
-        {!!csrf_field()!!}
+    <form class="" action="index.html" method="post">
         <div class="input-field col s12">
-          <input class="col s12 l6" type="text" name="search" id="searchUser" value="">
+          <input class="col s12 l6" type="text" name="searchUser" id="searchUser" value="">
           <label for="last_name">Buscar</label>
         </div>
     </form>
@@ -17,10 +16,10 @@
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-    <li><a href="{{route("sendEmails")}}" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
-    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
-    <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
-    <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
+    <li><a href="{{route("sendEmails")}}" class="btn-floating red tooltipped"  data-position="left" data-tooltip="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
+    <li><a href="{{route("usersData.index")}}" class="btn-floating green tooltipped" data-position="left" data-tooltip="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+    <li><a href="{{route("usersData.export")}}" class="btn-floating blue tooltipped" data-position="left" data-tooltip="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
+    <li><a href="{{route("users.create")}}" class="btn-floating tooltipped" data-position="left" data-tooltip="Nuevos usuario"><i class="material-icons">add</i></a></li>
   </ul>
 </div>
 
@@ -138,5 +137,4 @@ $cardNumber = 0;
 @section("scripts")
   @extends("scripts/p5")
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
-  </script>
 @endsection
