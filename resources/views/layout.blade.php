@@ -18,7 +18,7 @@
     <header>
         <nav class="teal">
             <div class="container nav-wrapper">
-              <a href="{{route("home")}}" class="brand-logo">Logo</a>
+              <a href="{{route("home")}}" class="brand-logo"><img src="../logo_Nodos.svg" width="60px"></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("home")}}">Leer QR</a></li>
                 <li><a href="{{route("users.index")}}">Usuarios</a></li>
