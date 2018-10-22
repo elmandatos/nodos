@@ -62,6 +62,7 @@
           <div class="input-field col s12 l6">
             <input id="email" name="email" type="tel" value="{{old("email")}}">
             <label for="email">Email</label>
+            <span class='red-text'></span>
             {!! $errors->first("email", "<span class='red-text'>:message</span>")!!}
 
           </div>

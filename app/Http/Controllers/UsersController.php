@@ -55,16 +55,16 @@ class UsersController extends Controller
      */
     public function store(CreateUserRequest $request)
     {
-        
 
-        
+
+
         //Procesamiento de Foto
         if($request->input("foto")!="")
             $img = $this->createFile($request->input("matricula"), $request->input("foto"));
         else
             $img = "/user.png";
-        
-        
+
+
         DB::table("users")->insert([
             "nombres" => ucwords($request->input("nombres")),
             "apellidos" => ucwords($request->input("apellidos")),
@@ -79,7 +79,7 @@ class UsersController extends Controller
             "created_at" => Carbon::now(),
             "updated_at" => Carbon::now(),
         ]);
-       
+
         return $request;
     }
 
@@ -164,11 +164,11 @@ class UsersController extends Controller
             $users = DB::table('users')
             ->where('nombres', 'LIKE', '%' . $query . '%')
             ->orWhere('apellidos', 'LIKE', '%' . $query . '%')->get();
-            return view('usuarios.search', compact("users"));
-            
+            return view('usuarios.index', compact("users"));
+
         }else {
             return "usuario no existe";
         }
-        
+
     }
 }

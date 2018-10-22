@@ -2,7 +2,7 @@
 @section('contenido')
   <div class="row"></div>
 <div class="row">
-    <form action="{{route("users.search")}}" method="post">
+    <form action="{{route("users.search")}}" method="get">
         {!!csrf_field()!!}
         <div class="input-field col s12">
           <input class="col s12 l6" type="text" name="search" id="searchUser" value="">
@@ -138,5 +138,7 @@ $cardNumber = 0;
 @section("scripts")
   @extends("scripts/p5")
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
+  {{-- <script type="text/javascript" src="{{asset('/js/searchUser.js')}}"></script> --}}
+
   </script>
 @endsection

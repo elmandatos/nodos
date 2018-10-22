@@ -1,55 +1,73 @@
 @extends("layout")
 @section("contenido")
 
-    <img src="{{$user->foto}}" alt="">
+  <br><br><br>
+  <div class="card z-depth-2">
+  <div class="row">
+    <div style="padding:0;" class="card-image col s12 l5">
+      <img style="padding:0;" class="" src="{{$user->foto}}">
+    </div>
+    {{-- DATOS DE USUARIO--}}
+    <div  class="col l7">
+      <div class="row">
+        {{-- NOMBRES --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Nombres:</h6>
+          <i>{{$user->nombres}}</i>
+        </div>
 
-<div  class="col l7">
-        <div class="row">
-          {{-- NOMBRES --}}
-          <div class="col s12 l6">
-            <h6 style="font-weight: bold;">Nombres:</h6>
-            <i>{{$user->nombres}}</i>
-          </div>
+        {{-- APELLIDOS --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Apellidos:</h6>
+          <i>{{$user->apellidos}}</i>
+        </div>
 
-          {{-- APELLIDOS --}}
-          <div class="col s12 l6">
-            <h6 style="font-weight: bold;">Apellidos:</h6>
-            <i>{{$user->apellidos}}</i>
-          </div>
+        {{-- CARRERA --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Carrera:</h6>
+          <i>{{$user->carrera}}</i>
+        </div>
 
-          {{-- ROL --}}
-          <div class="col s12 l6">
-            <h6 style="font-weight: bold;">Rol:</h6>
-            <i>{{$user->rol}}</i>
-          </div>
+        {{-- MATRICULA --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Matrícula:</h6>
+          <i>{{$user->matricula}}</i>
+        </div>
 
-          {{-- EMAIL --}}
-          <div class="col s12 l6">
-            <h6 style="font-weight: bold;">Email:</h6>
-            <i>{{$user->email}}</i>
-          </div>
+        {{-- ROL --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Rol:</h6>
+          <i>{{$user->rol}}</i>
+        </div>
 
-          {{-- TELEFONO --}}
-          <div class="col s12 l6">
-            <h6 style="font-weight: bold;">Télefono:</h6>
-            <i>{{$user->telefono}}</i>
-          </div>
+        {{-- TIPO DE USUARIO --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Tipo de usuario:</h6>
+          <i>{{$user->tipo_de_usuario}}</i>
+        </div>
 
-          {{-- ESPACIO VACIO --}}
-            <div class="col s12 16"></div>
-            <div class="col s12 16"></div>
-            <div class="col s12 16"></div>
-            <div class="col s12 16"></div>
-          <!-- Dropdown Trigger ACCESO -->
-          <div class="col s12 l6">
-            <a class="dropdown-trigger btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="{{route("get_in",$user->id)}}">Entrada</a></li>
-              <li><a href="{{route("get_out",$user->id)}}">Salida</a></li>
-            </ul>
-          </div>
+        {{-- EMAIL --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Email:</h6>
+          <i>{{$user->email}}</i>
+        </div>
+
+        {{-- TELEFONO --}}
+        <div class="col s12 l6">
+          <h6 style="font-weight: bold;">Télefono:</h6>
+          <i>{{$user->telefono}}</i>
+        </div>
+
+        <div class="col s12 l6">
+          <a class="btn" href="{{route("get_in",$user->id)}}">Entrada</a>
+        </div>
+
+        <div class="col s12 l6">
+          <a class="btn" href="{{route("get_out",$user->id)}}">Salida</a>
         </div>
       </div>
+    </div>
+  </div>
+  </div>
 
 @stop

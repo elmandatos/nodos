@@ -38,8 +38,8 @@
     <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/materialize.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/material-dialog.min.js')}}" type="text/javascript"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+    <script src="{{asset('/js/axios.min.js')}}"></script>
+    <script src="{{asset('/js/tippy.min.js')}}"></script>
 
 
     <script type="text/javascript">M.AutoInit();</script>
