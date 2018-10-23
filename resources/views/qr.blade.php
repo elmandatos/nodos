@@ -1,6 +1,6 @@
 @extends('layout')
 @section('contenido')
-    <h1 style="font-family: monospace;">INTRODUZCA QR PARA INGRESAR</h1>
+    <h1>Escanea el código QR</h1>
     <?php // TODO: Utilizar ajax una vez leido el id del qr para buscar el usuario en la bd
     //y ver si informacion en el apartado edit.blade ?>
     <form action="{{route("users.search")}}" method="post">

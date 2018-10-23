@@ -115,13 +115,16 @@ $cardNumber = 0;
           </div>
           <!-- Dropdown Trigger ACCESO -->
           <div class="col s12 l6">
-            <a class="dropdown-trigger btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
+            {{-- <a class="dropdown-trigger btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content'>
               <li><a href="{{route("get_in",$user->id)}}">Entrada</a></li>
               <li><a href="{{route("get_out",$user->id)}}">Salida</a></li>
-            </ul>
+            </ul> --}}
+            <a href="#"></a>
           </div>
+
+          <div class="col s12 16"></div>
 
           <div class="col s12 l6">
             <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>

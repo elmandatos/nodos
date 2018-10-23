@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Nodos</title>
+    <!-- Icono WebSite -->
+    <link rel="shortcut icon" type="image/x-icon" href=".ico>" />
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <!-- CSS Modifica Materialize -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
     <script src="{{asset('/js/instascan.min.js')}}"></script>
-
 </head>
 
 <body>
     <header>
         <nav class="teal">
             <div class="container nav-wrapper">
-              <a href="{{route("home")}}" class="brand-logo"><img src="../logo_Nodos.svg" width="60px"></a>
+              <a href="{{route("home")}}" class="brand-logo"><img src="../logo_Nodos.svg"></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("home")}}">Leer QR</a></li>
                 <li><a href="{{route("users.index")}}">Usuarios</a></li>
