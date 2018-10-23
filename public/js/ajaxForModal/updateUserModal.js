@@ -14,7 +14,7 @@ btnStore.click(function(e) {
 
 
 
-function storeUser() {
+function updateUser() {
     let formData = $("#formulario").serializeArray();
     let er = $(".red-text");
     let data = {};
@@ -23,12 +23,12 @@ function storeUser() {
 
     });
 
-    axios.post('/users', data)
+    axios.post('/users/'+id, data)
         .then(function (response) {
             console.log(response);
-            M.toast({ html: "Usuario Creado" });
+            M.toast({ html: "Usuario Actualizado" });
             setTimeout(function() {
-                window.location.href = "/users/create";
+                window.location.href = "/users"
             }, 2000);
         })
         .catch(function (error) {

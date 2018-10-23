@@ -1,7 +1,7 @@
-function dialogDeleteConfirm(id, token, cardName){
+function dialogSendQRUsers(){
 
   MaterialDialog.dialog(
-  	"¿Está seguro de eliminar este usuario?",
+  	"¿Está seguro de que desea enviar el QR a cada usuario?",
   	{
   		title:"¡Advertencia!",
   		modalType:"", // Can be empty, modal-fixed-footer or bottom-sheet
@@ -20,18 +20,11 @@ function dialogDeleteConfirm(id, token, cardName){
   				modalClose:true,
   				callback:function(){
                     $.ajax({
-                      type: "post",
-                      url: "/users/"+id,
-                      data: {
-
-                        _method: "delete",
-                        _token: token
-                      },
+                      type: "get",
+                      url: "users/sendEmail",
                       success: function(result) {
 
-                          $("div[name="+cardName+"]").remove();
-                          M.toast({html: "Usuario Eliminado",displayLength:2000});
-                          // location.reload();
+                          M.toast({html: "Correos enviados",displayLength:2000});
 
                       },
                       error: function(result) {

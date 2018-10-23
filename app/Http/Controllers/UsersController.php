@@ -129,8 +129,7 @@ class UsersController extends Controller
         $user->matricula = ucfirst($request->input("matricula"));
         if($request->input("foto") != $user->foto)
             $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
-        else
-            $user->foto = "/user.png";
+        
 
         $user->carrera = ucfirst($request->input("carrera"));
         $user->rol = $request->input("rol");
@@ -167,7 +166,9 @@ class UsersController extends Controller
             return view('usuarios.index', compact("users"));
 
         }else {
-            return "usuario no existe";
+            $users = array();
+            $imgNotFound = true;
+            return view('usuarios.index', compact("users","imgNotFound"));
         }
 
     }

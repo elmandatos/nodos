@@ -11,13 +11,26 @@
     </form>
 </div>
 
+@php
+$imgNotFound = false;
+
+@endphp
+
+@if ($imgNotFound)
+  <div class="row">
+    <div class="col l4 offset-l4">
+      <h4 class="center-align">USUARIO NO ENCONTRADO</h4>
+      <img class="col l12" style="padding:0;" class="" src="{{asset('/user_not_found.png')}}">
+    </div>
+  </div>
+@endif
 
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-    <li><a href="{{route("sendEmails")}}" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
+    <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
     <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
     <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
     <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
@@ -46,7 +59,7 @@ $cardNumber = 0;
             <i class="material-icons">delete</i>
           </button> --}}
           <!-- Modal Trigger -->
-          <a onclick="dialogConfirm({{$user->id}}, '{{csrf_token()}}', '{{$Cardname}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
+          <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$Cardname}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
             <i class="material-icons">delete</i>
           </a>
 
@@ -138,6 +151,7 @@ $cardNumber = 0;
 @section("scripts")
   @extends("scripts/p5")
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/js/ajaxForModal/dialogSendQRUsers.js')}}"></script>
   {{-- <script type="text/javascript" src="{{asset('/js/searchUser.js')}}"></script> --}}
 
   </script>
