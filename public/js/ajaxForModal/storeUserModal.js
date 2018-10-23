@@ -3,7 +3,6 @@ let btnStore = $("button[name='store']");
 let url = $("#formulario").attr("action");
 let token = $("input[name='_token']").attr("value");
 let errores = $(".red-text");
-let createUserForm = $("#formulario").serialize();
 btnStore.click(function(e) {
     e.preventDefault();
     errores.each(function (r){

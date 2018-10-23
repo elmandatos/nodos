@@ -19,7 +19,7 @@
     </div>
 </div>
 
-<form class="" action="{{route("users.update", $user->id)}}" method="post">
+<form class="" id="updateUser" action="{{route("users.update", $user->id)}}" method="post">
     {{method_field("PUT")}}
     {!!csrf_field()!!}
     <div class="row">
@@ -125,7 +125,7 @@
 
     </div>
 
-    <button class="btn" type="submit">
+    <button class="btn" type="submit" name="update">
       Actualizar
       <i class="material-icons right">save</i>
     </button>

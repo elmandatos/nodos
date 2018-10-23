@@ -1,21 +1,19 @@
 
-let btnStore = $("button[name='store']");
-let url = $("#formulario").attr("action");
+let btnUpdate = $("button[name='update']");
 let token = $("input[name='_token']").attr("value");
 let errores = $(".red-text");
-let createUserForm = $("#formulario").serialize();
-btnStore.click(function(e) {
+btnUpdate.click(function(e) {
     e.preventDefault();
     errores.each(function (r){
         $( this ).text("");
     });
-    storeUser();
+    updateUser();
 });
 
 
 
 function updateUser() {
-    let formData = $("#formulario").serializeArray();
+    let formData = $("#updateUser").serializeArray();
     let er = $(".red-text");
     let data = {};
     $.each(formData, function(){
@@ -23,7 +21,7 @@ function updateUser() {
 
     });
 
-    axios.post('/users/'+id, data)
+    axios.put($("form").attr("action"), data)
         .then(function (response) {
             console.log(response);
             M.toast({ html: "Usuario Actualizado" });
