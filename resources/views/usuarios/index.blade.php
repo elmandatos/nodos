@@ -121,13 +121,16 @@ $cardNumber = 0;
               <li><a href="{{route("get_in",$user->id)}}">Entrada</a></li>
               <li><a href="{{route("get_out",$user->id)}}">Salida</a></li>
             </ul> --}}
-            <a href="#"></a>
+            <a class="waves-effect waves-light btn-large" href="{{route("get_in",$user->id)}}">Entrada <i class="fas fa-sign-in-alt" id="btn_entrada"></i></a>
           </div>
 
-          <div class="col s12 16"></div>
+          <div class="col s12 16">
+            <a class="waves-effect waves-light btn-large" href="{{route("get_in",$user->id)}}">Salida <i class="material-icons left">directions_run</i></a>
+          </div>
 
           <div class="col s12 l6">
-            <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
+            <a class="waves-effect waves-light btn-large" href="{{route("users.generateQr",$user->id)}}"> Generar QR <i class="fas fa-qrcode"></i></a>
+
           </div>
         </div>
       </div>
