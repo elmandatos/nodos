@@ -7,7 +7,7 @@
 
     <title>Sistema de Registros de NCIE</title>
     <!-- Icono WebSite -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('favicon.ico')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('NCIE2.ico')}}"/>
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import Font Awesome Icon Fonts-->
@@ -16,15 +16,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
     <!-- CSS Modifica Materialize -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
-
+    <!-- Iconos Font Awesome  -->
     <script defer src="{{asset('js/fa_js/all.js')}}"></script>
     <script src="{{asset('/js/instascan.min.js')}}"></script>
 </head>
 
 <body>
     <header>
-              <a href="{{route("home")}}"><img src="../logo_Nodos.svg" id="logo_NCIE"></a>
-        <nav class="teal">
+        <div class="encabezado">
+          <a href="{{route("home")}}"><img src="../logo_Nodos.svg"></a>
+        </div>
+        <nav class="">
             <div class="container nav-wrapper">
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("home")}}">Leer QR</a></li>
