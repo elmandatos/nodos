@@ -118,12 +118,12 @@
 
           <div class="input-field col s12 l12"  id="divPassword">
             <label for="password" id="labelPassword" ></label>
-            {!! $errors->first("password", "<span class='red-text'>:message</span>")!!}
+            {{-- {!! $errors->first("password", "<span class='red-text'>:message</span>")!!} --}}
           </div>
 
           <div class="input-field col s12 l12" id="divPasswordConfirm" >
             <label for="confirmarContraseña"  id="labelPasswordConfirm"></label>
-            {!! $errors->first("confirmarContraseña", "<span class='red-text'>:message</span>")!!}
+            {{-- {!! $errors->first("confirmarContraseña", "<span class='red-text'>:message</span>")!!} --}}
           </div>
 
           <div class="input-field col s12 l6">

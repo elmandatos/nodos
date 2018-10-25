@@ -13,7 +13,6 @@ btnUpdate.click(function(e) {
 
 
 function updateUser($url) {
-    // console.log($obj);
     let formData = $("#updateUser").serializeArray();
     let er = $(".red-text");
     let data = {};

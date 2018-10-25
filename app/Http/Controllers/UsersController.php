@@ -53,34 +53,58 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
+        //reglas del request
+        $rules = [
+            "nombres" => "required",
+            "apellidos" => "required",
+            "telefono" => "required",
+            "email" => "required|email",
+            "carrera" => "required",
+            "rol" => "required",
+            "matricula" => "",
+            "tipoDeUsuario" => "required|in:administrador,asistente,usuario",
+            "foto" => "",
+        ];
+
+        // dd($rules);
+
+        $inputs = array_keys($request->all());
+
+        // se hacen validaciones
+        if(in_array("password",$inputs)){
+            $rules["password"] = "required";
+            $rules["confirmarContraseña"] = "required";
+        }
+        $this->validate($request,$rules);
+
+        // return $request->all();
 
 
-
-        //Procesamiento de Foto
-        if($request->input("foto")!="")
-            $img = $this->createFile($request->input("matricula"), $request->input("foto"));
-        else
-            $img = "/user.png";
-
-
-        DB::table("users")->insert([
-            "nombres" => ucwords($request->input("nombres")),
-            "apellidos" => ucwords($request->input("apellidos")),
-            "telefono" => $request->input("telefono"),
-            "email" => strtolower($request->input("email")),
-            "matricula" => strtoupper($request->input("matricula")),
-            "carrera" => $request->input("carrera"),
-            "rol" => $request->input("rol"),
-            "foto" => $img,    //Guardamos la ruta en la BD
-            "password" => bcrypt($request->input("password")),
-            "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
-            "created_at" => Carbon::now(),
-            "updated_at" => Carbon::now(),
-        ]);
-
-        return $request;
+        // //Procesamiento de Foto
+        // if($request->input("foto")!="")
+        //     $img = $this->createFile($request->input("matricula"), $request->input("foto"));
+        // else
+        //     $img = "/user.png";
+        //
+        //
+        // DB::table("users")->insert([
+        //     "nombres" => ucwords($request->input("nombres")),
+        //     "apellidos" => ucwords($request->input("apellidos")),
+        //     "telefono" => $request->input("telefono"),
+        //     "email" => strtolower($request->input("email")),
+        //     "matricula" => strtoupper($request->input("matricula")),
+        //     "carrera" => $request->input("carrera"),
+        //     "rol" => $request->input("rol"),
+        //     "foto" => $img,    //Guardamos la ruta en la BD
+        //     "password" => bcrypt($request->input("password")),
+        //     "tipo_de_usuario" => ucfirst($request->input("tipoDeUsuario")),
+        //     "created_at" => Carbon::now(),
+        //     "updated_at" => Carbon::now(),
+        // ]);
+        //
+        // return $request;
     }
 
     /**
@@ -121,22 +145,23 @@ class UsersController extends Controller
      */
     public function update(CreateUserRequest $request, $id)
     {
-        $user = User::findOrFail($id);
-
-        $user->nombres = ucwords($request->input("nombres"));
-        $user->apellidos = ucwords($request->input("apellidos"));
-        $user->email = strtolower($request->input("email"));
-        $user->matricula = ucfirst($request->input("matricula"));
-        if($request->input("foto") != $user->foto)
-            $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
-
-
-        $user->carrera = ucfirst($request->input("carrera"));
-        $user->rol = $request->input("rol");
-        $user->telefono = $request->input("telefono");
-        $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
-        $user->update();
-        return redirect()->route("users.index");
+        var_dump($request);
+        // $user = User::findOrFail($id);
+        //
+        // $user->nombres = ucwords($request->input("nombres"));
+        // $user->apellidos = ucwords($request->input("apellidos"));
+        // $user->email = strtolower($request->input("email"));
+        // $user->matricula = ucfirst($request->input("matricula"));
+        // if($request->input("foto") != $user->foto)
+        //     $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
+        //
+        //
+        // $user->carrera = ucfirst($request->input("carrera"));
+        // $user->rol = $request->input("rol");
+        // $user->telefono = $request->input("telefono");
+        // $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
+        // $user->update();
+        // return redirect()->route("users.index");
     }
 
     /**

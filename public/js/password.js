@@ -14,7 +14,7 @@ let inputPasswordConfirm = document.createElement("input");
 inputPassword.type = "password";
 inputPassword.name = "password";
 inputPassword.id = "password";
-inputPassword.required= true;
+// inputPassword.required= true;
 
 spanPassword.className = "red-text";
 spanPassword.id = "password-span";
@@ -22,7 +22,7 @@ spanPassword.id = "password-span";
 inputPasswordConfirm.type = "password";
 inputPasswordConfirm.name = "confirmarContraseña";
 inputPasswordConfirm.id = "confirmarContraseña";
-inputPasswordConfirm.required= true;
+// inputPasswordConfirm.required= true;
 
 spanPasswordConfirm.className = "red-text";
 spanPasswordConfirm.id = "confirmarContraseña-span";

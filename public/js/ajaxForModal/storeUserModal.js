@@ -2,10 +2,11 @@
 let btnStore = $("button[name='store']");
 let url = $("#formulario").attr("action");
 let token = $("input[name='_token']").attr("value");
-let errores = $(".red-text");
 btnStore.click(function(e) {
     e.preventDefault();
+    let errores = $(".red-text");
     errores.each(function (r){
+        console.log($(this));
         $( this ).text("");
     });
     storeUser();
@@ -34,7 +35,7 @@ function storeUser() {
             let errors = error.response.data.errors;
             Object.keys(errors).forEach(function(key){
                 let keyId = key+"-span";
-
+                console.log(keyId);
                 $("span[id="+keyId+"]").text(error.response.data.errors[key][0]);
             })
 
