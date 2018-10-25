@@ -11,12 +11,8 @@
     </form>
 </div>
 
-@php
-$imgNotFound = false;
-
-@endphp
-
-@if ($imgNotFound)
+{{-- mensaje perzonalizado de usuario no encontrado --}}
+@if (isset($imgNotFound) && $imgNotFound)
   <div class="row">
     <div class="col l4 offset-l4">
       <h4 class="center-align">USUARIO NO ENCONTRADO</h4>

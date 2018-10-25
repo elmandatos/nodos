@@ -129,7 +129,7 @@ class UsersController extends Controller
         $user->matricula = ucfirst($request->input("matricula"));
         if($request->input("foto") != $user->foto)
             $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
-        
+
 
         $user->carrera = ucfirst($request->input("carrera"));
         $user->rol = $request->input("rol");
@@ -152,6 +152,7 @@ class UsersController extends Controller
     }
 
     public function search(Request $request) {
+        $imgNotFound = false;
 
         $query = $request->search;
         $userExists = DB::table('users')
@@ -163,7 +164,7 @@ class UsersController extends Controller
             $users = DB::table('users')
             ->where('nombres', 'LIKE', '%' . $query . '%')
             ->orWhere('apellidos', 'LIKE', '%' . $query . '%')->get();
-            return view('usuarios.index', compact("users"));
+            return view('usuarios.index', compact("users","imgNotFound"));
 
         }else {
             $users = array();

@@ -7,12 +7,13 @@ btnUpdate.click(function(e) {
     errores.each(function (r){
         $( this ).text("");
     });
-    updateUser();
+    updateUser($("#updateUser").attr("action"));
 });
 
 
 
-function updateUser() {
+function updateUser($url) {
+    // console.log($obj);
     let formData = $("#updateUser").serializeArray();
     let er = $(".red-text");
     let data = {};
@@ -21,7 +22,7 @@ function updateUser() {
 
     });
 
-    axios.put($("form").attr("action"), data)
+    axios.put($("#updateUser").attr("action"), data)
         .then(function (response) {
             console.log(response);
             M.toast({ html: "Usuario Actualizado" });
@@ -32,9 +33,9 @@ function updateUser() {
         .catch(function (error) {
             let errors = error.response.data.errors;
             Object.keys(errors).forEach(function(key){
-                let keyName = key+"-span";
+                let keyId = key+"-span";
 
-                $("span[name="+keyName+"]").text(error.response.data.errors[key][0]);
+                $("span[id="+keyId+"]").text(error.response.data.errors[key][0]);
             })
 
 

@@ -28,7 +28,7 @@
         <div class="input-field col s12 l6">
           <input id="nombres" name="nombres" type="text" value="{{$user->nombres}}">
           <label for="nombres">Nombres</label>
-          <span class='red-text' name="nombres-span"></span>
+          <span class='red-text' id="nombres-span"></span>
           {!! $errors->first("nombres", "<span class='red-text'>:message</span>")!!}
 
         </div>
@@ -36,14 +36,14 @@
         <div class="input-field col s12 l6">
           <input id="apellidos" name="apellidos" type="text" value="{{$user->apellidos}}">
           <label for="apellidos">Apellidos</label>
-          <span class='red-text' name="apellidos-span"></span>
+          <span class='red-text' id="apellidos-span"></span>
           {!! $errors->first("apellidos", "<span class='red-text'>:message</span>")!!}
         </div>
 
         <div class="input-field col s12 l6">
           <input id="matricula" name="matricula" type="tel" value="{{$user->matricula}}">
           <label for="matricula">Matrícula</label>
-          <span class='red-text' name="matricula-span"></span>
+          <span class='red-text' id="matricula-span"></span>
           {!! $errors->first("matricula", "<span class='red-text'>:message</span>")!!}
         </div>
 
@@ -65,21 +65,21 @@
             <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
           </select>
           <label>Carrera</label>
-          <span class='red-text' name="carrera-span"></span>
+          <span class='red-text' id="carrera-span"></span>
           {!! $errors->first("carrera", "<span class='red-text'>:message</span>")!!}
         </div>
 
         <div class="input-field col s12 l6">
           <input id="email" name="email" type="tel" value="{{$user->email}}">
           <label for="email">Email</label>
-          <span class='red-text' name="email-span"></span>
+          <span class='red-text' id="email-span"></span>
           {!! $errors->first("email", "<span class='red-text'>:message</span>")!!}
         </div>
 
         <div class="input-field col s12 l6">
           <input id="telefono" name="telefono" type="tel" value="{{$user->telefono}}">
           <label for="telefono">Teléfono</label>
-          <span class='red-text' name="telefono-span"></span>
+          <span class='red-text' id="telefono-span"></span>
           {!! $errors->first("telefono", "<span class='red-text'>:message</span>")!!}
         </div>
 
@@ -94,7 +94,7 @@
               <option value="Incubadora de innovación" {{$user->rol == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
               <option value="Alumnos Doctor Chan" {{$user->rol == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
           </select>
-          <span class='red-text' name="rol-span"></span>
+          <span class='red-text' id="rol-span"></span>
           {!! $errors->first("rol", "<span class='red-text'>:message</span>")!!}
         </div>
 
@@ -115,7 +115,7 @@
               <span>Usuario</span>
             </label>
           </p>
-          <span class='red-text' name="tipoDeUsuario-span"></span>
+          <span class='red-text' id="tipoDeUsuario-span"></span>
           {!! $errors->first("tipoDeUsuario", "<span class='red-text'>:message</span>")!!}
         </div>
 

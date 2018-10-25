@@ -33,9 +33,9 @@ function storeUser() {
         .catch(function (error) {
             let errors = error.response.data.errors;
             Object.keys(errors).forEach(function(key){
-                let keyName = key+"-span";
+                let keyId = key+"-span";
 
-                $("span[name="+keyName+"]").text(error.response.data.errors[key][0]);
+                $("span[id="+keyId+"]").text(error.response.data.errors[key][0]);
             })
 
 
