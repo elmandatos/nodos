@@ -7,7 +7,7 @@
 
     <title>Sistema de Registros de NCIE</title>
     <!-- Icono WebSite -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('NCIE2.ico')}}"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('NCIE3.ico')}}"/>
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import Font Awesome Icon Fonts-->
@@ -22,11 +22,11 @@
 </head>
 
 <body>
-    <header>
-        <div class="encabezado">
+    <header class="encabezado">
+        <div class="logo">
           <a href="{{route("home")}}"><img src="../logo_Nodos.svg"></a>
         </div>
-        <nav class="">
+        <nav class="navegador teal">
             <div class="container nav-wrapper">
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("home")}}">Leer QR</a></li>
