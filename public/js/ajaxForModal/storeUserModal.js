@@ -1,4 +1,4 @@
-
+document.getElementById('usuario').defaultChecked = true;
 let btnStore = $("button[name='store']");
 let url = $("#formulario").attr("action");
 let token = $("input[name='_token']").attr("value");
@@ -6,10 +6,11 @@ btnStore.click(function(e) {
     e.preventDefault();
     let errores = $(".red-text");
     errores.each(function (r){
-        console.log($(this));
+        // console.log($(this));
         $( this ).text("");
     });
-    storeUser();
+    if(passwordMatch)
+        storeUser();
 });
 
 
@@ -25,7 +26,7 @@ function storeUser() {
 
     axios.post('/users', data)
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             M.toast({ html: "Usuario Creado" });
             setTimeout(function() {
                 window.location.href = "/users/create";
@@ -35,7 +36,7 @@ function storeUser() {
             let errors = error.response.data.errors;
             Object.keys(errors).forEach(function(key){
                 let keyId = key+"-span";
-                console.log(keyId);
+                // console.log(keyId);
                 $("span[id="+keyId+"]").text(error.response.data.errors[key][0]);
             })
 

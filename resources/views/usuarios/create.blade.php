@@ -108,7 +108,7 @@
               </label>
 
               <label>
-                <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower(old("tipoDeUsuario")) == "usuario" ? "checked" : "" }}>
+                <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" "checked"= true>
                 <span>Usuario</span>
               </label>
             </p>

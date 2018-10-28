@@ -14,22 +14,30 @@ class HoursController extends Controller
             "user_id" => $id,
             "fecha" => Carbon::now()->toDateString(),
             "hora_entrada" => Carbon::now()->toTimeString(),
-            // "hora_salida" => Carbon::now()->toTimeString(),
         ]);
-        return redirect()->route("home");
+        // return redirect()->route("home");
     }
 
     function get_out($id){
         date_default_timezone_set("America/Mexico_City");
         $currentDate = Carbon::now()->toDateString();
-        //actualizar hora de salida, de un usuario
-        DB::table("hours")
+        $currentTime = Carbon::now()->toTimeString();
+
+        //se encuantra el ultimo registro
+        $hours_id = DB::table("hours")
         ->where([
             "user_id" => $id,
             "fecha" => $currentDate,
+            // "hora_salida" => null,
+        ])->max("hours_id");
+
+        //se actualiza hora de salida
+        DB::table("hours")
+        ->where([
+            "hours_id" => $hours_id,
             "hora_salida" => null
-        ])
-        ->update(["hora_salida"=>Carbon::now()->toTimeString()]);
-        return redirect()->route("home");
+        ])->update(["hora_salida"=>$currentTime]);
+
+        // return redirect()->route("home");
     }
 }

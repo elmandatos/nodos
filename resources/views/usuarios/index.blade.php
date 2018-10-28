@@ -39,11 +39,12 @@ $cardNumber = 0;
 @foreach ($users as $user)
   @php
   $cardNumber += 1;
-  $Cardname = "cardNumber".$cardNumber;
+  $dropDownNumber = "dropDown".$cardNumber;
+  $cardName = "cardNumber".$cardNumber;;
   @endphp
-  <div id="cards">
+  <div class="userCard">
 
-    <div class="card z-depth-2" name="{{$Cardname}}">
+    <div class="card z-depth-2" name="{{$cardName}}" id="{{$cardName}}">
       <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
         <div class="col s12 m12 l12">
           <div class="row">
@@ -55,7 +56,7 @@ $cardNumber = 0;
             <i class="material-icons">delete</i>
           </button> --}}
           <!-- Modal Trigger -->
-          <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$Cardname}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
+          <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
             <i class="material-icons">delete</i>
           </a>
 
@@ -124,11 +125,11 @@ $cardNumber = 0;
           </div>
           <!-- Dropdown Trigger ACCESO -->
           <div class="col s12 l6">
-            <a class="dropdown-trigger btn" data-target="dropdown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
+            <a class="dropdown-trigger btn" data-target="{{$dropDownNumber}}"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
             <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-              <li><a href="{{route("get_in",$user->id)}}">Entrada</a></li>
-              <li><a href="{{route("get_out",$user->id)}}">Salida</a></li>
+            <ul id='{{$dropDownNumber}}' class='dropdown-content'>
+              <li><a href="{{route("get_in",$user->id)}}" class="entrada">Entrada</a></li>
+              <li><a href="{{route("get_out",$user->id)}}" class="salida">Salida</a></li>
             </ul>
           </div>
 
@@ -148,7 +149,6 @@ $cardNumber = 0;
   @extends("scripts/p5")
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/dialogSendQRUsers.js')}}"></script>
-  {{-- <script type="text/javascript" src="{{asset('/js/searchUser.js')}}"></script> --}}
-
+  <script type="text/javascript" src="{{asset('/js/ajaxForModal/getIn_getOut.js')}}"></script>
   </script>
 @endsection

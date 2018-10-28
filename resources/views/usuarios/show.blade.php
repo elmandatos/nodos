@@ -1,11 +1,24 @@
 @extends("layout")
 @section("contenido")
+<br><br><br>
 
-  <br><br><br>
+<div class="userCard">
+
   <div class="card z-depth-2">
+    <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
+      <div class="col s12 m12 l12">
+        <div class="row">
+          {{--Boton delete user--}}
+          {{method_field("DELETE")}}
+          {!!csrf_field()!!}
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div style="padding:0;" class="card-image col s12 l5">
       <img style="padding:0;" class="" src="{{$user->foto}}">
+      </a>
+
     </div>
     {{-- DATOS DE USUARIO--}}
     <div  class="col l7">
@@ -57,17 +70,32 @@
           <h6 style="font-weight: bold;">Télefono:</h6>
           <i>{{$user->telefono}}</i>
         </div>
-
+        <!-- Dropdown Trigger ACCESO -->
         <div class="col s12 l6">
-          <a class="btn" href="{{route("get_in",$user->id)}}">Entrada</a>
+          <a class="dropdown-trigger btn" data-target="dropDown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
+          <!-- Dropdown Structure -->
+          <ul id='dropDown1' class='dropdown-content'>
+            <li><a href="{{route("get_in",$user->id)}}" class="entrada">Entrada</a></li>
+            <li><a href="{{route("get_out",$user->id)}}" class="salida">Salida</a></li>
+          </ul>
         </div>
 
         <div class="col s12 l6">
-          <a class="btn" href="{{route("get_out",$user->id)}}">Salida</a>
-        </div>
+          <span>
+            <b>
+              <u>Horas totales: {{$tiempoTotal[0]->tiempo }}</u>
+            </b>
+          </span>
+
       </div>
     </div>
   </div>
-  </div>
+</div>
+</div>
+<div class="row"></div>
 
-@stop
+
+@endsection
+@section("scripts")
+  <script type="text/javascript" src="{{asset('/js/ajaxForModal/getIn_getOut.js')}}"></script>
+@endsection

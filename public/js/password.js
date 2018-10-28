@@ -3,12 +3,14 @@ let divPassword = document.getElementById("divPassword");
 let labelPassword = document.getElementById("labelPassword");
 let labelPasswordConfirm = document.getElementById("labelPasswordConfirm");
 let divPasswordConfirm = document.getElementById("divPasswordConfirm");
-
+let form = document.getElementById("formulario");
 //se crean etiquetas para el DOM
 let spanPassword = document.createElement("span");
 let inputPassword = document.createElement("input");
 let spanPasswordConfirm = document.createElement("span");
 let inputPasswordConfirm = document.createElement("input");
+let passwordMatchShowed = false;
+let passwordMatch = false;
 
 //se asignan atributos a las etiquetas
 inputPassword.type = "password";
@@ -31,7 +33,7 @@ spanPasswordConfirm.id = "confirmarContraseña-span";
 userType.addEventListener("click",(event)=>{
     if(event.target.tagName == "INPUT"){
         if(event.target.value != "usuario"){
-            console.log(spanPassword);
+            // console.log(spanPassword);
             divPassword.appendChild(spanPassword);
             divPasswordConfirm.appendChild(spanPasswordConfirm);
 
@@ -52,4 +54,18 @@ userType.addEventListener("click",(event)=>{
             divPasswordConfirm.removeChild(spanPasswordConfirm);
         }
     }
+});
+
+
+$(inputPasswordConfirm).mouseout(function(){
+    if(inputPasswordConfirm.value != inputPassword.value){
+        if(passwordMatchShowed == false)
+            M.toast({ html: "Las contraseñas no coinciden" });
+            passwordMatchShowed = true;
+    }
+    else{
+        passwordMatchShowed = false;
+        passwordMatch = true;
+    }
+
 });

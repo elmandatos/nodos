@@ -23,7 +23,7 @@ function updateUser($url) {
 
     axios.put($("#updateUser").attr("action"), data)
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             M.toast({ html: "Usuario Actualizado" });
             setTimeout(function() {
                 window.location.href = "/users"
@@ -36,7 +36,6 @@ function updateUser($url) {
 
                 $("span[id="+keyId+"]").text(error.response.data.errors[key][0]);
             })
-
 
             M.toast({ html: "Upps, algo salió mal..." });
         });
