@@ -18,8 +18,8 @@
   </a>
   <ul>
     <li><a href="{{route("sendEmails")}}" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
-    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
-    <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
+    <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_download</i></a></li>
     <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
   </ul>
 </div>
@@ -123,7 +123,8 @@ $cardNumber = 0;
             </ul> --}}
             <a class="waves-effect waves-light btn-large" href="{{route("get_in",$user->id)}}">Entrada <i class="fas fa-sign-in-alt" id="btn_entrada"></i></a>
           </div>
-
+          <div class="col s12 16">
+          </div>
           <div class="col s12 16">
             <a class="waves-effect waves-light btn-large" href="{{route("get_in",$user->id)}}">Salida <i class="material-icons left">directions_run</i></a>
           </div>

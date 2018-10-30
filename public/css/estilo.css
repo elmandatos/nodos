@@ -1,6 +1,5 @@
 #btn_entrada{
-	font-size: 30px;
-
+	
 }
 
 .encabezado{
@@ -8,7 +7,7 @@
 	flex-wrap: nowrap;
 	height: 240px;
 	/* border-style: solid; */
-	/*justify-content: center;*/	
+	/*justify-content: center;*/
 	align-items: center;
 }
 
@@ -31,14 +30,14 @@
 	margin-top: 0px;
 }
 
-#content:before, 
-#content:after, 
-#content>:last-child:before, 
+#content:before,
+#content:after,
+#content>:last-child:before,
 #content>:last-child:after {
     position: absolute;
-    width: 60px; 
+    width: 60px;
     height: 50px;
-    border-color: white; 
+    border-color: white;
     border-style: solid;
     content: ' ';
 }
@@ -57,7 +56,7 @@
 
 #content>:last-child:before {
     bottom: 10px;
-    right: 10px;     
+    right: 10px;
     border-width: 0 1px 1px 0
 }
 
