@@ -31,10 +31,8 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('password/reset/', 'Auth\ResetPasswordController@showResetForm')->name('showResetForm');
+Route::post('password/reset/', 'Auth\ResetPasswordController@resetPassword')->name('resetPassword');
 
 //Rutas import excel
 Route::get('/import', 'UserData@index')->name("usersData.index");

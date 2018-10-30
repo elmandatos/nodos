@@ -7,4 +7,6 @@
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Entrar">
     </form>
+    <br>
+    <a href="{{route("showResetForm")}}">¿Olvido su contraseña?</a>
 @stop
