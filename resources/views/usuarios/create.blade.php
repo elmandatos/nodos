@@ -97,10 +97,12 @@
 
           <div class="input-field col s12 l6" id="userType">
             <p>
+              @if(auth()->user()->tipo_de_usuario == "Administrador")
               <label>
                 <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower(old("tipoDeUsuario")) == "administrador" ? "checked" : "" }}>
                 <span>Administrador</span>
               </label>
+              @endif
 
               <label>
                 <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower(old("tipoDeUsuario")) == "asistente" ? "checked" : "" }}>

@@ -56,11 +56,13 @@ $cardNumber = 0;
             <i class="material-icons">delete</i>
           </button> --}}
           <!-- Modal Trigger -->
-          <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
-            <i class="material-icons">delete</i>
-          </a>
 
 
+            @if(auth()->user()->tipo_de_usuario == "Administrador")
+              <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
+                <i class="material-icons">delete</i>
+              </a>
+            @endif
         </div>
       </div>
     </div>

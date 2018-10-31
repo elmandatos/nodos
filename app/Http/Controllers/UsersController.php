@@ -12,9 +12,9 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 class UsersController extends Controller
 {
 
-    // function __construct(){
-    //     $this->middleware("auth",["except" => ["show"]]);
-    // }
+    function __construct(){
+        $this->middleware("auth",["except" => ["show"]]);
+    }
 
     /**
      * Display a listing of the resource.
