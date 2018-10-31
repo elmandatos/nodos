@@ -176,7 +176,7 @@ class UsersController extends Controller
         $user->rol = $request->input("rol");
         $user->telefono = $request->input("telefono");
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
-        $user->update();
+      $user->update();
 
 
         // return redirect()->route("users.index");
