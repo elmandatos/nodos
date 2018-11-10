@@ -39,6 +39,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 //Rutas import excel
 Route::get('/import', 'UserData@index')->name("usersData.index");
 Route::post('/import', 'UserData@importUsers')->name("usersData.import");
+
+Route::get('/import/hours', 'UserData@indexHours')->name("usersData.usersDataHours");
+Route::post('/import/hours', 'UserData@importUserHours')->name("usersData.importHours");
 Route::get('/export', 'UserData@exportUsersHours')->name("usersData.export");
 
 

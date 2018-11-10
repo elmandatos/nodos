@@ -14,6 +14,11 @@ class UserData extends Controller
         return view("usersData.index");
     }
 
+    public function indexHours()
+    {
+        return view("usersData.userDataHours");
+    }
+
     public function importUsers(Request $request)
     {
         \Excel::load($request->excel, function($reader) {
@@ -32,6 +37,45 @@ class UserData extends Controller
                 $user->rol = $row->tipo;
                 $user->tipo_de_usuario = "Usuario";
                 $user->save();
+            });
+        });
+
+        return redirect()->route("users.index");
+    }
+
+    public function importUserHours(Request $request)
+    {
+        \Excel::load($request->excel, function($reader) {
+
+            $excel = $reader->get();
+            // iteracción
+            $reader->each(function($row) {
+                // $user = new User;
+                // $user->nombres = $row->nombres;
+                // $user->apellidos = $row->apellidos;
+                // $user->telefono = $row->telefono;
+                // $user->email = $row->email;
+                // $user->matricula = $row->matricula;
+                // $user->carrera = $row->carrera;
+                // $user->rol = $row->tipo;
+                // $user->tipo_de_usuario = "Usuario";
+                // $user->save();
+
+                DB::table("hours")->insertGetId([
+                    "user_id" => $row->user_id,
+                    "fecha" => $row->fecha,
+                    "hora_entrada" => $row->hora_entrada,
+                    "hora_salida" => $row->hora_salida,
+                    
+                ]);
+
+                
+
+
+
+
+
+
             });
         });
 
