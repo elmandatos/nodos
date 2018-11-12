@@ -23,7 +23,6 @@ class UsersController extends Controller
      */
     public function index()
     {
-        // $users = DB::table("users")->get();
         $users =  User::all();
         return view("usuarios.index", compact("users"));
     }
@@ -115,7 +114,6 @@ class UsersController extends Controller
         ->where("user_id",$id)
         ->where("hora_salida","<>","NULL")
         ->get();
-        // var_dump($tiempoTotal);
         return view("usuarios.show",  compact("user","tiempoTotal"));
     }
 
@@ -177,15 +175,6 @@ class UsersController extends Controller
         $user->telefono = $request->input("telefono");
         $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
       $user->update();
-
-
-        // return redirect()->route("users.index");
-        // if(
-        //     return "ajax";
-        // else
-        //     return "no ajax";
-        // redirect()->route("users.index");
-
     }
 
     /**

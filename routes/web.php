@@ -17,10 +17,10 @@ Route::get('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@
 
 Route::get('sendAllEmails', ['as' => 'sendEmails', 'uses' => 'EmailsController@sendAllEmails']);
 Route::get('/{id}/sendUserEmail', ['as' => 'sendEmail', 'uses' => 'EmailsController@sendUserEmail']);
+
 //Users Routes
 Route::get('users/{id}/qr', "UsersController@generateQr")->name('users.generateQr');
 Route::get('users/search', "UsersController@search")->name('users.search');
-
 Route::resource("users", "UsersController",['parameters' => [
    'users' => 'id'
 ]]);

@@ -46,6 +46,6 @@ class ResetPasswordController extends Controller
       $user=DB::table("users")
       ->where(["email" => $request->input("email")])
       ->update(["password" => bcrypt($request->input("password"))]);
-      return  redirect()->route("home");
+      return  redirect()->route("users.index");
     }
 }
