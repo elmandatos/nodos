@@ -127,9 +127,11 @@ class UserData extends Controller
             ->get();
 
             $totalHoras = DB::table('hours')
+            ->join('users','users.id','=','hours.user_id')
             ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as total'))
             ->whereNotNull('hora_salida')
-            ->groupBy('user_id')
+            ->where('users.rol','Celulas de Innovación')
+            ->groupBy('hours.user_id')
             ->get();
 
             $usersHours = json_decode(json_encode($usersHours), true);
