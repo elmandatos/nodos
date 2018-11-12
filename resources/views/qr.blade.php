@@ -6,7 +6,7 @@
     <form action="{{route("users.search")}}" method="post">
         {!!csrf_field()!!}
 
-        <input type="text" name="search" placeholder="ID del usuario">
+        {{-- <input type="text" name="search" placeholder="ID del usuario" > --}}
     </form>
 
     <div>
