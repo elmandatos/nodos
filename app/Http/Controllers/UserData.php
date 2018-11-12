@@ -66,125 +66,100 @@ class UserData extends Controller
     {
         Excel::create('Users', function($excel) {
 
-            // $hour = DB::table('hours')
-            // ->select('hours_id', DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo'))
-            // ->whereNotNull('hora_salida')
-            // ->groupBy('hours_id');
-            //
-            // $users = DB::table('hours')
-            // ->joinSub($hour, 'total', function($join) {
-            //     $join->on('hours.hours_id', '=', 'total.hours_id');
-            // })
-            // ->join('users', 'users.id', '=', 'hours.user_id')
-            //     ->select('users.nombres', 'users.apellidos','hours.fecha', 'hours.hora_entrada', 'hours.hora_salida', 'total')
-            // ->orderBy('users.id', 'asc')
-            // ->get();
-
-            // $users = DB::table('users')
-            //         ->join('hours','users.id','=','hours.user_id')
-            //         ->select('users.nombres','users.apellidos','hours.fecha','hours.hora_entrada','hours.hora_salida',DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
-            //         ->whereNotNull('hora_salida')
-            //         ->orderBy('users.id')
-            //         ->get();
-
-            $hour = DB::table('hours')
-            ->join('hours','users.id','=','hours.user_id')
-            ->select('hours_id', DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo'))
+            $usersHours = DB::table('hours')
+            ->join('users','users.id','=','hours.user_id')
+            ->select('users.id', 'users.nombres', 'users.apellidos', 'hours.fecha', 'hours.hora_entrada',
+                    'hours.hora_salida',
+                DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
             ->whereNotNull('hora_salida')
-            ->groupBy('hours_id');
+            ->orderBy('hours.user_id')
+            ->get();
 
-            $users = json_decode(json_encode($users), true);
+            $totalHoras = DB::table('hours')
+            ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as total'))
+            ->whereNotNull('hora_salida')
+            ->groupBy('user_id')
+            ->get();
 
-            $excel->sheet('Registro de horas', function($sheet) use($users) {
+            $usersHours = json_decode(json_encode($usersHours), true);
+            $totalHoras = json_decode(json_encode($totalHoras), true);
+
+            $indice = 0;
+            $usuario = 0;
+            $espacio = array(" ");
+            for ($i=0; $i < count($usersHours); $i++) {
+                if($usersHours[$i]["id"] != $usuario){
+                    $usuario = $usersHours[$i]["id"];
+                    $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+                    if($i!=0){
+                        array_splice($usersHours, $i,0,[array("")]);
+                        continue;
+                    }
+                    $indice++;
+                }
+            }
+
+            $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
                 $sheet->setColumnFormat(array(
-                    'C'=>'dd/mm/yy',
-                    'D'=>'h:mm:ss',
+                    'D'=>'dd/mm/yy',
                     'E'=>'h:mm:ss',
                     'F'=>'h:mm:ss',
-                    'G'=>'[h]:mm:ss'
+                    'G'=>'h:mm:ss',
+                    'H'=>'[h]:mm:ss'
                 ));
-
-                // $i = 2;
-                // $totalHorasFormula="=";
-                //
-                // $nombre = $users[0]['nombres'];
-                // foreach($users as $user){
-                //     if($user['nombres'] == $nombre){
-                //         $sheet->setCellValue('F'.$i,'=E'.$i.'-D'.$i);
-                //         if( $totalHorasFormula == "=" ){
-                //             $totalHorasFormula.="F$i";
-                //         }else{
-                //             $totalHorasFormula.="+F$i";
-                //             $i++;
-                //         }
-                //     }else {
-                //         $i++;
-                //         $sheet->setCellValue('G'.($i-2),"Total:");
-                //         $sheet->setCellValue('G'.($i-1),$totalHorasFormula);
-                //         $nombre = $user['nombres'];
-                //         $totalHorasFormula="=F$i";
-                //     }
-                // }
-                $sheet->fromArray($users);
+                $sheet->fromArray($usersHours);
             });
         })->export('xlsx');
-
     }
 
     public function exportUsersCelulasHours()
     {
-        Excel::create('Users', function($excel) {
-            $hour = DB::table('hours')
-            ->select('hours_id', DB::raw('time(sum(TIMEDIFF(hora_salida, hora_entrada))) as total'))
-            ->whereNotNull('hora_salida')
-            ->groupBy('hours_id');
+        Excel::create('Usuarios Celulas', function($excel) {
 
-            $users = DB::table('hours')
-            ->joinSub($hour, 'total', function($join) {
-                $join->on('hours.hours_id', '=', 'total.hours_id');
-            })
-            ->join('users', 'users.id', '=', 'hours.user_id')
-            ->select('users.nombres', 'users.apellidos','hours.fecha', 'hours.hora_entrada', 'hours.hora_salida', 'total')
+            $usersHours = DB::table('hours')
+            ->join('users','users.id','=','hours.user_id')
+            ->select('users.id', 'users.nombres', 'users.apellidos', 'hours.fecha', 'hours.hora_entrada',
+                    'hours.hora_salida',
+                DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
+            ->whereNotNull('hora_salida')
             ->where('users.rol','Celulas de Innovación')
-            ->orWhere('users.rol','Celulas de Innovación - Coach')
-            ->orderBy('users.id', 'asc')
+            ->orderBy('hours.user_id')
             ->get();
 
-            $users = json_decode(json_encode($users), true);
+            $totalHoras = DB::table('hours')
+            ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as total'))
+            ->whereNotNull('hora_salida')
+            ->groupBy('user_id')
+            ->get();
 
-            $excel->sheet('Registro de horas', function($sheet) use($users) {
+            $usersHours = json_decode(json_encode($usersHours), true);
+            $totalHoras = json_decode(json_encode($totalHoras), true);
+
+            $indice = 0;
+            $usuario = 0;
+            $espacio = array(" ");
+            for ($i=0; $i < count($usersHours); $i++) {
+                if($usersHours[$i]["id"] != $usuario){
+                    $usuario = $usersHours[$i]["id"];
+                    $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+                    if($i!=0){
+                        array_splice($usersHours, $i,0,[array("")]);
+                        continue;
+                    }
+                    $indice++;
+                }
+            }
+
+            $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
                 $sheet->setColumnFormat(array(
-                    'C'=>'dd/mm/yy',
-                    'D'=>'h:mm:ss',
+                    'D'=>'dd/mm/yy',
                     'E'=>'h:mm:ss',
                     'F'=>'h:mm:ss',
-                    'G'=>'[h]:mm:ss'
+                    'G'=>'h:mm:ss',
+                    'H'=>'[h]:mm:ss'
                 ));
-
-                $i = 2;
-                $totalHorasFormula="=";
-
-                $nombre = $users[0]['nombres'];
-                foreach($users as $user){
-                    if($user['nombres'] == $nombre){
-                        $sheet->setCellValue('F'.$i,'=E'.$i.'-D'.$i);
-                        if( $totalHorasFormula == "=" ){
-                            $totalHorasFormula.="F$i";
-                        }else{
-                            $totalHorasFormula.="+F$i";
-                            $i++;
-                        }
-                    }else {
-                        $i++;
-                        $sheet->setCellValue('G'.($i-2),"Total:");
-                        $sheet->setCellValue('G'.($i-1),$totalHorasFormula);
-                        $nombre = $user['nombres'];
-                        $totalHorasFormula="=F$i";
-                    }
-                }
-                $sheet->fromArray($users);
+                $sheet->fromArray($usersHours);
             });
         })->export('xlsx');
-
     }
 }
