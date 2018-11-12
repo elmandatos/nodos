@@ -57,6 +57,7 @@
               <option value="Ing. Industrial" {{ old("carrera") == "Ing. Industrial" ? "selected" : "" }}>Ing. Industrial</option>
               <option value="Ing. en Sistemas Computacionales" {{old("carrera")  == "Ing. en Sistemas Computacionales" ? "selected" : "" }}>Ing. en Sistemas Computacionales</option>
               <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
+              <option value="Otra" {{old("carrera")  == "Otra" ? "selected" : "" }}>Otra</option>
             </select>
             {!! $errors->first("carrera", "<span class='red-text'>:message</span>")!!}
             <label>Carrera</label>
@@ -89,6 +90,7 @@
                 <option value="Celulas de Innovación - Coach" {{old("rol") == "Celulas de Innovación - Coach" ? "selected" : "" }}>Celulas de Innovación - Coach</option>
                 <option value="Incubadora de innovación" {{old("rol") == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
                 <option value="Alumnos Doctor Chan" {{old("rol") == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
+                <option value="Alumnos Doctor Chan" {{old("rol") == "Alumnos Doctor Chan" ? "selected" : "" }}>Club de Robótica</option>
             </select>
             <span class='red-text' id="rol-span"></span>
             {!! $errors->first("rol", "<span class='red-text'>:message</span>")!!}
@@ -98,10 +100,10 @@
           <div class="input-field col s12 l6" id="userType">
             <p>
               @if(auth()->user()->tipo_de_usuario == "Administrador")
-              <label>
-                <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower(old("tipoDeUsuario")) == "administrador" ? "checked" : "" }}>
-                <span>Administrador</span>
-              </label>
+                <label>
+                  <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower(old("tipoDeUsuario")) == "administrador" ? "checked" : "" }}>
+                  <span>Administrador</span>
+                </label>
               @endif
 
               <label>

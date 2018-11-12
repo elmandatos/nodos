@@ -29,8 +29,8 @@
     @if(auth()->user()->tipo_de_usuario == "Administrador")
       <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
       <li><a href="{{route("showResetForm")}}" class="btn-floating pink" data-tippy-placement="left" data-tippy="¿Olvidó su contraseña?"><i class="material-icons">fingerprint</i></a></li>
-      <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
     @endif
+    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
     <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
     <li><a href="{{route("usersCelulasData.export")}}" class="btn-floating lime amber" data-tippy-placement="left" data-tippy="Exportar usuarios de Células"><i class="material-icons">grain</i></a></li>
     <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>

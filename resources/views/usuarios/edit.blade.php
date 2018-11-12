@@ -62,7 +62,8 @@
             <option value="Ing. Civil" {{ $user->carrera == "Ing. Civil" ? "selected" : "" }}>Ing. Civil</option>
             <option value="Ing. Industrial" {{ $user->carrera == "Ing. Industrial" ? "selected" : "" }}>Ing. Industrial</option>
             <option value="Ing. en Sistemas Computacionales" {{$user->carrera  == "Ing. en Sistemas Computacionales" ? "selected" : "" }}>Ing. en Sistemas Computacionales</option>
-            <option value="Lic. en Administración" {{old("carrera") == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
+            <option value="Lic. en Administración" {{ $user->carrera == "Lic. en Administración" ? "selected" : "" }}>Lic. en Administracion</option>
+            <option value="Otra" {{ $user->carrera == "Otra" ? "selected" : "" }}>Otra</option>
           </select>
           <label>Carrera</label>
           <span class='red-text' id="carrera-span"></span>
@@ -93,6 +94,7 @@
               <option value="Celulas de Innovación - Coach" {{$user->rol == "Celulas de Innovación - Coach" ? "selected" : "" }}>Celulas de Innovación - Coach</option>
               <option value="Incubadora de innovación" {{$user->rol == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
               <option value="Alumnos Doctor Chan" {{$user->rol == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
+              <option value="Alumnos Doctor Chan" {{old("rol") == "Alumnos Doctor Chan" ? "selected" : "" }}>Club de Robótica</option>
           </select>
           <span class='red-text' id="rol-span"></span>
           {!! $errors->first("rol", "<span class='red-text'>:message</span>")!!}

@@ -25,7 +25,7 @@ class EmailsController extends Controller
             Mail::send("email.all",
             ['qr' => $qr],
             function($message) use ($user){
-                $message->from('ivan.lopez3k@gmail.com', 'probando 1 2 3');
+                $message->from('nodocreativo.itm@gmail.com', 'probando 1 2 3');
                 $message ->attach('../public/qrcodes/qrcode_id.png');
                 $message->to($user->email)->subject('test email');
             });
@@ -44,7 +44,5 @@ class EmailsController extends Controller
             $message ->attach('../public/qrcodes/qrcode_id.png');
             $message->to($user->email)->subject('test email');
         });
-
-        return redirect()->route("users.index");
     }
 }

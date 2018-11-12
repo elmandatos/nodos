@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserRequest;
 use Carbon\Carbon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
+use App\Http\Controllers\EmailsController;
 class UsersController extends Controller
 {
 
-    function __construct(){
-        $this->middleware("auth",["except" => ["show"]]);
-    }
+    // function __construct(){
+    //     $this->middleware("auth",["except" => ["show"]]);
+    // }
 
     /**
      * Display a listing of the resource.
@@ -85,8 +85,8 @@ class UsersController extends Controller
 
 
         DB::table("users")->insert([
-            "nombres" => ucwords($request->input("nombres")),
-            "apellidos" => ucwords($request->input("apellidos")),
+            "nombres" => mb_convert_case($request->input("nombres"),MB_CASE_TITLE),
+            "apellidos" => mb_convert_case($request->input("apellidos"),MB_CASE_TITLE),
             "telefono" => $request->input("telefono"),
             "email" => strtolower($request->input("email")),
             "matricula" => strtoupper($request->input("matricula")),
@@ -131,6 +131,8 @@ class UsersController extends Controller
 
     public function generateQr($id)
     {
+        $email = new EmailsController();
+        $email->sendUserEmail($id);
         return QrCode::size(399)->generate($id);
     }
 
@@ -162,8 +164,8 @@ class UsersController extends Controller
 
         $user = User::findOrFail($id);
 
-        $user->nombres = ucwords($request->input("nombres"));
-        $user->apellidos = ucwords($request->input("apellidos"));
+        $user->nombres = mb_convert_case($request->input("nombres"),MB_CASE_TITLE);
+        $user->apellidos = mb_convert_case($request->input("apellidos"),MB_CASE_TITLE);
         $user->email = strtolower($request->input("email"));
         $user->matricula = ucfirst($request->input("matricula"));
         if($request->input("foto") != $user->foto)
