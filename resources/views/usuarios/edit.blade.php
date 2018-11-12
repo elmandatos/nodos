@@ -100,10 +100,12 @@
 
         <div class="input-field col s12 l6">
           <p>
-            <label>
-              <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower($user->tipo_de_usuario) == "administrador" ? "checked" : "" }}>
-              <span>Administrador</span>
-            </label>
+            @if(auth()->user()->tipo_de_usuario == "Administrador")
+              <label>
+                <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower($user->tipo_de_usuario) == "administrador" ? "checked" : "" }}>
+                <span>Administrador</span>
+              </label>
+            @endif
 
             <label>
               <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>

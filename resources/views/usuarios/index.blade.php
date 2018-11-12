@@ -4,8 +4,8 @@
 <div class="row">
     <form action="{{route("users.search")}}" method="get">
         {!!csrf_field()!!}
-        <div class="input-field col s12">
-          <input class="col s12 l6" type="text" name="search" id="searchUser" value="">
+        <div class="input-field col s12 l6">
+          <input class="col s12 l12" type="text" name="search" id="searchUser" value="">
           <label for="last_name">Buscar</label>
         </div>
     </form>
@@ -26,8 +26,11 @@
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-    <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
-    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+    @if(auth()->user()->tipo_de_usuario == "Administrador")
+      <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
+      <li><a href="{{route("showResetForm")}}" class="btn-floating pink" data-tippy-placement="left" data-tippy="¿Olvidó su contraseña?"><i class="material-icons">fingerprint</i></a></li>
+      <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+    @endif
     <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
     <li><a href="{{route("usersCelulasData.export")}}" class="btn-floating lime amber" data-tippy-placement="left" data-tippy="Exportar usuarios de Células"><i class="material-icons">grain</i></a></li>
     <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
@@ -48,21 +51,17 @@ $cardNumber = 0;
     <div class="card z-depth-2" name="{{$cardName}}" id="{{$cardName}}">
       <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
         <div class="col s12 m12 l12">
+        @if(auth()->user()->tipo_de_usuario == "Administrador")
           <div class="row">
             {{--Boton delete user--}}
             {{method_field("DELETE")}}
             {!!csrf_field()!!}
-            {{-- <!-- Modal Trigger -->
-            <button data-target="userDeleteModal" class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red modal-trigger"  id="btnUserDelete" value="{{$user->id}}">
-            <i class="material-icons">delete</i>
-          </button> --}}
           <!-- Modal Trigger -->
-          <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
-            <i class="material-icons">delete</i>
-          </a>
-
-
+              <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
+                <i class="material-icons">delete</i>
+              </a>
         </div>
+        @endif
       </div>
     </div>
 

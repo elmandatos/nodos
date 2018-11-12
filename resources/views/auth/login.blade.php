@@ -7,4 +7,4 @@
         <input type="password" name="password" placeholder="Password">
         <input type="submit" value="Entrar">
     </form>
-@stop
+@endsection
