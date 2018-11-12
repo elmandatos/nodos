@@ -43,6 +43,7 @@ Route::post('/import', 'UserData@importUsers')->name("usersData.import");
 Route::get('/import/hours', 'UserData@indexHours')->name("usersData.usersDataHours");
 Route::post('/import/hours', 'UserData@importUserHours')->name("usersData.importHours");
 Route::get('/export', 'UserData@exportUsersHours')->name("usersData.export");
+Route::get('/exportUsersCeluas', 'UserData@exportUsersCelulasHours')->name("usersCelulasData.export");
 
 
 ?>
