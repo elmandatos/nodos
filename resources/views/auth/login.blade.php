@@ -5,6 +5,6 @@
         {{ csrf_field() }}
         <input type="email" name="email" placeholder="Correo">
         <input type="password" name="password" placeholder="Password">
-        <input type="submit" value="Entrar">
+        <input type="submit" class="btn" value="Entrar">
     </form>
 @endsection

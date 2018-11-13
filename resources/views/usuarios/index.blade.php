@@ -21,21 +21,21 @@
   </div>
 @endif
 
+@if(auth()->user()->tipo_de_usuario == "Administrador")
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-    @if(auth()->user()->tipo_de_usuario == "Administrador")
       <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
       <li><a href="{{route("showResetForm")}}" class="btn-floating pink" data-tippy-placement="left" data-tippy="¿Olvidó su contraseña?"><i class="material-icons">fingerprint</i></a></li>
-    @endif
-    <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
-    <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
-    <li><a href="{{route("usersCelulasData.export")}}" class="btn-floating lime amber" data-tippy-placement="left" data-tippy="Exportar usuarios de Células"><i class="material-icons">grain</i></a></li>
-    <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
+      <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
+      <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
+      <li><a href="{{route("usersCelulasData.export")}}" class="btn-floating lime amber" data-tippy-placement="left" data-tippy="Exportar usuarios de Células"><i class="material-icons">grain</i></a></li>
+      <li><a href="{{route("users.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevos usuario"><i class="material-icons">add</i></a></li>
   </ul>
 </div>
+@endif
 
 @php
 $cardNumber = 0;
@@ -64,7 +64,6 @@ $cardNumber = 0;
         @endif
       </div>
     </div>
-
     <div class="row">
       <div style="padding:0;" class="card-image col s12 l5">
         <img style="padding:0;" class="" src="{{$user->foto}}">
@@ -132,10 +131,11 @@ $cardNumber = 0;
               <li><a href="{{route("get_out",$user->id)}}" class="salida">Salida</a></li>
             </ul>
           </div>
-
+          @if(auth()->user()->tipo_de_usuario == "Administrador")
           <div class="col s12 l6">
             <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
           </div>
+          @endif
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-    image(capture, 0, 0);
+  image(capture, 0, 0, 320, 240);
 }
 
 let button = document.getElementById("capturar");

@@ -91,11 +91,11 @@ class UserData extends Controller
                 if($usersHours[$i]["id"] != $usuario){
                     $usuario = $usersHours[$i]["id"];
                     $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+                    $indice++;
                     if($i!=0){
                         array_splice($usersHours, $i,0,[array("")]);
                         continue;
                     }
-                    $indice++;
                 }
             }
 
@@ -144,11 +144,11 @@ class UserData extends Controller
                 if($usersHours[$i]["id"] != $usuario){
                     $usuario = $usersHours[$i]["id"];
                     $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+                    $indice++;
                     if($i!=0){
                         array_splice($usersHours, $i,0,[array("")]);
                         continue;
                     }
-                    $indice++;
                 }
             }
 
