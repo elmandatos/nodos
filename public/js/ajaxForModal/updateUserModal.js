@@ -26,7 +26,7 @@ function updateUser($url) {
             // console.log(response);
             M.toast({ html: "Usuario Actualizado" });
             setTimeout(function() {
-                window.location.href = "/users"
+                window.location.href = "/";
             }, 2000);
         })
         .catch(function (error) {

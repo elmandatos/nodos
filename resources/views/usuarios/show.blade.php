@@ -6,18 +6,14 @@
 
   <div class="card z-depth-2">
     <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
-      <div class="col s12 m12 l12">
-        <div class="row">
-          {{--Boton delete user--}}
-          {{method_field("DELETE")}}
-          {!!csrf_field()!!}
-      </div>
-    </div>
   </div>
   <div class="row">
     <div style="padding:0;" class="card-image col s12 l5">
       <img style="padding:0;" class="" src="{{$user->foto}}">
+      <a class="btn-floating left halfway-fab waves-effect waves-light" href="{{route("users.edit",$user->id)}}">
+        <i class="material-icons">edit</i>
       </a>
+
 
     </div>
     {{-- DATOS DE USUARIO--}}

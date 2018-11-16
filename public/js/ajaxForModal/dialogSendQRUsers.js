@@ -25,6 +25,7 @@ function dialogSendQRUsers(){
                       success: function(result) {
 
                           M.toast({html: "Correos enviados",displayLength:2000});
+                          window.location.href = "/";
 
                       },
                       error: function(result) {

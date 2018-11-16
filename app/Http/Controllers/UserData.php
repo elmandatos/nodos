@@ -73,6 +73,7 @@ class UserData extends Controller
                 DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
             ->whereNotNull('hora_salida')
             ->orderBy('hours.user_id')
+            ->orderBy('hours.fecha')
             ->get();
 
             $totalHoras = DB::table('hours')

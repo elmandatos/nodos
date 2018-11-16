@@ -34,6 +34,10 @@ function get(url,accion){
         // handle success
 
         M.toast({ html: accion+" registrada"});
+        setTimeout(function() {
+            window.location.href = "/"
+        }, 2000);
+
       })
       .catch(function (error) {
         // handle error
