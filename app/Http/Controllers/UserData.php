@@ -34,8 +34,9 @@ class UserData extends Controller
                 $user->email = $row->email;
                 $user->matricula = $row->matricula;
                 $user->carrera = $row->carrera;
-                $user->rol = $row->tipo;
+                $user->rol = $row->rol;
                 $user->tipo_de_usuario = "Usuario";
+                $user->foto = "/user.png";
                 $user->save();
             });
         });

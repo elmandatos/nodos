@@ -21,7 +21,7 @@ function dialogSendQRUsers(){
   				callback:function(){
                     $.ajax({
                       type: "get",
-                      url: "users/sendEmail",
+                      url: "users/sendAllEmails",
                       success: function(result) {
 
                           M.toast({html: "Correos enviados",displayLength:2000});

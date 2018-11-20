@@ -86,11 +86,12 @@
                 <option value="Servicio Social" {{old("rol") == "Servicio Social" ? "selected" : "" }}>Servicio Social</option>
                 <option value="Residencia" {{old("rol") == "Residencia" ? "selected" : "" }}>Residencia</option>
                 <option value="Maestro" {{old("rol") == "Maestro" ? "selected" : "" }}>Maestro</option>
-                <option value="Celulas de Innovación" {{old("rol") == "Celulas de Innovación" ? "selected" : "" }}>Celulas de Innovación</option>
-                <option value="Celulas de Innovación - Coach" {{old("rol") == "Celulas de Innovación - Coach" ? "selected" : "" }}>Celulas de Innovación - Coach</option>
+                <option value="Células de Innovación" {{old("rol") == "Celulas de Innovación" ? "selected" : "" }}>Células de Innovación</option>
+                <option value="Células de Innovación - Coach" {{old("rol") == "Celulas de Innovación - Coach" ? "selected" : "" }}>Células de Innovación - Coach</option>
                 <option value="Incubadora de innovación" {{old("rol") == "Incubadora de innovación" ? "selected" : "" }}>Incubadora de innovación</option>
                 <option value="Alumnos Doctor Chan" {{old("rol") == "Alumnos Doctor Chan" ? "selected" : "" }}>Alumnos Doctor Chan</option>
-                <option value="Alumnos Doctor Chan" {{old("rol") == "Alumnos Doctor Chan" ? "selected" : "" }}>Club de Robótica</option>
+                <option value="Club de Robótica" {{old("rol") == "Club de Robótica" ? "selected" : "" }}>Club de Robótica</option>
+                <option value="Proyecto Externo" {{old("rol") == "Proyecto Externo" ? "selected" : "" }}>Proyecto Externo</option>
             </select>
             <span class='red-text' id="rol-span"></span>
             {!! $errors->first("rol", "<span class='red-text'>:message</span>")!!}

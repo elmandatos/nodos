@@ -2,6 +2,7 @@ document.getElementById('usuario').defaultChecked = true;
 let btnStore = $("button[name='store']");
 let url = $("#formulario").attr("action");
 let token = $("input[name='_token']").attr("value");
+let typeUser = $("input[name='tipoDeUsuario']");
 btnStore.click(function(e) {
     e.preventDefault();
     let errores = $(".red-text");
@@ -9,8 +10,14 @@ btnStore.click(function(e) {
         // console.log($(this));
         $( this ).text("");
     });
-    if(passwordMatch)
+    console.log(typeUser[2].checked);
+    if(!typeUser[2].checked){
+      if(passwordMatch)
         storeUser();
+    }
+    else {
+        storeUser();
+    }
 });
 
 
