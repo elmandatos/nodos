@@ -20,7 +20,7 @@ function updateUser($url) {
         data[this.name] = this.value;
 
     });
-
+    console.log(data);
     axios.put($("#updateUser").attr("action"), data)
         .then(function (response) {
             // console.log(response);

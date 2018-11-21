@@ -37,10 +37,10 @@ class UsersController extends Controller
         return view("usuarios.create");
     }
 
-    public function createFile($matricula, $foto) {
+    public function createFile($telefono, $foto) {
         define('UPLOAD_DIR', '../public/usersImg/'); //Obtenemos la ruta donde guardaremos la foto
         $data = base64_decode($foto);   //Decodificamos la foto
-        $file = UPLOAD_DIR . $matricula . '.png'; //Generamos la ruta completa del archivo
+        $file = UPLOAD_DIR . $telefono . '.png'; //Generamos la ruta completa del archivo
         $img = str_replace('../public/', '/', $file);   //Ruta Front-End
         $success = file_put_contents($file, $data); //Creamos la foto en el servidor
         return $img;
@@ -79,17 +79,20 @@ class UsersController extends Controller
 
         //Procesamiento de Foto
         if($request->input("foto")!="")
-            $img = $this->createFile($request->input("matricula"), $request->input("foto"));
+            $img = $this->createFile($request->input("telefono"), $request->input("foto"));
         else
             $img = "/user.png";
-
+        if($request->input("matricula")!= NULL)
+          $matricula = strtoupper($request->input("matricula"));
+        else
+          $matricula = null;
 
         DB::table("users")->insert([
             "nombres" => mb_convert_case($request->input("nombres"),MB_CASE_TITLE),
             "apellidos" => mb_convert_case($request->input("apellidos"),MB_CASE_TITLE),
             "telefono" => $request->input("telefono"),
             "email" => strtolower($request->input("email")),
-            "matricula" => strtoupper($request->input("matricula")),
+            "matricula" => $matricula ,
             "carrera" => $request->input("carrera"),
             "rol" => $request->input("rol"),
             "foto" => $img,    //Guardamos la ruta en la BD
@@ -154,7 +157,6 @@ class UsersController extends Controller
             "email" => "required|email",
             "carrera" => "required",
             "rol" => "required",
-            "matricula" => "",
             "tipoDeUsuario" => "required|in:administrador,asistente,usuario",
             "foto" => "",
         ];
@@ -163,13 +165,17 @@ class UsersController extends Controller
         $this->validate($request,$rules);
 
         $user = User::findOrFail($id);
+        if($request->input("matricula")!= NULL)
+          $matricula = strtoupper($request->input("matricula"));
+        else
+          $matricula = null;
 
         $user->nombres = mb_convert_case($request->input("nombres"),MB_CASE_TITLE);
         $user->apellidos = mb_convert_case($request->input("apellidos"),MB_CASE_TITLE);
         $user->email = strtolower($request->input("email"));
-        $user->matricula = ucfirst($request->input("matricula"));
+        $user->matricula = $matricula;
         if($request->input("foto") != $user->foto)
-            $user->foto = $this->createFile($request->input("matricula"), $request->input("foto"));
+            $user->foto = $this->createFile($request->input("telefono"), $request->input("foto"));
 
 
         $user->carrera = ucfirst($request->input("carrera"));
