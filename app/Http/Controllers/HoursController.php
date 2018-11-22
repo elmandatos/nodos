@@ -10,11 +10,23 @@ class HoursController extends Controller
 {
     public function get_in($id){
         date_default_timezone_set("America/Mexico_City");
-        DB::table("hours")->insert([
+        $currentDate = Carbon::now()->toDateString();
+        $ultimo = DB::table("hours")
+        ->where([
             "user_id" => $id,
-            "fecha" => Carbon::now()->toDateString(),
-            "hora_entrada" => Carbon::now()->toTimeString(),
-        ]);
+            "fecha" => $currentDate,
+            "hora_salida" => null,
+        ])->get();
+
+        if($ultimo = 0){
+
+          DB::table("hours")->insert([
+              "user_id" => $id,
+              "fecha" => Carbon::now()->toDateString(),
+              "hora_entrada" => Carbon::now()->toTimeString(),
+          ]);
+        }
+
         // return redirect()->route("home");
     }
 
