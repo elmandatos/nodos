@@ -109,17 +109,17 @@
                 <input type="radio" id="administrador" name="tipoDeUsuario" value="administrador" {{strtolower($user->tipo_de_usuario) == "administrador" ? "checked" : "" }}>
                 <span>Administrador</span>
               </label>
+              <label>
+                <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>
+                <span>Asistente</span>
+              </label>
+
+              <label>
+                <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
+                <span>Usuario</span>
+              </label>
             @endif
 
-            <label>
-              <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>
-              <span>Asistente</span>
-            </label>
-
-            <label>
-              <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
-              <span>Usuario</span>
-            </label>
           </p>
           <span class='red-text' id="tipoDeUsuario-span"></span>
           {!! $errors->first("tipoDeUsuario", "<span class='red-text'>:message</span>")!!}
