@@ -5,7 +5,7 @@
     <form action="{{route("users.search")}}" method="get">
         {!!csrf_field()!!}
         <div class="input-field col s12 l6">
-          <input class="col s12 l12" type="text" name="search" id="searchUser" value="" autofocus<>
+          <input class="col s12 l12" type="text" name="search" id="searchUser" value="" autofocus>
           <label for="last_name">Buscar</label>
         </div>
     </form>
