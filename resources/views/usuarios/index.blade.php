@@ -5,7 +5,7 @@
     <form action="{{route("users.search")}}" method="get">
         {!!csrf_field()!!}
         <div class="input-field col s12 l6">
-          <input class="col s12 l12" type="text" name="search" id="searchUser" value="">
+          <input class="col s12 l12" type="text" name="search" id="searchUser" value="" autofocus<>
           <label for="last_name">Buscar</label>
         </div>
     </form>
@@ -55,7 +55,7 @@ $cardNumber = 0;
           <div class="row">
             {{--Boton delete user--}}
             {{method_field("DELETE")}}
-            {!!csrf_field()!!}
+            {!!csrf_field()!!}<
           <!-- Modal Trigger -->
               <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
                 <i class="material-icons">delete</i>
