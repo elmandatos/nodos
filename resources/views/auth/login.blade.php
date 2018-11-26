@@ -12,7 +12,7 @@
   <!--Import materialize.css-->
   <link rel="stylesheet" type="text/css" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
 </head>
-<body background="{{asset('fondo.jpg')}}">
+<body>
   {{-- <h1>Inicio de Sesion</h1> --}}
   <div class="cabecera">
   </div>
@@ -30,7 +30,7 @@
               <div class="row">
                 <div class="input-field col s10">
                   <i class="material-icons prefix">account_circle</i>
-                  <input id="correo" type="email" class="validate">
+                  <input id="correo" type="email" class="validate" autofocus>
                   <label for="correo">Correo</label>
                   <span class="helper-text" data-error="Correo no válido"></span>
                 </div>
