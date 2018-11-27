@@ -11,16 +11,44 @@ body{
   min-height: 100px;
 }
 
-.boton{
-  background-color: rgb(47, 159, 45);
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
+.boton {
   display: inline-block;
-  font-size: 16px;
-  width: 75%;
+  border-radius: 4px;
+  background-color: #009688;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 19px;
+  padding: 15px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.boton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.boton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.boton:hover span {
+  padding-right: 25px;
+}
+
+.boton:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 .fila{
@@ -59,7 +87,6 @@ body{
   width: 80%;
 }
 
-.row{
-  margin: 0px;
-  border-bottom: 0px;
+#margen{
+  margin-bottom: 0px;
 }
