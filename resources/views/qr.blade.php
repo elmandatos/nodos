@@ -7,12 +7,11 @@
     <form action="{{route("users.search")}}" method="post">
         {!!csrf_field()!!}
 
-        <input type="text" name="search" placeholder="ID del usuario">
     </form>
     <br>
     <div id="content">
-          {{-- <video id="preview"></video> --}}
-          <img src="{{asset('descarga.jpg')}}" alt="">
+          <video id="preview"></video>
+          {{-- <img src="{{asset('descarga.jpg')}}" alt=""> --}}
     </div>
 </div>
 @endsection

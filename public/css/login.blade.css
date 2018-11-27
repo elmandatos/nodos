@@ -1,4 +1,5 @@
 body{
+  background-color: #F7F7F7;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 130%;
@@ -49,10 +50,15 @@ body{
 }
 
 .formulario{
-  background-color: #F7F7F7;
+  background-color: white;
   width: 50%;
 }
 
 .formulario img{
   width: 60%;
+}
+
+.row{
+  margin: 0px;
+  border-bottom: 0px;
 }
