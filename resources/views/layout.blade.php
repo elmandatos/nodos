@@ -30,7 +30,11 @@
             <div class="container nav-wrapper">
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{route("home")}}">Leer QR</a></li>
-                <li><a href="{{route("users.index")}}">Usuarios</a></li>
+                @if(!auth()->guest())
+                  <li><a href="{{route("users.index")}}">Usuarios</a></li>
+                  // <i class="material-icons">vpn_key</i>
+                @endif
+
                 @if(auth()->guest())
                   <li><a href="/login">Iniciar Sesión</a></li>
                 @else

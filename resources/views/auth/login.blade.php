@@ -28,7 +28,7 @@
               {{-- <input type="email" name="email" placeholder="Correo"><br> --}}
               {{-- <input type="password" name="password" placeholder="Contraseña"><br><br> --}}
               <div class="row">
-                <div class="input-field col s10">
+                <div class="input-field col s11">
                   <i class="material-icons prefix">account_circle</i>
                   <input id="correo" type="email" class="validate" autofocus>
                   <label for="correo">Correo</label>
@@ -37,7 +37,7 @@
               </div>
 
               <div class="row">
-                <div class="input-field col s10">
+                <div class="input-field col s11">
                   <i class="material-icons prefix">lock</i>
                   <input id="contraseña" type="password">
                   <label for="contraseña">Contraseña</label>
