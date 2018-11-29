@@ -37,6 +37,7 @@
                   <i class="material-icons prefix">lock</i>
                   <input id="contraseña" type="password">
                   <label for="contraseña">Contraseña</label>
+                  <a href="{{route("showResetForm")}}">¿Olvidó su contraseña?</a>
                 </div>
               </div>
               <button class="boton" type="submit"><span>Iniciar Sesión </span></button>

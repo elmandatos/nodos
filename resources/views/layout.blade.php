@@ -32,7 +32,7 @@
                 <li><a href="{{route("home")}}">Leer QR</a></li>
                 @if(!auth()->guest())
                   <li><a href="{{route("users.index")}}">Usuarios</a></li>
-                  // <i class="material-icons">vpn_key</i>
+                  {{-- <i class="material-icons">vpn_key</i> --}}
                 @endif
 
                 @if(auth()->guest())
