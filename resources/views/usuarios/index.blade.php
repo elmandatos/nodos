@@ -133,7 +133,8 @@ $cardNumber = 0;
           </div>
           @if(auth()->user()->tipo_de_usuario == "Administrador")
           <div class="col s12 l6">
-            <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
+            <a class="waves-effect waves-light btn-large" href="{{route("users.generateQr",$user->id)}}"> Generar QR <i class="fas fa-qrcode"></i></a>
+
           </div>
           @endif
         </div>
