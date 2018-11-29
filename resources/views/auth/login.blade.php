@@ -27,17 +27,17 @@
               <div class="row" id="margen">
                 <div class="input-field col s11">
                   <i class="material-icons prefix">account_circle</i>
-                  <input id="correo" type="email" autofocus>
-                  <label for="correo">Correo</label>
+                  <input id="email" name="email" type="email" autofocus>
+                  <label for="email">Correo</label>
                 </div>
               </div>
 
               <div class="row margen" id="margen2">
                 <div class="input-field col s11">
                   <i class="material-icons prefix">lock</i>
-                  <input id="contraseña" type="password">
-                  <label for="contraseña">Contraseña</label>
-                  <a href="{{route("showResetForm")}}">¿Olvidó su contraseña?</a>
+                  <input id="password" name="password" type="password">
+                  <label for="password">Contraseña</label>
+                  {{-- <a href="{{route("showResetForm")}}">¿Olvidó su contraseña?</a> --}}
                 </div>
               </div>
               <button class="boton" type="submit"><span>Iniciar Sesión </span></button>
