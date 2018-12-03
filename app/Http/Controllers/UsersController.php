@@ -157,7 +157,6 @@ class UsersController extends Controller
             "email" => "required|email",
             "carrera" => "required",
             "rol" => "required",
-            "tipoDeUsuario" => "required|in:administrador,asistente,usuario",
             "foto" => "",
         ];
 
