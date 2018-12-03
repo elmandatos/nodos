@@ -1,17 +1,12 @@
 @extends('layout')
 @section('contenido')
 <div class="camara">
+    <br><br>
     <p>Escanea el código QR</p>
-    <?php // TODO: Utilizar ajax una vez leido el id del qr para buscar el usuario en la bd
-    //y ver si informacion en el apartado edit.blade ?>
-    <form action="{{route("users.search")}}" method="post">
-        {!!csrf_field()!!}
-
-    </form>
-    <br>
     <div id="content">
+
           <video id="preview"></video>
-          {{-- <img src="{{asset('descarga.jpg')}}" alt=""> --}}
+          <img id="telefono" src="{{asset('telefono2.png')}}">
     </div>
 </div>
 @endsection

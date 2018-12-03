@@ -5,7 +5,7 @@
     <form action="{{route("users.search")}}" method="get">
         {!!csrf_field()!!}
         <div class="input-field col s12 l6">
-          <input class="col s12 l12" type="text" name="search" id="searchUser" value="" autofocus>
+          <input class="col s12 l10" type="text" name="search" id="searchUser" value="" autofocus>
           <label for="last_name">Buscar</label>
         </div>
     </form>
@@ -27,7 +27,7 @@
     <i class="large material-icons">more_vert</i>
   </a>
   <ul>
-      <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Eviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
+      <li><a onclick="dialogSendQRUsers();" class="btn-floating red"  data-tippy-placement="left" data-tippy="Enviar QR a todos los usuarios"><i class="material-icons">email</i></a></li>
       <li><a href="{{route("showResetForm")}}" class="btn-floating pink" data-tippy-placement="left" data-tippy="¿Olvidó su contraseña?"><i class="material-icons">fingerprint</i></a></li>
       <li><a href="{{route("usersData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar usuarios"><i class="material-icons">cloud_upload</i></a></li>
       <li><a href="{{route("usersData.export")}}" class="btn-floating blue" data-tippy-placement="left" data-tippy="Exportar usuarios"><i class="material-icons">cloud_download</i></a></li>
@@ -55,7 +55,7 @@ $cardNumber = 0;
           <div class="row">
             {{--Boton delete user--}}
             {{method_field("DELETE")}}
-            {!!csrf_field()!!}<
+            {!!csrf_field()!!}
           <!-- Modal Trigger -->
               <a onclick="dialogDeleteConfirm({{$user->id}}, '{{csrf_token()}}', '{{$cardName}}');"  class="btn col s3 m1 l1 offset-s9 offset-m11 offset-l11 red ">
                 <i class="material-icons">delete</i>

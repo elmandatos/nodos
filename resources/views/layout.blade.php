@@ -22,28 +22,33 @@
 </head>
 
 <body>
-    <header class="encabezado">
-        <div class="logo">
-          <a href="{{route("home")}}"><img src="../logo_Nodos.svg"></a>
-        </div>
-        <nav class="navegador teal">
-            <div class="container nav-wrapper">
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{{route("home")}}">Leer QR</a></li>
-                @if(!auth()->guest())
-                  <li><a href="{{route("users.index")}}">Usuarios</a></li>
-                  {{-- <i class="material-icons">vpn_key</i> --}}
-                @endif
+    <header>
+        <div class="contenedor">
+            <div class="padding-izquierda"></div>
 
-                @if(auth()->guest())
-                  <li><a href="/login">Iniciar Sesión</a></li>
-                @else
-                  <li><a href="/logout">Cerrar Sesión</a></li>
-                @endif
-              </ul>
+            <div class="logo">
+              <a href="{{route("home")}}"><img src="{{asset('logo_Nodos.svg')}}"></a>
             </div>
-        </nav>
+
+            <div class="navegador">
+                <ul>
+                @if(auth()->guest())
+                    <li id="verde1"><a href="{{route("login")}}">Iniciar Sesión</a></li>
+                @else
+                    <li id="verde2"><a href="{{route("logout")}}">Cerrar Sesión</a></li>
+                @endif
+                @if(!auth()->guest())
+                    <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
+                        {{-- <i id="material-icons">vpn_key</i> --}}
+                @endif
+                    <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
+                </ul>
+            </div>
+            
+            <div class="padding-derecha"></div>
+        </div>  
     </header>
+
     <div class="container">
       @yield('contenido')
     </div>

@@ -1,68 +1,140 @@
-#preview {
-	margin: 0 auto;
-	border: 10px solid #ddd;
-
+/*layout.blade.php*/
+.activaVerde a{
+    border-bottom: 2px solid #39B54A;
 }
-.encabezado{
+
+.activaAzulClaro a{
+    border-bottom: 2px solid #00FFFF;
+}
+
+.activaAzulMarino a{
+    border-bottom: 2px solid #29ABE2;
+}
+
+.activaRosa a{
+    border-bottom: 2px solid #ED1E79;
+}
+
+.activaAmarillo a{
+    border-bottom: 2px solid #FCEE21;
+}
+
+.contenedor{
 	display: flex;
 	flex-wrap: nowrap;
-	height: 240px;
-	/* border-style: solid; */
-	/*justify-content: center;*/
 	align-items: center;
-}
-
-.encabezado img{
-	width: 100%;
+    justify-content: center;
 }
 
 .logo{
-	width: 25%;
+    width: 15%;
+    text-align: center;
+    /*border: 2px solid blue;*/
+
 }
 
+.logo img{
+    transform: scale(1.25);
+}
+
+.navegador{
+    width: 75%;
+    height: 50px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.navegador ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    
+}
+
+.navegador li{
+    float: right;
+}
+
+.navegador li a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 5px 10px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.padding-izquierda{
+    width: 5%;
+    /*border: 2px solid blue;*/
+}
+
+.padding-derecha{
+    width: 5%;
+    /*border: 2px solid blue;*/
+}
+
+
+#verde1 a:hover{
+    border-bottom: 2px solid #39B54A;
+}
+
+#verde2 a:hover{
+    border-bottom: 2px solid #39B54A;
+}
+
+#azulClaro a:hover{
+    border-bottom: 2px solid #00FFFF;
+}
+
+#azulMarino a:hover{
+    border-bottom: 2px solid #29ABE2;
+}
+
+#rosa a:hover{
+    border-bottom: 2px solid #ED1E79;
+}
+
+#amarillo a:hover{
+    border-bottom: 2px solid #FCEE21;
+}
+
+
+/*qr.blade.php*/
 .camara{
 	text-align: center;
 }
 
 .camara p{
 	font-family: monospace;
-	font-size: 60px;
+	font-size: 40px;
 	line-height: 10px;
 	margin-top: 0px;
+    margin-left: 20%;
+    text-align: left;
 }
 
-#content:before,
-#content:after,
-#content>:last-child:before,
-#content>:last-child:after {
+#content{
+    /*border-bottom: 2px solid blue;*/
+}
+
+#telefono{
     position: absolute;
-    width: 60px;
-    height: 50px;
-    border-color: white;
-    border-style: solid;
-    content: ' ';
+    /*transform: scale(0.75);*/ 
+    width: 66%;
+    bottom: 0;
+    left: 28%;
+    z-index: 1;
 }
 
-#content:before {
-    top: 10px;
-    left: 10px;
-    border-width: 1px 0 0 1px
+#preview {
+    z-index: 0;
 }
 
-#content:after {
-    top: 10px;
-    right: 10px;
-    border-width: 1px 1px 0 0
-}
 
-#content>:last-child:before {
-    bottom: 10px;
-    right: 10px;
-    border-width: 0 1px 1px 0
-}
 
-#content>:last-child:after {
-    bottom: 10px;
-    left: 10px;
-    border-width: 0 0 1px 1px
+/*index.blade.css*/
+#searchUser{
+    font-size: 23px;
 }
