@@ -123,7 +123,7 @@
     position: absolute;
     /*transform: scale(0.75);*/
     width: 730px;
-    bottom: 50px;
+    bottom: 0;
     left: 29%;
     z-index: 1;
 }
