@@ -3,7 +3,7 @@
 <div class="camara">
     <br><br>
     <p>Escanea el código QR</p>
-    <br><br><br><br>
+    <br><br>
     <div id="content">
           <video id="preview"></video>
           <img id="mano_telefono" src="{{asset('telefono5.png')}}">
