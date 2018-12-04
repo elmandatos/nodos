@@ -117,7 +117,12 @@ class UsersController extends Controller
         ->where("user_id",$id)
         ->where("hora_salida","<>","NULL")
         ->get();
-        return view("usuarios.show",  compact("user","tiempoTotal"));
+
+        $statusEntrada = DB::table("hours")
+        ->select('hora_entrada')
+        ->where("user_id",$id)->first();
+
+        return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
     }
 
     /**
