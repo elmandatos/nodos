@@ -180,7 +180,9 @@ class UsersController extends Controller
         $user->carrera = ucfirst($request->input("carrera"));
         $user->rol = $request->input("rol");
         $user->telefono = $request->input("telefono");
-        $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
+        if ($request->input("tipoDeUsuario") != NULL) {
+          $user->tipo_de_usuario = ucfirst($request->input("tipoDeUsuario"));
+        }
       $user->update();
     }
 

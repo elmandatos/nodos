@@ -40,6 +40,8 @@
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
                 </ul>
             </div>
+            <div class="padding-derecha"></div>
+
         </div>
     </header>
     <div class="container">
