@@ -5,31 +5,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Nodos</title>
+    <title>Sistema de Registros de NCIE</title>
+    <!-- Icono WebSite -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('NCIE3.ico')}}"/>
     <!--Import Google Icon Font-->
     <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <!-- CSS Layout, QR, Users.index -->
+    <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
     <script src="{{asset('/js/instascan.min.js')}}"></script>
 
 </head>
 
 <body>
     <header>
-        <nav class="teal">
-            <div class="container nav-wrapper">
-              <a href="{{route("home")}}" class="brand-logo">Logo</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{{route("home")}}">Leer QR</a></li>
-                <li><a href="{{route("users.index")}}">Usuarios</a></li>
-                @if(auth()->guest())
-                  <li><a href="/login">Iniciar Sesión</a></li>
-                @else
-                  <li><a href="/logout">Cerrar Sesión</a></li>
-                @endif
-              </ul>
+        <div class="contenedor">
+            <div class="padding-izquierda"></div>
+
+            <div class="logo">
+              <a href="{{route("home")}}"><img src="{{asset('logo_Nodos.svg')}}"></a>
             </div>
-        </nav>
+            
+            <div class="navegador">
+                <ul>
+                @if(auth()->guest())
+                    <li id="verde1"><a href="{{route("login")}}">Iniciar Sesión</a></li>
+                @else
+                    <li id="verde2"><a href="{{route("logout")}}">Cerrar Sesión</a></li>
+                @endif
+                @if(!auth()->guest())
+                    <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
+                @endif
+                    <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
     <div class="container">
       @yield('contenido')

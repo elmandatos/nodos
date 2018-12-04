@@ -1,0 +1,140 @@
+/*layout.blade.php*/
+.activaVerde a{
+    border-bottom: 2px solid #39B54A;
+}
+
+.activaAzulClaro a{
+    border-bottom: 2px solid #00FFFF;
+}
+
+.activaAzulMarino a{
+    border-bottom: 2px solid #29ABE2;
+}
+
+.activaRosa a{
+    border-bottom: 2px solid #ED1E79;
+}
+
+.activaAmarillo a{
+    border-bottom: 2px solid #FCEE21;
+}
+
+.contenedor{
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    width: 15%;
+    text-align: center;
+    /*border: 2px solid blue;*/
+
+}
+
+.logo img{
+    transform: scale(1.25);
+}
+
+.navegador{
+    width: 75%;
+    height: 50px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.navegador ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+
+}
+
+.navegador li{
+    float: right;
+}
+
+.navegador li a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 5px 10px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.padding-izquierda{
+    width: 5%;
+    /*border: 2px solid blue;*/
+}
+
+.padding-derecha{
+    width: 5%;
+    /*border: 2px solid blue;*/
+}
+
+
+#verde1 a:hover{
+    border-bottom: 2px solid #39B54A;
+}
+
+#verde2 a:hover{
+    border-bottom: 2px solid #39B54A;
+}
+
+#azulClaro a:hover{
+    border-bottom: 2px solid #00FFFF;
+}
+
+#azulMarino a:hover{
+    border-bottom: 2px solid #29ABE2;
+}
+
+#rosa a:hover{
+    border-bottom: 2px solid #ED1E79;
+}
+
+#amarillo a:hover{
+    border-bottom: 2px solid #FCEE21;
+}
+
+
+/*qr.blade.php*/
+.camara{
+	text-align: center;
+}
+
+.camara p{
+	font-family: monospace;
+	font-size: 40px;
+	line-height: 15px;
+	margin-top: 0px;
+    margin-left: 20%;
+    text-align: left;
+}
+
+#content{
+    /*border-bottom: 2px solid blue;*/
+}
+
+#telefono{
+    position: absolute;
+    /*transform: scale(0.75);*/
+    width: 730px;
+    bottom: 0;
+    left: 29%;
+    z-index: 1;
+}
+
+#preview {
+    z-index: 0;
+}
+
+
+
+/*index.blade.css*/
+#searchUser{
+    font-size: 23px;
+}
