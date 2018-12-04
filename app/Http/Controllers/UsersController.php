@@ -111,18 +111,29 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = DB::table("users")->where("id", $id)->first();
-        $tiempoTotal = DB::table("hours")
-        ->select(DB::raw("SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo"))
-        ->where("user_id",$id)
-        ->where("hora_salida","<>","NULL")
-        ->get();
+        // $user = DB::table("users")->where("id", $id)->first();
+        // $tiempoTotal = DB::table("hours")
+        // ->select(DB::raw("SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo"))
+        // ->where("user_id",$id)
+        // ->where("hora_salida","<>","NULL")
+        // ->get();
 
         $statusEntrada = DB::table("hours")
-        ->select("hora_entrada")
-        ->where("user_id",$id)->first();
+        ->select(DB::raw("COUNT(*) as total"))
+        ->where([
 
-        return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
+          ["hora_salida","=",null],
+          ["fecha","=",Carbon::now()],
+          ["user_id","=",$id]
+
+          ])
+        ->get();
+
+        var_dump($statusEntrada);
+
+        // SELECT COUNT(*) FROM `hours` WHERE `hora_salida` IS NULL AND `fecha` = '2018-12-04' AND user_id = 4
+
+        // return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
     }
 
     /**
