@@ -6,7 +6,7 @@
     <br><br><br><br>
     <div id="content">
           <video id="preview"></video>
-          <img id="telefono" src="{{asset('telefono5.png')}}">
+          <img id="mano_telefono" src="{{asset('telefono5.png')}}">
     </div>
 </div>
 @endsection
