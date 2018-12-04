@@ -119,7 +119,7 @@ class UsersController extends Controller
         ->get();
 
         $statusEntrada = DB::table("hours")
-        ->select('hora_entrada')
+        ->select("hora_entrada")
         ->where("user_id",$id)->first();
 
         return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
