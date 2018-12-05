@@ -113,12 +113,12 @@
                 <input type="radio" id="asistente" name="tipoDeUsuario" value="asistente" {{strtolower($user->tipo_de_usuario) == "asistente" ? "checked" : "" }}>
                 <span>Asistente</span>
               </label>
-
+            @endif
               <label>
                 <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
                 <span>Usuario</span>
               </label>
-            @endif
+           
 
           </p>
           <span class='red-text' id="tipoDeUsuario-span"></span>

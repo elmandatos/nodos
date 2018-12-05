@@ -23,8 +23,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users =  User::all();
-        return view("usuarios.index", compact("users"));
+      $users =  User::all();
+
+      return view("usuarios.index", compact("users"));
     }
 
     /**
@@ -111,13 +112,21 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = DB::table("users")->where("id", $id)->first();
-        $tiempoTotal = DB::table("hours")
-        ->select(DB::raw("SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo"))
-        ->where("user_id",$id)
-        ->where("hora_salida","<>","NULL")
-        ->get();
-        return view("usuarios.show",  compact("user","tiempoTotal"));
+      $user = DB::table("users")->where("id", $id)->first();
+      $tiempoTotal = DB::table("hours")
+      ->select(DB::raw("SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo"))
+      ->where("user_id",$id)
+      ->where("hora_salida","<>","NULL")
+      ->get();
+
+      $fecha = Carbon::now()->toDateString();
+
+      $statusEntrada =DB::select("SELECT COUNT(*) as total FROM `hours` WHERE `hora_salida` IS NULL AND `fecha` = '".$fecha."' AND user_id = $id");
+      $statusEntrada=json_decode(json_encode($statusEntrada), true);
+
+      $statusEntrada = $statusEntrada[0]["total"];
+
+      return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
     }
 
     /**
