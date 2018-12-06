@@ -1,7 +1,6 @@
 /node_modules
 /public/hot
 /public/usersImg/*.png
-/public/qrcodes/qrcode_id.png
 /public/storage
 /storage/*.key
 /vendor
