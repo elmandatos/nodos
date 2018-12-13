@@ -39,7 +39,7 @@
                 @endif
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
                     {{-- link nuevo --}}
-                    <li> <a href="{{route("almacen")}}">Almacen</a></li>
+                    <li class="{{ Request::is("almacen") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen")}}">Almacen</a></li>
                 </ul>
             </div>
             <div class="padding-derecha"></div>
