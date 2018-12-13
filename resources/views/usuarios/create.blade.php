@@ -19,7 +19,7 @@
       {!!csrf_field()!!}
       <div class="row">
 
-
+          
           <div class="input-field col s12 l6">
             <input id="nombres" name="nombres" type="text" value="{{old("nombres")}}">
             <label for="nombres">Nombres</label>

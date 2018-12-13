@@ -38,6 +38,8 @@
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
                 @endif
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
+                    {{-- link nuevo --}}
+                    <li> <a href="{{route("almacen", "hector")}}">Almacen</a></li>
                 </ul>
             </div>
             <div class="padding-derecha"></div>
