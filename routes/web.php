@@ -44,7 +44,9 @@ Route::get('/export', 'UserData@exportUsersHours')->name("usersData.export");
 Route::get('/exportUsersCeluas', 'UserData@exportUsersCelulasHours')->name("usersCelulasData.export");
 
 //inventario
-Route::get('/inventario/{nombre?}',['as'=> 'almacen', 'uses' => 'InventoryController@nombre']);
+//Route::get('/inventario/{nombre?}',['as'=> 'almacen', 'uses'=> 'InventoryController@nombre']);
+Route::get('/almacen',['as'=> 'almacen', 'uses'=> 'InventoryController@nombre']);
+Route::post('almacenado', 'InventoryController@validacion');
 
 
 ?>

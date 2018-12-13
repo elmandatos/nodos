@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
-    public function nombre($nombre='Invitado')
+    public function nombre()
     {
-    	return view('almacen', compact('nombre'));
+    	return view('almacen');
+    }
+    public function validacion()
+    {
+    	# code...
+    	return 'hola';
     }
 }
