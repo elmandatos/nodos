@@ -1,36 +1,52 @@
 
 @extends('layout')
 @section('contenido')
-	<h1>Inventario, Añadir nuevo elemento</h1>
+<h3>Añadir nuevo elemento</h2>
 	<form method="POST" action="almacenado">
 		{{-- materialize sirvio aqui para el foramto usando los extends y section --}}
+		<div class="row">
+			
+			<div class="input-field col s12 l6">
+				<label for="">Nombre:</label>
+				<input type="text" id="txtNombre" name="nombre" autofocus>
+				{!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
+				<br>
+			</div>
 
-		<label for="">Nombre:</label>
-		<input type="text" id="txtNombre" name="nombre">
-		{!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
-		<br>
+			<div class="input-field col s12 l6">
+				<label for="">Modelo:</label>
+				<input type="text" id="txtModelo" name="modelo">
+				<br>
+			</div>
+			
+			<div class="input-field col s6 l6">
+				<label for="">Descripcion:</label>
+				<input type="text" id="txtDescripcion" name="descripcion">
+				{!! $errors->first("descripcion", "<span class='red-text'>:message</span>")!!}
+				<br>
+			</div>
 
-		<label for="">Modelo:</label>
-		<input type="text" id="txtModelo" name="modelo">
-		{!! $errors->first("modelo", "<span class='red-text'>:message</span>")!!}
-		<br>
+			<div class="input-field col s6 l3">
+				<label for="">Cantidad:</label>
+				<input type="number" min="1" id="txtCantidad" name="cantidad">
+				{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
+				<br>
+			</div>
 
-		<label for="">Cantidad:</label>
-		<input type="text" id="txtCantidad" name="cantidad">
-		{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
-		<br>
+			
+			<div class="input-field col s6 l3">
+				<label for="">Anaquel:</label>
+				<input type="number" min="1" max="5" id="txt Anaquel" name="anaquel">
+				{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
+				<br>
+			</div>
 
-		<label for="">Descripcion:</label>
-		<input type="text" id="txtDescripcion" name="descripcion">
-		{!! $errors->first("descripcion", "<span class='red-text'>:message</span>")!!}
-		<br>
 
-		<label for="">Anaquel:</label>
-		<input type="text" id="txt Anaquel" name="anaquel">
-		{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
-		<br>
-		<button class="btn"> Enviar</button>
-
+			<div class="input-field col s12 l6">
+				<button class="btn"> Enviar</button>
+			</div>
+		</div>
+	
 	</form>
 	@endsection
 
