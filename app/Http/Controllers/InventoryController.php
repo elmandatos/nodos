@@ -13,7 +13,9 @@ class InventoryController extends Controller
     }
     public function validacion(CreateInventario $request)
     {
-    	return $request -> all();
+    	$data = $request -> all();
+
+    	return back();
     	
     }
 }
