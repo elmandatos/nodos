@@ -43,5 +43,9 @@ Route::post('/import/hours', 'UserData@importUserHours')->name("usersData.import
 Route::get('/export', 'UserData@exportUsersHours')->name("usersData.export");
 Route::get('/exportUsersCeluas', 'UserData@exportUsersCelulasHours')->name("usersCelulasData.export");
 
+//Inventario
+Route::get('/inventario/{nombre}',['as'=>'almacen', function($nombre='Invitado'){
+	return view('almacen',compact('nombre'));
+}]);
 
 ?>
