@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateInventario;
 
 class InventoryController extends Controller
 {
@@ -10,9 +11,9 @@ class InventoryController extends Controller
     {
     	return view('almacen');
     }
-    public function validacion()
+    public function validacion(CreateInventario $request)
     {
-    	# code...
-    	return 'hola';
+    	return $request -> all();
+    	
     }
 }
