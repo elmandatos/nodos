@@ -1,13 +1,21 @@
 @extends('layout')
 @section('contenido')
+<form action="{{route("almacen.search")}}" method="get">
+        {!!csrf_field()!!}
+    <div class="input-field col s12 l6">
+        <input class="col s12 l10" type="text" name="pieza_a_consultar" id="pieza_a_consultar" value="" autofocus>
+        <label for="pieza_a_consultar">Buscar</label>
+    </div>
+</form>
+
 <table>
 <tr>
-	<th>nombre</th>
-	<th>modelo</th>
-	<th>cantidad</th>
-	<th>descripcion</th>
-	<th>anaquel</th>
-	<th>entrada</th>
+	<th>Nombre</th>
+	<th>Modelo</th>
+	<th>Cantidad</th>
+	<th>Descripcion</th>
+	<th>Anaquel</th>
+	<th>Entrada</th>
 </tr>
 @foreach($piezas as $pieza)
 	<tr>

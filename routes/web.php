@@ -50,5 +50,8 @@ Route::get('/exportUsersCeluas', 'UserData@exportUsersCelulasHours')->name("user
 Route::get('almacen',['as' => 'almacen.index', 'uses'=> 'RestInventario@index']);
 Route::get('almacen/crear', ['as' =>'almacen.create', 'uses'=> 'RestInventario@create']);
 Route::post('almacen', ['as' =>'almacen.store', 'uses'=> 'RestInventario@store']);
+Route::get('almacen/{id}',['as' => 'almacen.show', 'uses'=> 'RestInventario@show']);
+Route::get('almacen/search',['as' => 'almacen.search', 'uses' => 'RestInventario@search']);	
 
 ?>
+

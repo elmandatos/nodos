@@ -229,6 +229,5 @@ class UsersController extends Controller
             $imgNotFound = true;
             return view('usuarios.index', compact("users","imgNotFound"));
         }
-
     }
 }

@@ -61,7 +61,8 @@ class RestInventario extends Controller
      */
     public function show($id)
     {
-        //
+        $pieza = DB::table('piezas')->where('id_piezas',$id)->first();
+        return view('inventario.show', compact('pieza'));
     }
 
     /**
@@ -96,5 +97,22 @@ class RestInventario extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request) {
+        $query = $request->pieza_a_consultar;
+        $existePieza = DB::table('piezas')
+        ->where('nombre', 'LIKE', '%' . $query . '%')
+        ->exists();
+
+        if($existePieza) {
+            $piezas = DB::table('piezas')
+            ->where('nombre', 'LIKE', '%' . $query . '%')->get();
+            return view('inventario.index', compact("piezas"));
+
+        }else {
+            $piezas = array();
+            return view('inventario.index', compact("piezas"));
+        }
     }
 }
