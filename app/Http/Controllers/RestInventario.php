@@ -1,7 +1,10 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+use DB;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RestInventario extends Controller
@@ -13,7 +16,9 @@ class RestInventario extends Controller
      */
     public function index()
     {
-        //
+       $piezas = DB::table('piezas')->get();
+
+       return view('inventario.index', compact('piezas'));
     }
 
     /**
@@ -36,7 +41,16 @@ class RestInventario extends Controller
     public function store(Request $request)
     {
         //
-        return 'hola si entro';
+        DB::table('piezas')->insert([
+            'nombre' => $request->input('nombre'),
+            'modelo' => $request->input('modelo'),
+            'cantidad' => $request->input('cantidad'),
+            'descripcion' => $request->input('descripcion'),
+            'anaquel' => $request->input('anaquel'),
+            'created_at'=>CARBON::now(),
+        ]);
+
+        return view('inventario.index');
     }
 
     /**

@@ -1,10 +1,10 @@
 @extends('layout')
 @section('contenido')
 <h3>Añadir nuevo elemento</h2>
-	<form method="POST" action={{route('almacenado')}}>
+	<form method="POST" action={{route('almacen.store')}}>
 		{{-- materialize sirvio aqui para el foramto usando los extends y section --}}
 		<div class="row">
-			
+		{{ csrf_field() }}
 			<div class="input-field col s12 l6">
 				<label for="">Nombre:</label>
 				<input type="text" id="txtNombre" name="nombre" autofocus value="{{old('nombre')}}">
