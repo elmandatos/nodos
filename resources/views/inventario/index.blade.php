@@ -20,5 +20,12 @@
 	</tr>
 @endforeach
 </table>
-<button>Crear</button>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">more_vert</i>
+  </a>
+  <ul>
+      <li><a href="{{route("almacen.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevo Articulo"><i class="material-icons">add</i></a></li>
+  </ul>
+</div>
 @endsection
