@@ -1,8 +1,22 @@
 @extends('layout')
 @section('contenido')
 <h3>Añadir nuevo elemento</h3>
+	<div class="row">
+      		<div class="col l4">
+	        	<label style="font-size:15px;">Camara</label>
+	          	<div id="canvasParent"></div>
+	          	<button class="btn" id="capturar">Capturar
+	            	<i class="material-icons right">photo_camera</i>
+	          	</button>
+      		</div>
+      <div class="col l4">
+        <label style="font-size:15px;">Foto actual</label>
+        <img class="col l12" id="desplegar" src="{{asset("user.png")}}" alt="">
+      </div>
+  </div>
 	<form method="POST" action={{route('almacen.store')}}>
 		{{-- materialize sirvio aqui para el foramto usando los extends y section --}}
+		
 		<div class="row">
 		{{ csrf_field() }}
 			<div class="input-field col s12 l6">
@@ -48,4 +62,11 @@
 	
 	</form>
 	@endsection
+	@section("scripts")
+  @extends('scripts/p5')
+  <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/ajaxForModal/storeUserModal.js')}}"></script>
+
+@endsection
 
