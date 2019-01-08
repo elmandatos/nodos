@@ -73,7 +73,8 @@ class RestInventario extends Controller
      */
     public function edit($id)
     {
-        //
+        $pieza = DB::table('piezas')->where('id_piezas',$id)->first();
+        return view('inventario.edit', compact('pieza'));
     }
 
     /**
@@ -85,7 +86,17 @@ class RestInventario extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        DB::table('piezas')->where('id_piezas',$id)->update([
+            'nombre' => $request->input('nombre'),
+            'modelo' => $request->input('modelo'),
+            'cantidad' => $request->input('cantidad'),
+            'descripcion' => $request->input('descripcion'),
+            'anaquel' => $request->input('anaquel'),
+            'updated_at'=>CARBON::now(),
+        ]);
+
+        return redirect()->route('inventario.index');
     }
 
     /**

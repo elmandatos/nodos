@@ -52,6 +52,8 @@ Route::get('almacen/crear', ['as' =>'almacen.create', 'uses'=> 'RestInventario@c
 Route::post('almacen', ['as' =>'almacen.store', 'uses'=> 'RestInventario@store']);
 Route::get('almacen/{id}',['as' => 'almacen.show', 'uses'=> 'RestInventario@show']);
 Route::get('almacen/search',['as' => 'almacen.search', 'uses' => 'RestInventario@search']);	
+Route::get('almacen/{id}/edit',['as' => 'almacen.edit', 'uses'=> 'RestInventario@edit']);
+Route::put('almacen/{id}',['as' => 'almacen.update', 'uses'=> 'RestInventario@update']);
 
 ?>
 

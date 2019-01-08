@@ -16,6 +16,7 @@
 	<th>Descripcion</th>
 	<th>Anaquel</th>
 	<th>Entrada</th>
+	<th>Acciones</th>
 </tr>
 @foreach($piezas as $pieza)
 	<tr>
@@ -25,6 +26,7 @@
 		<td> {{ $pieza -> descripcion }}</td>
 		<td> {{ $pieza -> anaquel }}</td>
 		<td> {{ $pieza -> created_at }}</td>
+		<td> Editar </td>
 	</tr>
 @endforeach
 </table>
