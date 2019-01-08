@@ -50,7 +50,9 @@ class RestInventario extends Controller
             'created_at'=>CARBON::now(),
         ]);
 
-        return view('inventario.index');
+        $piezas = DB::table('piezas')->get();
+
+        return view('inventario.index' , compact('piezas'));
     }
 
     /**
