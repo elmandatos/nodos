@@ -26,7 +26,7 @@
 		<td> {{ $pieza -> descripcion }}</td>
 		<td> {{ $pieza -> anaquel }}</td>
 		<td> {{ $pieza -> created_at }}</td>
-		<td> Editar </td>
+		<td> <a href="{{ route("almacen.edit", $pieza->id_piezas)}}"> Editar</a> </td>
 	</tr>
 @endforeach
 </table>

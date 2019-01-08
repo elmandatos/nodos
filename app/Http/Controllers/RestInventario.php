@@ -96,7 +96,7 @@ class RestInventario extends Controller
             'updated_at'=>CARBON::now(),
         ]);
 
-        return redirect()->route('inventario.index');
+        return redirect()->route('almacen.index');
     }
 
     /**
