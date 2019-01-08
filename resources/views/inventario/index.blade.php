@@ -26,7 +26,13 @@
 		<td> {{ $pieza -> descripcion }}</td>
 		<td> {{ $pieza -> anaquel }}</td>
 		<td> {{ $pieza -> created_at }}</td>
-		<td> <a href="{{ route("almacen.edit", $pieza->id_piezas)}}"> Editar</a> </td>
+		<td> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
+			<form class="inline" method="POST" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
+				{!! csrf_field() !!}
+				{!! method_field('DELETE') !!}
+				<button class="btn red darken-3" type="submit">Eliminar</button>
+			</form>
+		</td>
 	</tr>
 @endforeach
 </table>

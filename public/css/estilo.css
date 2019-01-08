@@ -138,3 +138,8 @@
 #searchUser{
     font-size: 23px;
 }
+
+/*Estilo del boton en almacen.index*/
+.inline{
+    display: inline;
+}

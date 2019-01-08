@@ -107,7 +107,9 @@ class RestInventario extends Controller
      */
     public function destroy($id)
     {
-        //
+         DB::table('piezas')->where('id_piezas',$id)->delete();
+
+        return redirect()->route('almacen.index');
     }
 
     public function search(Request $request) {
