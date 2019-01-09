@@ -19,8 +19,15 @@
 	<th>Entrada</th>
 	<th>Acciones</th>
 </tr>
+@php
+$rowNumber=0;
+@endphp
 @foreach($piezas as $pieza)
-	<tr>
+@php
+$rowNumber+=1;
+$rowName= "rowNumber".$rowNumber;
+@endphp
+	<tr name="{{$rowName}}" id="{{$rowName}}">
 		<td class="columnaFotoAlmacen"> <img class="fotoAlmacen" src="{{ $pieza -> foto   }}" alt=""></td>
 		<td> {{ $pieza -> nombre }}</td>
 		<td> {{ $pieza -> modelo }}</td>
@@ -29,11 +36,11 @@
 		<td> {{ $pieza -> anaquel }}</td>
 		<td> {{ $pieza -> created_at }}</td>
 		<td> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
-			<form class="inline" method="POST" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
+			<div class="inline" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
 				{!! csrf_field() !!}
 				{!! method_field('DELETE') !!}
-				<button class="btn red darken-3" type="submit">Eliminar</button>
-			</form>
+				<button onclick="dialogDeleteConfirm({{$pieza->id_piezas}}, '{{csrf_token()}}', '{{$rowName}}');" class="btn red darken-3">Eliminar</button>
+			</div>
 		</td>
 	</tr>
 @endforeach
@@ -46,4 +53,10 @@
       <li><a href="{{route("almacen.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevo Articulo"><i class="material-icons">add</i></a></li>
   </ul>
 </div>
+@endsection
+
+@section("scripts")
+  @extends("scripts/p5")
+  <script type="text/javascript" src="{{asset('/js/deletePieza.js')}}"></script>
+  </script>
 @endsection
