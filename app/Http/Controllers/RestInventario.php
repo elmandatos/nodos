@@ -32,6 +32,15 @@ class RestInventario extends Controller
         return view('inventario.CreateInventario');
     }
 
+    public function createFile($nombre, $foto) {
+        define('UPLOAD_DIR', '../public/almacenImg/'); //Obtenemos la ruta donde guardaremos la foto
+        $data = base64_decode($foto);   //Decodificamos la foto
+        $file = UPLOAD_DIR . $nombre . '.png'; //Generamos la ruta completa del archivo
+        $img = str_replace('../public/', '/', $file);   //Ruta Front-End
+        $success = file_put_contents($file, $data); //Creamos la foto en el servidor
+        return $img;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,19 +49,22 @@ class RestInventario extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->input("foto")!="")
+            $img = $this->createFile($request->input("nombre"), $request->input("foto"));
+        else
+            $img = "/user.png";
+
         DB::table('piezas')->insert([
             'nombre' => $request->input('nombre'),
             'modelo' => $request->input('modelo'),
             'cantidad' => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
             'anaquel' => $request->input('anaquel'),
-            'created_at'=>CARBON::now(),
+            "foto" => $img,
+            'created_at'=>CARBON::now()
         ]);
 
-        $piezas = DB::table('piezas')->get();
-
-        return view('inventario.index' , compact('piezas'));
+        return redirect()->route('almacen.index');
     }
 
     /**

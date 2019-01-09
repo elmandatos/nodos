@@ -54,6 +54,11 @@
 				<br>
 			</div>
 
+			<div class="input-field col s12 l6">
+            <input hidden   id="foto" name="foto" type="text" value="">
+            {!! $errors->first("foto", "<span class='red-text'>:message</span>")!!}
+          	</div>
+
 
 			<div class="input-field col s12 l6">
 				<button class="btn"> Enviar</button>

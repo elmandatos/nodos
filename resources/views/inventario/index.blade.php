@@ -8,8 +8,9 @@
     </div>
 </form>
 
-<table>
+<table class="tabla">
 <tr>
+	<th>Foto</th>
 	<th>Nombre</th>
 	<th>Modelo</th>
 	<th>Cantidad</th>
@@ -20,6 +21,7 @@
 </tr>
 @foreach($piezas as $pieza)
 	<tr>
+		<td class="columnaFotoAlmacen"> <img class="fotoAlmacen" src="{{ $pieza -> foto   }}" alt=""></td>
 		<td> {{ $pieza -> nombre }}</td>
 		<td> {{ $pieza -> modelo }}</td>
 		<td> {{ $pieza -> cantidad }}</td>

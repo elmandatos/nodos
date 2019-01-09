@@ -143,3 +143,16 @@
 .inline{
     display: inline;
 }
+
+/*index.blade -- Almacen*/
+
+.tabla{
+    font-size: 14px;
+}
+
+.columnaFotoAlmacen{
+    width: 10%;
+}
+.fotoAlmacen{
+    width: 100%;
+}

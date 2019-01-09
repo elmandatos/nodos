@@ -20,7 +20,6 @@ class CreatePiezasTable extends Migration
             $table->unsignedInteger('cantidad');
             $table->string('descripcion');
             $table->unsignedInteger('anaquel');
-            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
