@@ -1,6 +1,19 @@
 @extends('layout')
 @section('contenido')
 <h3>Editar elemento</h3>
+	<div class="row">
+      		<div class="col l4">
+	        	<label style="font-size:15px;">Camara</label>
+	          	<div id="canvasParent"></div>
+	          	<button class="btn" id="capturar">Capturar
+	            	<i class="material-icons right">photo_camera</i>
+	          	</button>
+      		</div>
+		      <div class="col l4">
+		        <label style="font-size:15px;">Foto actual</label>
+		        <img class="col l12" id="desplegar" src="{{$pieza->foto}}" alt="">
+      		</div>
+ 	</div>
 	<form method="POST" action={{ route('almacen.update', $pieza->id_piezas) }}>
 		{{-- materialize sirvio aqui para el foramto usando los extends y section --}}
 		<div class="row">
@@ -41,6 +54,11 @@
 				<br>
 			</div>
 
+			<div class="input-field col s12 l6">
+	            <input hidden   id="foto" name="foto" type="text" value="{{$pieza->foto}}">
+	            {!! $errors->first("foto", "<span class='red-text'>:message</span>")!!}
+          	</div>
+
 
 			<div class="input-field col s12 l6">
 				<button class="btn"> Actualizar</button>
@@ -48,4 +66,11 @@
 		</div>
 	
 	</form>
+@endsection
+@section("scripts")
+  @extends('scripts/p5')
+  <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/js/ajaxForModal/storeUserModal.js')}}"></script>
+
 @endsection

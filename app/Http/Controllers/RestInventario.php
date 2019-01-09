@@ -100,6 +100,10 @@ class RestInventario extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->input("foto")!="")
+            $img = $this->createFile($request->input("nombre"), $request->input("foto"));
+        else
+            $img = "/user.png";
 
         DB::table('piezas')->where('id_piezas',$id)->update([
             'nombre' => $request->input('nombre'),
@@ -107,6 +111,7 @@ class RestInventario extends Controller
             'cantidad' => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
             'anaquel' => $request->input('anaquel'),
+            "foto" => $img,
             'updated_at'=>CARBON::now(),
         ]);
 
