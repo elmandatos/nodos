@@ -55,6 +55,7 @@ Route::get('almacen/search',['as' => 'almacen.search', 'uses' => 'RestInventario
 Route::get('almacen/{id}/edit',['as' => 'almacen.edit', 'uses'=> 'RestInventario@edit']);
 Route::put('almacen/{id}',['as' => 'almacen.update', 'uses'=> 'RestInventario@update']);
 Route::delete('almacen/{id}',['as' => 'almacen.destroy', 'uses'=> 'RestInventario@destroy']);
+Route::get('prestamos',['as'=> 'prestamos.index', 'uses'=> 'PrestamosController@index']);
 
 ?>
 
