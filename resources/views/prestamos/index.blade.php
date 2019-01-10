@@ -1,5 +1,9 @@
 @extends('layout')
-@section('contenido')
+@section('meta')
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+@section('noContainer')
+<div class="almacen">
 <div class="row">
 	<div class="col s4 teal lighten-5 z-depth-1">
 		<h4>Prestatarios</h4>
@@ -41,11 +45,22 @@
 	</div>
 	<div class="col s4 teal lighten-4 z-depth-1">
 		<h4>Prestar piezas</h4>
-		 <div class="input-field col s12">
-          <i class="material-icons prefix">contacts</i>
-          <input type="text" id="autocomplete-input" class="autocomplete">
-          <label for="autocomplete-input">Usuario</label>
-        </div>
+		 <div class="container">
+		<form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
+		        {!!csrf_field()!!}
+			<div class="row">
+    			<div class="col s12">
+      				<div class="row">		        
+					    <div class="input-field col s12">
+					    	 <i class="material-icons prefix">contacts</i>
+					        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus>
+					        <label for="autocomplete-input">Buscar</label>
+					    </div>
+		    		</div>
+    			</div>
+  			</div>
+		</form>
+	</div>
         <form>
         	<div class="input-field col s12 l12">
         		<label for="Nombre">Pieza:</label>
@@ -55,12 +70,15 @@
         		 <label for="Cantidad">Cantidad:</label>
         		 <input type="number" name="Cantidad">
         	</div>
-        	<div class="right">
-        	 <a class="btn-floating btn-small waves-effect waves-light red right-align"><i class="material-icons">add</i></a>
-        	</div>
+        	 <a class="btn-floating btn-small waves-effect waves-light red right"><i class="material-icons">add</i></a>
         </form>
-        <br/>
    		<button class="waves-effect waves-light btn-small">Realizar Prestamo</button>
 	</div>
 </div>
+</div>
 @endsection
+@section("scripts")
+	  @extends("scripts/p5")
+	  <script type="text/javascript" src="{{asset('/js/scriptPrestamos.js')}}"></script>
+	  </script>
+	@endsection

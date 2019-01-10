@@ -83,4 +83,23 @@ class PrestamosController extends Controller
     {
         //
     }
+    public function search(Request $request) {
+        $query = $request->usuario_a_consultar;
+        $existeUsuario = DB::table('users')
+        ->where('nombres', 'LIKE', '%' . $query . '%')
+        ->exists();
+
+        if($existeUsuario) {
+            $users = DB::table('users')
+            ->where('nombres', 'LIKE', '%' . $query . '%')->get();
+            return view('usuarios.index', compact("users"));
+
+        }else {
+            $users = array();
+            return view('usuarios.index', compact("users"));
+        }
+    }
+     public function buscar(){
+        return json_encode(DB::table('users')->select('nombres','apellidos','foto')->get());
+    }
 }
