@@ -29,15 +29,15 @@
 }
 
 .NCIE_logo{
-    width: 100%;
     text-align: center;
     /*border: 2px solid blue;*/
 }
 
 .navegador{
     width: 100%;
-    height: 50px;
-    margin-bottom: 20PX;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
     border-bottom: 2px solid #e0e0e0;
 }
 
@@ -47,6 +47,7 @@
     padding: 0;
     overflow: hidden;
     background-color: white;
+    vertical-align: middle;
 }
 
 .navegador li{
@@ -105,8 +106,8 @@
     position: absolute;
     /*transform: scale(0.75);*/
     width: 730px;
-    bottom: 45px;
-    left: 29%;
+    bottom: 1px;
+    left: 25%;
     z-index: 1;
 }
 
