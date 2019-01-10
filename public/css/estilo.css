@@ -21,25 +21,23 @@
 
 .contenedor{
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 	align-items: center;
     justify-content: center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.logo{
-    width: 15%;
+.NCIE_logo{
+    width: 100%;
     text-align: center;
     /*border: 2px solid blue;*/
-
-}
-
-.logo img{
-    transform: scale(1.25);
 }
 
 .navegador{
-    width: 75%;
+    width: 100%;
     height: 50px;
+    margin-bottom: 20PX;
     border-bottom: 2px solid #e0e0e0;
 }
 
@@ -49,7 +47,6 @@
     padding: 0;
     overflow: hidden;
     background-color: white;
-
 }
 
 .navegador li{
@@ -64,17 +61,6 @@
     margin-left: 20px;
     text-decoration: none;
 }
-
-.padding-izquierda{
-    width: 5%;
-    /*border: 2px solid blue;*/
-}
-
-.padding-derecha{
-    width: 5%;
-    /*border: 2px solid blue;*/
-}
-
 
 #verde1 a:hover{
     border-bottom: 2px solid #39B54A;
@@ -113,10 +99,6 @@
 	margin-top: 0px;
     margin-left: 20%;
     text-align: left;
-}
-
-#content{
-    /*border-bottom: 2px solid blue;*/
 }
 
 #mano_telefono{

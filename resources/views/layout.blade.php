@@ -21,10 +21,8 @@
 <body>
     <header>
         <div class="contenedor">
-            <div class="padding-izquierda"></div>
-
-            <div class="logo">
-              <a href="{{route("home")}}"><img src="{{asset('logo_Nodos.svg')}}"></a>
+            <div class="NCIE_logo">
+                <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/Logo_NCIE_Admin_System.svg')}}"></a>
             </div>
             
             <div class="navegador">
@@ -43,8 +41,6 @@
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
                 </ul>
             </div>
-            <div class="padding-derecha"></div>
-
         </div>
     </header>
     <div class="container">
