@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		      data: dataName,
 		      limit: 3,
 		      minLength: 1,
+		      onAutocomplete: function(val){
+		      	$(".searchForm").submit();
+		      }
 		    });
 		}
 	});

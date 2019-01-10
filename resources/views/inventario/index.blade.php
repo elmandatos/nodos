@@ -6,7 +6,7 @@
 @section('noContainer')
 <div class="almacen">
 	<div class="container">
-		<form action="{{route("almacen.search")}}" method="get" autocomplete="off">
+		<form class="searchForm" action="{{route("almacen.search")}}" method="get" autocomplete="off">
 		        {!!csrf_field()!!}
 			<div class="row">
     			<div class="col s12">
