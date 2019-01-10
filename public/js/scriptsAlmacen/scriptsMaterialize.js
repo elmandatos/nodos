@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		url: '/almacen/buscar',
 		type: 'POST',
 		success: function(response){
-			alert(response);
 			var nameArray = JSON.parse(response);
 	        var dataName = {};
 	        for (var i = 0; i < nameArray.length; i++) {
