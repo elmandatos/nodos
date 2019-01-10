@@ -102,4 +102,25 @@ class PrestamosController extends Controller
      public function buscar(){
         return json_encode(DB::table('users')->select('nombres','apellidos','foto')->get());
     }
+
+    public function searchPieza(Request $request) {
+        $query = $request->pieza_a_consultar;
+        $existePieza = DB::table('piezas')
+        ->where('nombre', 'LIKE', '%' . $query . '%')
+        ->exists();
+
+        if($existePieza) {
+            $piezas = DB::table('piezas')
+            ->where('nombre', 'LIKE', '%' . $query . '%')->get();
+            return view('inventario.index', compact("piezas"));
+
+        }else {
+            $piezas = array();
+            return view('inventario.index', compact("piezas"));
+        }
+    }
+
+    public function buscarPieza(){
+        return json_encode(DB::table('piezas')->select('nombre','foto')->get());
+    }
 }

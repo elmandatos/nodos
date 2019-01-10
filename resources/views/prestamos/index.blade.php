@@ -61,17 +61,19 @@
   			</div>
 		</form>
 	</div>
-        <form>
+        <form class="searchForm" action="{{route("prestamos.searchPieza")}}" method="get" autocomplete="off">
+        	{!!csrf_field()!!}
         	<div class="input-field col s12 l12">
-        		<label for="Nombre">Pieza:</label>
-        		<input type="text" name="Nombre">
+        		<input type="text" id="autocomplete-input-pieza" class="autocompleteP" name="pieza_a_consultar">
+        		<label for="autocomplete-input-pieza">Pieza:</label>
+        		
         	</div>
-        	<div class="input-field col s12 l12">
+        </form>
+        <div class="input-field col s12 l12">
         		 <label for="Cantidad">Cantidad:</label>
         		 <input type="number" name="Cantidad">
         	</div>
         	 <a class="btn-floating btn-small waves-effect waves-light red right"><i class="material-icons">add</i></a>
-        </form>
    		<button class="waves-effect waves-light btn-small">Realizar Prestamo</button>
 	</div>
 </div>
@@ -80,5 +82,6 @@
 @section("scripts")
 	  @extends("scripts/p5")
 	  <script type="text/javascript" src="{{asset('/js/scriptPrestamos.js')}}"></script>
+	  <script type="text/javascript" src="{{asset('/js/scriptPrestamoPieza.js')}}"></script>
 	  </script>
 	@endsection
