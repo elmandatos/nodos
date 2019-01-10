@@ -1,7 +1,7 @@
 function dialogDeleteConfirm(id, token, rowName){
 
   MaterialDialog.dialog(
-  	"¿Está seguro de eliminar este usuario?",
+  	"¿Está seguro de eliminar este articulo?",
   	{
   		title:"¡Advertencia!",
   		modalType:"", // Can be empty, modal-fixed-footer or bottom-sheet

@@ -15,7 +15,7 @@
     <!-- CSS Layout, QR, Users.index -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
     <script src="{{asset('/js/instascan.min.js')}}"></script>
-
+    @yield('meta')
 </head>
 
 <body>
@@ -49,6 +49,7 @@
     <div class="container">
       @yield('contenido')
     </div>
+    @yield('noContainer')
     <!--JavaScript at end of body for optimized loading-->
     <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/materialize.min.js')}}" type="text/javascript"></script>

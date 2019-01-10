@@ -52,7 +52,7 @@ class RestInventario extends Controller
         if($request->input("foto")!="")
             $img = $this->createFile($request->input("nombre"), $request->input("foto"));
         else
-            $img = "/user.png";
+            $img = "/box.png";
 
         DB::table('piezas')->insert([
             'nombre' => $request->input('nombre'),
@@ -103,7 +103,7 @@ class RestInventario extends Controller
         if($request->input("foto")!="")
             $img = $this->createFile($request->input("nombre"), $request->input("foto"));
         else
-            $img = "/user.png";
+            $img = "/box.png";
 
         DB::table('piezas')->where('id_piezas',$id)->update([
             'nombre' => $request->input('nombre'),
@@ -146,5 +146,9 @@ class RestInventario extends Controller
             $piezas = array();
             return view('inventario.index', compact("piezas"));
         }
+    }
+
+    public function buscar(){
+        return json_encode(DB::table('piezas')->select('nombre','foto')->get());
     }
 }
