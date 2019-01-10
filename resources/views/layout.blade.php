@@ -15,7 +15,7 @@
     <!-- CSS Layout, QR, Users.index -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}">
     <script src="{{asset('/js/instascan.min.js')}}"></script>
-
+    @yield('meta')
 </head>
 
 <body>
@@ -38,8 +38,8 @@
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
                 @endif
                     {{-- link nuevo --}}
-                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}">Prestamos</a></li>
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}">Almacen</a></li>
+                    <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}">Prestamos</a></li>
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
                 </ul>
             </div>
@@ -50,6 +50,7 @@
     <div class="container">
       @yield('contenido')
     </div>
+    @yield('noContainer')
     <!--JavaScript at end of body for optimized loading-->
     <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/materialize.min.js')}}" type="text/javascript"></script>

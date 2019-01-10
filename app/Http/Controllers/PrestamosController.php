@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 class PrestamosController extends Controller
@@ -13,8 +14,8 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-        //
-        return view('prestamos.index');
+        $piezas = DB::table('piezas')->select('nombre','foto','cantidad')->get();
+        return view('prestamos.index', compact('piezas'));
     }
 
     /**

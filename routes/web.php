@@ -48,6 +48,7 @@ Route::get('/exportUsersCeluas', 'UserData@exportUsersCelulasHours')->name("user
 //Route::get('/almacen',['as'=> 'almacen', 'uses'=> 'InventoryController@nombre']);
 //Route::post('almacenado', 'InventoryController@validacion');
 Route::get('almacen',['as' => 'almacen.index', 'uses'=> 'RestInventario@index']);
+Route::post('almacen/buscar',['as' => 'almacen.buscar', 'uses'=> 'RestInventario@buscar']);
 Route::get('almacen/crear', ['as' =>'almacen.create', 'uses'=> 'RestInventario@create']);
 Route::post('almacen', ['as' =>'almacen.store', 'uses'=> 'RestInventario@store']);
 Route::get('almacen/{id}',['as' => 'almacen.show', 'uses'=> 'RestInventario@show']);
@@ -55,7 +56,7 @@ Route::get('almacen/search',['as' => 'almacen.search', 'uses' => 'RestInventario
 Route::get('almacen/{id}/edit',['as' => 'almacen.edit', 'uses'=> 'RestInventario@edit']);
 Route::put('almacen/{id}',['as' => 'almacen.update', 'uses'=> 'RestInventario@update']);
 Route::delete('almacen/{id}',['as' => 'almacen.destroy', 'uses'=> 'RestInventario@destroy']);
-Route::get('prestamos',['as'=> 'prestamos.index', 'uses'=> 'PrestamosController@index']);
-
+//Prestamos
+Route::get('prestamos',['as' => 'prestamos.index', 'uses'=> 'PrestamosController@index']);
 ?>
 
