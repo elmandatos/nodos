@@ -11,7 +11,7 @@
       		</div>
       <div class="col l4">
         <label style="font-size:15px;">Foto actual</label>
-        <img class="col l12" id="desplegar" src="{{asset("user.png")}}" alt="">
+        <img class="col l12" id="desplegar" src="{{asset("box.png")}}" alt="">
       </div>
   </div>
 	<form method="POST" action={{route('almacen.store')}}>
