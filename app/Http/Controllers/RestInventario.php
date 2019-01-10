@@ -100,10 +100,9 @@ class RestInventario extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->input("foto")!="")
+        $urlFoto = DB::table('piezas')->select('foto')->where('id_piezas',$id)->get();
+        if($request->input("foto") != $urlFoto )
             $img = $this->createFile($request->input("nombre"), $request->input("foto"));
-        else
-            $img = "/box.png";
 
         DB::table('piezas')->where('id_piezas',$id)->update([
             'nombre' => $request->input('nombre'),
