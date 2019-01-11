@@ -1,24 +1,24 @@
 @extends('layout')
 @section('contenido')
-<h3>Añadir nuevo elemento</h3>
-	<div class="row">
-      		<div class="col l4">
+<h3 class="header-text">Añadir nuevo articulo</h3>
+	<div class="row ">
+      		<div class="col s12 l6">
 	        	<label style="font-size:15px;">Camara</label>
 	          	<div id="canvasParent"></div>
 	          	<button class="btn" id="capturar">Capturar
 	            	<i class="material-icons right">photo_camera</i>
 	          	</button>
       		</div>
-      <div class="col l4">
+      <div class="col s6 l4">
         <label style="font-size:15px;">Foto actual</label>
-        <img class="col l12" id="desplegar" src="{{asset("box.png")}}" alt="">
+        <img class="col s6 l12" id="desplegar" src="{{asset("box.png")}}" alt="">
       </div>
   </div>
 	<form method="POST" action={{route('almacen.store')}}>
 		{{-- materialize sirvio aqui para el foramto usando los extends y section --}}
+		{{ csrf_field() }}
 		
 		<div class="row">
-		{{ csrf_field() }}
 			<div class="input-field col s12 l6">
 				<label for="">Nombre:</label>
 				<input type="text" id="txtNombre" name="nombre" autofocus value="{{old('nombre')}}">
@@ -31,11 +31,13 @@
 				<input type="text" id="txtModelo" name="modelo" value="{{old('modelo')}}">
 				<br>
 			</div>
+		</div>
 			
+		<div class="row noMargin">
 			<div class="input-field col s6 l6">
 				<label for="">Descripcion:</label>
 				<input type="text" id="txtDescripcion" name="descripcion" value="{{old('descripcion')}}">
-				{!! $errors->first("descripcion", "<span class='red-text'>:message</span>")!!}
+				{{-- {!! $errors->first("descripcion", "<span class='red-text'>:message</span>")!!} --}}
 				<br>
 			</div>
 
@@ -53,18 +55,18 @@
 				{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
+		</div>
 
-			<div class="input-field col s12 l6">
-            <input hidden   id="foto" name="foto" type="text" value="">
-            {!! $errors->first("foto", "<span class='red-text'>:message</span>")!!}
+		<div class="row noMargin">
+			<div class="input-field col s11 l11">
+	            <input hidden   id="foto" name="foto" type="text" value="">
+	            {!! $errors->first("foto", "<span class='red-text'>:message</span>")!!}
           	</div>
 
-
-			<div class="input-field col s12 l6">
+			<div class="input-field col s1 l1">
 				<button class="btn"> Enviar</button>
 			</div>
 		</div>
-	
 	</form>
 	@endsection
 	@section("scripts")

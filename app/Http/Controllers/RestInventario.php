@@ -49,6 +49,14 @@ class RestInventario extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            "nombre" => "required|max:255",
+            "cantidad"=> "required",
+            "anaquel"=> "required",
+        ];
+
+        $this->validate($request, $rules);
+
         if($request->input("foto")!="")
             $img = $this->createFile($request->input("nombre"), $request->input("foto"));
         else

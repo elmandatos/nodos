@@ -22,13 +22,13 @@
 		</form>
 	</div>
 
-	<table class="highlight centered responsive-table">
+	<table class="highlight centered responsive-table custom">
 		<thead>
 			<tr>
 				<th>Foto</th>
-				<th>Nombre</th>
-				<th>Modelo</th>
 				<th>Cantidad</th>
+				<th>Articulo</th>
+				<th>No. Serie</th>
 				<th>Descripcion</th>
 				<th>Anaquel</th>
 				<th>Entrada</th>
@@ -44,14 +44,14 @@
 	$rowName= "rowNumber".$rowNumber;
 	@endphp
 		<tr name="{{$rowName}}" id="{{$rowName}}">
-			<td class="columnaFotoAlmacen"> <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
-			<td> {{ $pieza -> nombre }}</td>
-			<td> {{ $pieza -> modelo }}</td>
+			<td class="columnaMediana"> <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
 			<td> {{ $pieza -> cantidad }}</td>
-			<td> {{ $pieza -> descripcion }}</td>
+			<td class="wordBreak"> {{ $pieza -> nombre }}</td>
+			<td class="columnaMediana"> {{ $pieza -> modelo }}</td>
+			<td class="wordBreak"> {{ $pieza -> descripcion }}</td>
 			<td> {{ $pieza -> anaquel }}</td>
-			<td> {{ $pieza -> created_at }}</td>
-			<td> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
+			<td class="columnaMediana"> {{ $pieza -> created_at }}</td>
+			<td class="columnaGrande"> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
 				<div class="inline" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
 					{!! csrf_field() !!}
 					{!! method_field('DELETE') !!}

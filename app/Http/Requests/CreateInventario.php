@@ -29,7 +29,6 @@ class CreateInventario extends FormRequest
             "cantidad"=> "required",
             "descripcion"=> "required",
             "anaquel"=> "required"
-
         ];
     }
 }

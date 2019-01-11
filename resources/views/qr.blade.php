@@ -1,7 +1,7 @@
 @extends('layout')
-@section('contenido')
+@section('noContainer')
 <div class="camara">
-    <p style="margin-bottom: 75px;">Escanea el código QR</p>
+    <p>Escanea el código QR</p>
     <div id="content">
           <video id="preview"></video>
           <img id="mano_telefono" src="{{asset('telefono5.png')}}">
