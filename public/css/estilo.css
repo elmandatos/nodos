@@ -19,26 +19,24 @@
     border-bottom: 2px solid #FCEE21;
 }
 
-.contenedor{
+.flex-container{
 	display: flex;
-	flex-wrap: wrap;
 	align-items: center;
     justify-content: center;
     margin-left: 5%;
     margin-right: 5%;
-}
-
-.NCIE_logo{
-    text-align: center;
-    /*border: 2px solid blue;*/
-}
-
-.navegador{
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 2%;
     border-bottom: 2px solid #e0e0e0;
+    /*background-color: #f1f1f1;*/
+}
+
+.flex-container div{
+    width: 200px;
+    margin: 10px;
+}
+
+.NCIE_logo img{
+    width: 100%;
 }
 
 .navegador ul{
@@ -46,7 +44,6 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white;
     vertical-align: middle;
 }
 
@@ -96,7 +93,7 @@
 .camara p{
 	font-family: monospace;
 	font-size: 40px;
-	line-height: 15px;
+	/*line-height: 15px;*/
 	margin-top: 0px;
     margin-bottom: 75px;
     margin-left: 20%;
@@ -148,10 +145,6 @@
 
 .columnaGrande{
     width: 15%;
-}
-
-.fotoAlmacen{
-    width: 100%;
 }
 
 #capturar{

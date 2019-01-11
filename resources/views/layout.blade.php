@@ -20,12 +20,12 @@
 
 <body>
     <header>
-        <div class="contenedor">
-            {{-- <div class="NCIE_logo">
+        <div class="flex-container">
+            <div class="NCIE_logo" style="flex-grow: 1">
                 <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/Logo_NCIE_Admin_System.svg')}}"></a>
-            </div> --}}
-            
-            <div class="navegador">
+            </div>
+
+            <div class="navegador" style="flex-grow: 8">
                 <ul>
                 @if(auth()->guest())
                     <li id="verde1"><a href="{{route("login")}}">Iniciar Sesión</a></li>
@@ -39,7 +39,6 @@
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}">Almacen</a></li>
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}">Prestamos</a></li>
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
-                    <li style="float: left; margin-left: 0;"><a href="{{route("home")}}"><img src="{{asset('NCIE_logos/Logo_NCIE_Admin_System.svg')}}" alt="" width="60%"></a></li>
                 </ul>
             </div>
         </div>

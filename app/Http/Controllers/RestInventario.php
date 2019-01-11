@@ -57,20 +57,21 @@ class RestInventario extends Controller
 
         $this->validate($request, $rules);
 
-        if($request->input("foto")!="")
-            $img = $this->createFile($request->input("nombre"), $request->input("foto"));
-        else
-            $img = "/box.png";
-
-        DB::table('piezas')->insert([
+        $id = DB::table('piezas')->insertGetId([
             'nombre' => $request->input('nombre'),
             'modelo' => $request->input('modelo'),
             'cantidad' => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
             'anaquel' => $request->input('anaquel'),
-            "foto" => $img,
             'created_at'=>CARBON::now()
         ]);
+
+        if($request->input("foto") != "")
+            $img = $this->createFile($id, $request->input("foto"));
+        else
+            $img = "/box.png";
+
+        DB::table('piezas')->where('id_piezas',$id)->update(['foto' => $img]);
 
         return redirect()->route('almacen.index');
     }
@@ -116,11 +117,16 @@ class RestInventario extends Controller
 
         $this->validate($request, $rules);
         
-        $urlFoto = DB::table('piezas')->select('foto')->where('id_piezas',$id)->get();
-        if($request->input("foto") != $urlFoto )
-            $img = $this->createFile($request->input("nombre"), $request->input("foto"));
-        else
-            $img = $urlFoto;
+        if($request->input("foto") != "/box.png")
+        {
+            if($request->input("foto") != "/almacenImg/$id.png")
+            {
+                $img = $this->createFile($id, $request->input("foto"));
+                DB::table('piezas')->where('id_piezas',$id)->update([
+                    "foto" => $img,
+                ]);
+            }
+        }
 
         DB::table('piezas')->where('id_piezas',$id)->update([
             'nombre' => $request->input('nombre'),
@@ -128,7 +134,6 @@ class RestInventario extends Controller
             'cantidad' => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
             'anaquel' => $request->input('anaquel'),
-            "foto" => $img,
             'updated_at'=>CARBON::now(),
         ]);
 

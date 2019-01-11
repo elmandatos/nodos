@@ -74,7 +74,5 @@
 @section("scripts")
   @extends('scripts/p5')
   <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
-  <script src="{{asset('/js/password.js')}}" type="text/javascript"></script>
-  <script src="{{asset('/js/ajaxForModal/storeUserModal.js')}}"></script>
 
 @endsection
