@@ -108,9 +108,19 @@ class RestInventario extends Controller
      */
     public function update(Request $request, $id)
     {
+         $rules = [
+            "nombre" => "required|max:255",
+            "cantidad"=> "required",
+            "anaquel"=> "required",
+        ];
+
+        $this->validate($request, $rules);
+        
         $urlFoto = DB::table('piezas')->select('foto')->where('id_piezas',$id)->get();
         if($request->input("foto") != $urlFoto )
             $img = $this->createFile($request->input("nombre"), $request->input("foto"));
+        else
+            $img = $urlFoto;
 
         DB::table('piezas')->where('id_piezas',$id)->update([
             'nombre' => $request->input('nombre'),
