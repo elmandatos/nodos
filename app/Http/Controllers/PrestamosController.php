@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PrestamosController extends Controller
@@ -14,6 +15,9 @@ class PrestamosController extends Controller
      */
     public function index()
     {
+        // $prestamos = DB::table('prestamos')->select('id_usuario')->first(); 
+        // $usuarioPrestamos = DB::table('users')->where('id', '=', $prestamos )->get();
+        // var_dump($usuarioPrestamos);
         $piezas = DB::table('piezas')->select('nombre','foto','cantidad')->get();
         return view('prestamos.index', compact('piezas'));
     }
@@ -37,6 +41,14 @@ class PrestamosController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('prestamos')->insert([
+            'id_usuario' =>$request->input('hidden-nombre'),
+            'id_piezas' =>$request->input('piezasH'),
+            'cantidad' =>$request->input('cantidad'),
+            'hora_ingreso'=>CARBON::now(),
+        ]);
+
+        return redirect()->route('prestamos.index');
     }
 
     /**
@@ -100,7 +112,7 @@ class PrestamosController extends Controller
         }
     }
      public function buscar(){
-        return json_encode(DB::table('users')->select('nombres','apellidos','foto')->get());
+        return json_encode(DB::table('users')->select('id','nombres','apellidos','foto')->get());
     }
 
     public function searchPieza(Request $request) {
@@ -121,6 +133,6 @@ class PrestamosController extends Controller
     }
 
     public function buscarPieza(){
-        return json_encode(DB::table('piezas')->select('nombre','foto')->get());
+        return json_encode(DB::table('piezas')->select('id_piezas','nombre','foto')->get());
     }
 }

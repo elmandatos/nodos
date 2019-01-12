@@ -62,7 +62,8 @@ Route::post('prestamos/buscar',['as' => 'prestamos.buscar', 'uses'=> 'PrestamosC
 Route::get('prestamos/search',['as' => 'prestamos.search', 'uses' => 'PrestamosController@search']);
 
 Route::post('prestamos/buscarPieza',['as' => 'prestamos.buscarPieza', 'uses'=> 'PrestamosController@buscarPieza']);
-Route::get('prestamos/searchPieza',['as' => 'prestamos.searchPieza', 'uses' => 'PrestamosController@searchPieza']);	
+Route::get('prestamos/searchPieza',['as' => 'prestamos.searchPieza', 'uses' => 'PrestamosController@searchPieza']);
+Route::post('prestamos', ['as' =>'prestamos.store', 'uses'=> 'PrestamosController@store']);	
 
 
 ?>
