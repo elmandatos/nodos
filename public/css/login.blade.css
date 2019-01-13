@@ -5,12 +5,12 @@ body{
   background-size: 130%;
   position: relative;
 }
-.cabecera{
-  /* border: solid red 2px; */
+/*.cabecera{
+   border: solid red 2px; 
   text-align: center;
-  min-height: 100px;
+  min-height: 50%;
 }
-
+*/
 .boton {
   display: inline-block;
   border-radius: 4px;
@@ -77,9 +77,13 @@ body{
   height: 50px;
 }
 
+
+
 .formulario{
-  background-color: white;
+  position: relative;
   width: 50%;
+  margin-top: 10%;
+  background-color: white;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -89,4 +93,10 @@ body{
 
 #margen{
   margin-bottom: 0px;
+}
+
+#btnBack{
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
