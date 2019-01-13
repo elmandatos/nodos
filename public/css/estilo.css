@@ -32,7 +32,7 @@
 
 .flex-container div{
     width: 200px;
-    margin: 10px;
+    margin-top: 10px;
 }
 
 .NCIE_logo img{
@@ -91,7 +91,7 @@
 	text-align: center;
 	position: relative;
 	width: 800px;
-	height: 590px;
+	height: 560px;
 	/*border: 2px solid red;*/
 }
 
@@ -125,7 +125,7 @@
 }
 
 #preview {
-	margin-top: 100px;
+	margin-top: 80px;
     height: 480px;
 }
 
