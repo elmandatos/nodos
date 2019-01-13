@@ -1,11 +1,12 @@
 @extends('layout')
 @section('noContainer')
-<div class="camara">
-    <p>Escanea el código QR</p>
-    <div id="content">
-          <video id="preview"></video>
-          <img id="mano_telefono" src="{{asset('telefono5.png')}}">
-    </div>
+<div class="container center-align">
+	<div class="qr">
+	    <p>Escanea el <br><br><b>código QR</b></p>
+	    <img src="{{asset("qr.png")}}" alt="">
+		<video class="responsive-video" id="preview"></video>
+		<img id="mano_telefono" src="{{asset('telefono6.png')}}">
+	</div>
 </div>
 @endsection
 

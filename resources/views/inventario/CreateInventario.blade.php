@@ -58,13 +58,15 @@
 		</div>
 
 		<div class="row noMargin">
-			<div class="input-field col s11 l11">
+			<div class="input-field col s10 l10">
 	            <input hidden   id="foto" name="foto" type="text" value="">
 	            {!! $errors->first("foto", "<span class='red-text'>:message</span>")!!}
           	</div>
 
-			<div class="input-field col s1 l1">
-				<button class="btn"> Enviar</button>
+			<div class="input-field col s2 l2">
+				<button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+    				<i class="material-icons right">send</i>
+  				</button>
 			</div>
 		</div>
 	</form>

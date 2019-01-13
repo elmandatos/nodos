@@ -18,7 +18,11 @@
   <div class="fila">
     <div class="columna_costados"></div>
       <div class="columna_principal">
-        <div class="columna_costados_interno"></div>
+        <div class="right-align columna_costados_interno">
+           <a class="btn-floating btn-large waves-effect waves-light" href="{{ url()->previous() }}">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
           <form class="formulario" action="/login" method="POST">
             <a href="{{route("home")}}"><img src="../logo_Nodos.svg"></a>
               {{ csrf_field() }}

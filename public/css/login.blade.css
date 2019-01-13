@@ -71,7 +71,7 @@ body{
   height: 150px;
 }
 
-.columna_costados_interno{
+.right-align.columna_costados_interno{
   /* border: solid red 2px; */
   width: 25%;
   height: 50px;

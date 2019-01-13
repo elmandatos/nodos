@@ -86,34 +86,48 @@
 
 
 /*qr.blade.php*/
-.camara{
+.qr{
+	display: inline-block;
 	text-align: center;
+	position: relative;
+	width: 800px;
+	height: 590px;
+	/*border: 2px solid red;*/
 }
 
-.camara p{
+.qr p{
 	font-family: monospace;
 	font-size: 40px;
-	/*line-height: 15px;*/
-	margin-top: 0px;
-    margin-bottom: 75px;
-    margin-left: 20%;
     text-align: left;
+    position: absolute;
+    z-index: 2;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 25px;
+
+}
+
+.qr img{
+    position: absolute;
+ 	z-index: 2;
+    width: 85px;
+    /*margin-top: 40px;*/
+    left: 250px;
 }
 
 #mano_telefono{
+	height: 100%;
+	width: 100%;
     position: absolute;
-    /*transform: scale(0.75);*/
-    width: 730px;
-    bottom: 1px;
-    left: 25%;
+    bottom: 0px;
+    left: 0%;
     z-index: 1;
 }
 
 #preview {
-    z-index: 0;
+	margin-top: 100px;
+    height: 480px;
 }
-
-
 
 /*index.blade.css*/
 #searchUser{
