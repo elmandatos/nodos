@@ -33,7 +33,8 @@
 			</div>
 
 			<div class="input-field col s12 l4">
-            <select class="" id="txtEstado" name="estado">
+            <select class="" id="txtEstado" name="estado" onchange="cambiarCantidad()">
+              <option value="" disabled selected>Selecciona estado</option>>
               <option value="" disabled selected>Selecciona estado</option>
               <option value="1" {{ old("estado") == 1 ? "selected" : "" }}>En existencia</option>
               <option value="2" {{ old("estado") == 2 ? "selected" : "" }}>En mantenimiento</option>
@@ -56,7 +57,7 @@
 
 			<div class="input-field col s6 l3">
 				<label for="">Cantidad:</label>
-				<input type="number" min="0" id="txtCantidad" name="cantidad" value="{{old('cantidad')}}">
+				<input type="number" min="0" id="txtCantidad" name="cantidad" value="{{old('cantidad')}}" oninput="cambiarEstado()">
 				{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
@@ -87,6 +88,6 @@
 	@section("scripts")
   @extends('scripts/p5')
   <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
-
+  <script src="{{asset('/js/scriptsAlmacen/actualizarCampos.js')}}"></script>
 @endsection
 

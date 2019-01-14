@@ -22,7 +22,7 @@
     <header>
         <div class="flex-container">
             <div class="NCIE_logo" style="flex-grow: 1">
-                <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/Logo_NCIE_Admin_System.svg')}}"></a>
+                <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/Logo_NCIE_Admin_System.png')}}"></a>
             </div>
 
             <div class="navegador" style="flex-grow: 8">
