@@ -32,6 +32,7 @@
 				<th>Descripcion</th>
 				<th>Anaquel</th>
 				<th>Entrada</th>
+				<th>Estado</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
@@ -51,6 +52,20 @@
 			<td class="wordBreak"> {{ $pieza -> descripcion }}</td>
 			<td> {{ $pieza -> anaquel }}</td>
 			<td class="columnaMediana"> {{ $pieza -> created_at }}</td>
+			@php 
+				$id_estado = $pieza -> id_estado;
+				$estados = DB::table('estado')->select('nombre')->where('id', $id_estado )->get();
+				$estado = $estados[0]->nombre;
+				if     ($id_estado == 1) $color = "green";
+				elseif ($id_estado == 2) $color = "blue";
+				elseif ($id_estado == 3) $color = "grey";
+				else   $color = "red";
+			@endphp
+
+			<td class="columnaMediana">
+				<span id="estado" class="new badge {{$color}}" data-badge-caption="">{{$estado}}</span>
+			</td>
+
 			<td class="columnaGrande"> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
 				<div class="inline" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
 					{!! csrf_field() !!}

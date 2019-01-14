@@ -17,10 +17,16 @@ class CreatePiezasTable extends Migration
             $table->increments('id_piezas');
             $table->string('nombre');
             $table->string('modelo');
+            $table->string('foto')->nullable();
             $table->unsignedInteger('cantidad');
-            $table->string('descripcion');
+            $table->longText('descripcion');
             $table->unsignedInteger('anaquel');
+            $table->unsignedInteger('id_estado');
             $table->timestamps();
+        });
+
+        Schema::table('piezas', function(Blueprint $table){
+            $table->foreign('id_estado')->references('id')->on('estado');
         });
     }
 

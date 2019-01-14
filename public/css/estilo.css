@@ -172,3 +172,8 @@
 .row.noMargin{
     margin-bottom: 0px;
 }
+
+#txtEstado{
+    /*font-weight: bold;*/
+    font-size: 14px;
+}

@@ -50,20 +50,28 @@ class RestInventario extends Controller
     public function store(Request $request)
     {
         $rules = [
-            "nombre" => "required|max:255",
-            "cantidad"=> "required",
-            "anaquel"=> "required",
+            "nombre"   => "required|max:255",
+            "cantidad" => "required",
+            "anaquel"  => "required",
+            "estado"   => "required"
         ];
 
         $this->validate($request, $rules);
 
+        $id_estado = $request->input('estado');
+        if($request->input('cantidad') == 0) 
+            $id_estado = 3;
+        elseif($id_estado == 3)
+            $id_estado = 1;
+
         $id = DB::table('piezas')->insertGetId([
-            'nombre' => $request->input('nombre'),
-            'modelo' => $request->input('modelo'),
-            'cantidad' => $request->input('cantidad'),
+            'nombre'      => $request->input('nombre'),
+            'modelo'      => $request->input('modelo'),
+            'cantidad'    => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
-            'anaquel' => $request->input('anaquel'),
-            'created_at'=>CARBON::now()
+            'anaquel'     => $request->input('anaquel'),
+            'id_estado'   => $id_estado,
+            'created_at'  => CARBON::now()
         ]);
 
         if($request->input("foto") != "")
@@ -110,12 +118,20 @@ class RestInventario extends Controller
     public function update(Request $request, $id)
     {
          $rules = [
-            "nombre" => "required|max:255",
-            "cantidad"=> "required",
-            "anaquel"=> "required",
+            "nombre"   => "required|max:255",
+            "cantidad" => "required",
+            "anaquel"  => "required",
+            "estado"   => "required"
         ];
 
+
         $this->validate($request, $rules);
+
+        $id_estado = $request->input('estado');
+        if($request->input('cantidad') == 0) 
+            $id_estado = 3;
+        elseif($id_estado == 3)
+            $id_estado = 1;
         
         if($request->input("foto") != "/box.png")
         {
@@ -129,12 +145,13 @@ class RestInventario extends Controller
         }
 
         DB::table('piezas')->where('id_piezas',$id)->update([
-            'nombre' => $request->input('nombre'),
-            'modelo' => $request->input('modelo'),
-            'cantidad' => $request->input('cantidad'),
+            'nombre'      => $request->input('nombre'),
+            'modelo'      => $request->input('modelo'),
+            'cantidad'    => $request->input('cantidad'),
             'descripcion' => $request->input('descripcion'),
-            'anaquel' => $request->input('anaquel'),
-            'updated_at'=>CARBON::now(),
+            'anaquel'     => $request->input('anaquel'),
+            'id_estado'   => $id_estado,
+            'updated_at'  => CARBON::now(),
         ]);
 
         return redirect()->route('almacen.index');

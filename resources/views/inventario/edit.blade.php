@@ -11,7 +11,7 @@
       		</div>
 		      <div class="col s6 l4">
 		        <label style="font-size:15px;">Foto actual</label>
-		        <img class="col s6 l12" id="desplegar" src="{{$pieza->foto}}" alt="">
+		        <img class="col s6 l12 materialboxed" id="desplegar" src="{{$pieza->foto}}" alt="">
       		</div>
  	</div>
 	<form method="POST" action={{ route('almacen.update', $pieza->id_piezas) }}>
@@ -20,18 +20,31 @@
 	    {!! method_field('PUT')!!}
 		{!! csrf_field() !!}
 		<div class="row">
-			<div class="input-field col s12 l6">
+			<div class="input-field col s12 l4">
 				<label for="">Nombre:</label>
 				<input type="text" id="txtNombre" name="nombre" autofocus value="{{$pieza->nombre}}">
 				{!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
 
-			<div class="input-field col s12 l6">
+			<div class="input-field col s12 l4">
 				<label for="">Modelo:</label>
 				<input type="text" id="txtModelo" name="modelo" value="{{$pieza->modelo}}">
 				<br>
 			</div>
+
+			<div class="input-field col s12 l4">
+            <select class="" id="txtEstado" name="estado" onchange="cambiarCantidad()">
+              <option value="" disabled selected>Selecciona estado</option>
+              <option value="1" {{$pieza->id_estado == 1 ? "selected" : "" }}>En existencia</option>
+              <option value="2" {{$pieza->id_estado == 2 ? "selected" : "" }}>En mantenimiento</option>
+              <option value="3" {{$pieza->id_estado == 3 ? "selected" : "" }}>Agotado</option>
+              <option value="4" {{$pieza->id_estado == 4 ? "selected" : "" }}>Defectuoso</option>
+            </select>
+            {!! $errors->first("estado", "<span class='red-text'>:message</span>")!!}
+            <label>Estado</label>
+            {{-- <span class='red-text' id="carrera-span"></span> --}}
+          </div>
 		</div>
 		
 		<div class="row noMargin">
@@ -44,7 +57,7 @@
 
 			<div class="input-field col s6 l3">
 				<label for="">Cantidad:</label>
-				<input type="number" min="1" id="txtCantidad" name="cantidad" value="{{$pieza->cantidad}}">
+				<input type="number" min="0" id="txtCantidad" name="cantidad" value="{{$pieza->cantidad}}" oninput="cambiarEstado()">
 				{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
@@ -52,7 +65,7 @@
 			
 			<div class="input-field col s6 l3">
 				<label for="">Anaquel:</label>
-				<input type="number" min="1" max="5" id="txt Anaquel" name="anaquel" value="{{$pieza->anaquel}}">
+				<input type="number" min="1" max="5" id="txtAnaquel" name="anaquel" value="{{$pieza->anaquel}}">
 				{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
@@ -76,5 +89,5 @@
 @section("scripts")
   @extends('scripts/p5')
   <script src="{{asset('/js/webcam.js')}}" type="text/javascript"></script>
-
+  <script src="{{asset('/js/scriptsAlmacen/actualizarCampos.js')}}"></script>
 @endsection

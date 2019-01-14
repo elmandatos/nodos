@@ -11,7 +11,7 @@
       		</div>
       <div class="col s6 l4">
         <label style="font-size:15px;">Foto actual</label>
-        <img class="col s6 l12" id="desplegar" src="{{asset("box.png")}}" alt="">
+        <img class="col s6 l12 materialboxed" id="desplegar" src="{{asset("box.png")}}" alt="">
       </div>
   </div>
 	<form method="POST" action={{route('almacen.store')}}>
@@ -19,18 +19,31 @@
 		{{ csrf_field() }}
 		
 		<div class="row">
-			<div class="input-field col s12 l6">
+			<div class="input-field col s12 l4">
 				<label for="">Nombre:</label>
 				<input type="text" id="txtNombre" name="nombre" autofocus value="{{old('nombre')}}">
 				{!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
 
-			<div class="input-field col s12 l6">
-				<label for="">Modelo:</label>
+			<div class="input-field col s12 l4">
+				<label for="">Número de Serie:</label>
 				<input type="text" id="txtModelo" name="modelo" value="{{old('modelo')}}">
 				<br>
 			</div>
+
+			<div class="input-field col s12 l4">
+            <select class="" id="txtEstado" name="estado">
+              <option value="" disabled selected>Selecciona estado</option>
+              <option value="1" {{ old("estado") == 1 ? "selected" : "" }}>En existencia</option>
+              <option value="2" {{ old("estado") == 2 ? "selected" : "" }}>En mantenimiento</option>
+              <option value="3" {{ old("estado") == 3 ? "selected" : "" }}>Agotado</option>
+              <option value="4" {{ old("estado") == 4 ? "selected" : "" }}>Defectuoso</option>
+            </select>
+            {!! $errors->first("estado", "<span class='red-text'>:message</span>")!!}
+            <label>Estado</label>
+            {{-- <span class='red-text' id="carrera-span"></span> --}}
+          </div>
 		</div>
 			
 		<div class="row noMargin">
@@ -43,7 +56,7 @@
 
 			<div class="input-field col s6 l3">
 				<label for="">Cantidad:</label>
-				<input type="number" min="1" id="txtCantidad" name="cantidad" value="{{old('cantidad')}}">
+				<input type="number" min="0" id="txtCantidad" name="cantidad" value="{{old('cantidad')}}">
 				{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
@@ -51,7 +64,7 @@
 			
 			<div class="input-field col s6 l3">
 				<label for="">Anaquel:</label>
-				<input type="number" min="1" max="5" id="txt Anaquel" name="anaquel" value="{{old('anaquel')}}">
+				<input type="number" min="1" max="5" id="txtAnaquel" name="anaquel" value="{{old('anaquel')}}">
 				{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
