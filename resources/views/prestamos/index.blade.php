@@ -4,9 +4,9 @@
 @endsection
 @section('noContainer')
 <div class="almacen">
-<div class="row">
-	<div class="col s4 teal lighten-5 z-depth-1">
-		<h4>Prestatarios</h4>
+<div class="row principal">
+	<div class="col s3 white lighten-5 z-depth-1">
+		<h4 class="center-align"><b>Prestatarios</b></h4>
 		<div class="container">
 			<ul class="collapsible">
 					@php
@@ -26,36 +26,36 @@
 				     @endphp
 				    <li>
 				      <div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
-				      <div class="collapsible-body white"><span>{{ $piezaPrestamo -> nombre}}</span></div>
+				      <div class="collapsible-body white"><span class="wordBreak">{{ $piezaPrestamo -> nombre}}</span></div>
 				    </li>
 				    @endfor
 			</ul>		 	
 		</div>
 	</div>
-	<div class="col s4 teal lighten-4 z-depth-0">
-		<h4>Piezas Prestadas</h4>
+	<div class="col s6 white lighten-4 z-depth-1" id="articulos_prestados">
+		<h4 class="center-align"><b>Piezas Prestadas</b></h4>
 		<table class="highlight centered responsive-table">
 		  <thead>
 			<tr>
-				{{-- <th>Foto</th> --}}
+				<th>Foto</th>
 				<th>Nombre</th>
 				<th>Cantidad</th>
 			</tr>
 		   </thead>
 			@foreach($prestamos as $prestamo)
 			@php
-				$pieza = DB::table('piezas')->select('nombre','cantidad')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
+				$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
 			@endphp
 			<tr>
-				{{-- <td class="columnaFotoAlmacen"> <img class="fotoAlmacen materialboxed" src="{{ $pieza -> foto   }}" alt=""></td> --}}
-				<td> {{ $pieza -> nombre }}</td>
+				<td class="columnaMediana"> <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
+				<td class="wordBreak"> {{ $pieza -> nombre }}</td>
 				<td> {{ $prestamo -> cantidad }}</td>
 			</tr>
 			@endforeach
 		</table>
 	</div>
-	<div class="col s4 teal lighten-4 z-depth-1">
-		<h4>Prestar piezas</h4>
+	<div class="col s3 blue-grey lighten-5 z-depth-1" id="formulario_prestamos">
+		<h4 class="center-align"><b>Prestar piezas</b></h4>
 			{{-- <div class="container"> --}}
 				<form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
 				    {!!csrf_field()!!}

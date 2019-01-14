@@ -177,3 +177,19 @@
     /*font-weight: bold;*/
     font-size: 14px;
 }
+
+.row.principal{
+    height: 480px;
+}
+
+#prestatarios{
+    /*height: 720px;*/
+}
+
+#articulos_prestados{
+    height: 100%;
+}
+
+#formulario_prestamos{
+    height: 100%;
+}
