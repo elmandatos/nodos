@@ -15,9 +15,8 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-        $prestamos = DB::table('prestamos')->get();
-        $piezas = DB::table('piezas')->select('nombre','foto','cantidad')->get();
-        return view('prestamos.index', compact('piezas','prestamos'));
+        $prestamos = DB::table('prestamos')->select('id_usuario','id_piezas','cantidad')->get();
+        return view('prestamos.index', compact('prestamos'));
     }
 
     /**

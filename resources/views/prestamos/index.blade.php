@@ -9,16 +9,26 @@
 		<h4>Prestatarios</h4>
 		<div class="container">
 			<ul class="collapsible">
+					@php
+						$usuarios=array();
+					@endphp
 				    @foreach($prestamos as $prestamo)
 				    @php
-				     $usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$prestamo->id_usuario.'%')->first();
-				     $piezaPrestamo = DB::table('piezas')->select('nombre')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
+				    	if (!(in_array($prestamo->id_usuario, $usuarios))) {
+				    		array_push($usuarios,$prestamo->id_usuario);
+				    	}
 				    @endphp
+				    @endforeach
+				    @for($i=0;$i<count($usuarios); $i++)
+				    @php
+				    $usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
+				    $piezaPrestamo = DB::table('piezas')->select('nombre')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
+				     @endphp
 				    <li>
 				      <div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
 				      <div class="collapsible-body white"><span>{{ $piezaPrestamo -> nombre}}</span></div>
 				    </li>
-				    @endforeach
+				    @endfor
 			</ul>		 	
 		</div>
 	</div>
@@ -32,19 +42,20 @@
 				<th>Cantidad</th>
 			</tr>
 		   </thead>
-			@foreach($piezas as $pieza)
+			@foreach($prestamos as $prestamo)
+			@php
+				$pieza = DB::table('piezas')->select('nombre','cantidad')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
+			@endphp
 			<tr>
 				{{-- <td class="columnaFotoAlmacen"> <img class="fotoAlmacen materialboxed" src="{{ $pieza -> foto   }}" alt=""></td> --}}
 				<td> {{ $pieza -> nombre }}</td>
-				<td> {{ $pieza -> cantidad }}</td>
+				<td> {{ $prestamo -> cantidad }}</td>
 			</tr>
 			@endforeach
 		</table>
 	</div>
 	<div class="col s4 teal lighten-4 z-depth-1">
 		<h4>Prestar piezas</h4>
-		
-
 			{{-- <div class="container"> --}}
 				<form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
 				    {!!csrf_field()!!}
