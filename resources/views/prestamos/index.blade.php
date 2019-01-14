@@ -9,28 +9,16 @@
 		<h4>Prestatarios</h4>
 		<div class="container">
 			<ul class="collapsible">
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>Usuario 1</div>
-				      <div class="collapsible-body white"><span>Pieza 1, 5 y 7 prestados</span></div>
-				    </li>
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>Usuario 2</div>
-				      <div class="collapsible-body white"><span>Pieza 1, 5 y 7 prestados</span></div>
-				    </li>
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>Usuario 3</div>
-				      <div class="collapsible-body white"><span>Pieza 1, 5 y 7 prestados</span></div>
-				    </li>
-				    {{-- @php
-				    var_dump($usuarioPrestamos);
+				    @foreach($prestamos as $prestamo)
+				    @php
+				     $usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$prestamo->id_usuario.'%')->first();
+				     $piezaPrestamo = DB::table('piezas')->select('nombre')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
 				    @endphp
-				    @foreach($usuarioPrestamos as $usuarioPrestamo)
-
 				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>Nuevo{{ $usuarioPrestamo-> nombres }}</div>
-				      <div class="collapsible-body white"><span>Pieza 1, 5 y 7 prestados</span></div>
+				      <div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
+				      <div class="collapsible-body white"><span>{{ $piezaPrestamo -> nombre}}</span></div>
 				    </li>
-				    @endforeach --}}
+				    @endforeach
 			</ul>		 	
 		</div>
 	</div>
