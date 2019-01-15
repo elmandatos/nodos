@@ -13,21 +13,43 @@
 						$usuarios=array();
 					@endphp
 				    @foreach($prestamos as $prestamo)
-				    @php
-				    	if (!(in_array($prestamo->id_usuario, $usuarios))) {
-				    		array_push($usuarios,$prestamo->id_usuario);
-				    	}
-				    @endphp
+				    {{-- <li> --}}
+				    	@php
+				    		if (!(in_array($prestamo->id_usuario, $usuarios))) {
+				    			array_push($usuarios,$prestamo->id_usuario);
+				    		}
+				    	@endphp
 				    @endforeach
 				    @for($i=0;$i<count($usuarios); $i++)
-				    @php
-				    $usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
-				    $piezaPrestamo = DB::table('piezas')->select('nombre')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
-				     @endphp
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
-				      <div class="collapsible-body white"><span class="wordBreak">{{ $piezaPrestamo -> nombre}}</span></div>
+				    	@php
+							$piecitas=array();
+				    		$usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
+				    		$idpiezas = DB::table('prestamos')->select('id_piezas')->where('id_usuario','LIKE','%'.$usuarios[$i].'%')->get();
+				    		var_dump($idpiezas);
+				     	@endphp
+				     	@foreach($idpiezas as $idpieza)
+				  			@php
+				  				array_push($piecitas, $idpieza->id_piezas);
+				  			@endphp
+				     	@endforeach
+				     	<li>
+				      	<div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
+				      	@for($j=0;$j<count($piecitas);$j++)
+				      	@php
+				      	var_dump($piecitas[$j]);
+				      	$piecitasNombre = DB::table('piezas')->select('nombre')->where('id_piezas','LIKE','%'.$piecitas[$j].'%')->first();
+				      	// var_dump($piecitasNombre-> nombre);
+				      	@endphp
+				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span></div>
+				    @endfor
 				    </li>
+				 	@for($j=0;$j<count($piecitas);$j++)
+				 		@php
+				 			array_pop($piecitas);
+				 		@endphp
+				 	@endfor
+
+				    {{-- </li> --}}
 				    @endfor
 			</ul>		 	
 		</div>
