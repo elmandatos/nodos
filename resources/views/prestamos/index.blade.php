@@ -20,13 +20,29 @@
 				    @endphp
 				    @endforeach
 				    @for($i=0;$i<count($usuarios); $i++)
-				    @php
-				    $usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
-				    $piezaPrestamo = DB::table('piezas')->select('nombre')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
-				     @endphp
-				    <li>
-				      <div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
-				      <div class="collapsible-body white"><span class="wordBreak">{{ $piezaPrestamo -> nombre}}</span></div>
+				    	@php
+							$piecitas=array();
+				    		$usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
+				    		$idpiezas = DB::table('prestamos')->select('id_piezas')->where('id_usuario',$usuarios[$i])->get();
+				    		// var_dump($idpiezas);
+				    		// var_dump($usuarios[$i]);
+				     	@endphp
+				     	@foreach($idpiezas as $idpieza)
+				  			@php
+				  				array_push($piecitas, $idpieza->id_piezas);
+				  			@endphp
+				     	@endforeach
+				     	<li>
+				      	<div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
+				      	@for($j=0;$j<count($piecitas);$j++)
+				      	@php
+				      	// var_dump($piecitas[$j]);
+				      	$piecitasNombre = DB::table('piezas')->select('nombre')->where('id_piezas','LIKE','%'.$piecitas[$j].'%')->first();
+				      	// var_dump($piecitas);
+				      	// var_dump($piecitasNombre-> nombre);
+				      	@endphp
+				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span></div>
+				    @endfor
 				    </li>
 				    @endfor
 			</ul>		 	
