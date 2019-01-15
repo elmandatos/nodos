@@ -143,7 +143,12 @@ $cardNumber = 0;
   </div>
   <div class="row"></div>
 @endforeach
+<div class="center">
+  {{ $users->links() }}
+</div>
 @endsection
+
+
 
 @section("scripts")
   @extends("scripts/p5")
