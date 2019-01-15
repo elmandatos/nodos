@@ -1,14 +1,22 @@
 @extends('layout')
 @section('contenido')
-  <div class="row"></div>
 <div class="row">
-    <form action="{{route("users.search")}}" method="get">
-        {!!csrf_field()!!}
-        <div class="input-field col s12 l6">
-          <input class="col s12 l10" type="text" name="search" id="searchUser" value="" autofocus>
-          <label for="last_name">Buscar</label>
-        </div>
+  <div class="container">
+    <form class="searchForm" action="{{route("users.search")}}" method="get" autocomplete="off">
+            {!!csrf_field()!!}
+          <div class="row noMargin">
+              <div class="col s12 l12">
+                <div class="row noMargin">           
+                  <div class="input-field col s12 l12">
+                    <i class="material-icons prefix">search</i>
+                      <label for="autocomplete-input">Buscar</label>
+                      <input type="text" id="autocomplete-input" class="autocomplete" name="search" autofocus>
+                  </div>
+                </div>
+              </div>
+          </div>
     </form>
+  </div>
 </div>
 
 {{-- mensaje perzonalizado de usuario no encontrado --}}
@@ -122,6 +130,9 @@ $cardNumber = 0;
             <h6 style="font-weight: bold;">Télefono:</h6>
             <i>{{$user->telefono}}</i>
           </div>
+        </div>
+
+        <div class="row">
           <!-- Dropdown Trigger ACCESO -->
           <div class="col s12 l6">
             <a class="dropdown-trigger btn" data-target="{{$dropDownNumber}}"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
@@ -132,9 +143,9 @@ $cardNumber = 0;
             </ul>
           </div>
           @if(auth()->user()->tipo_de_usuario == "Administrador")
-          <div class="col s12 l6">
-            <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
-          </div>
+            <div class="col s12 l6">
+              <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
+            </div>
           @endif
         </div>
       </div>
@@ -143,6 +154,11 @@ $cardNumber = 0;
   </div>
   <div class="row"></div>
 @endforeach
+@if($makePages)
+<div class="center">
+  {{ $users->links() }}
+</div>
+@endif
 @endsection
 
 @section("scripts")

@@ -23,8 +23,9 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users =  User::all();
-        return view("usuarios.index", compact("users"));
+        $users =  User::paginate(5);
+        $makePages = true;
+        return view("usuarios.index",compact('makePages'))->withUsers($users);
     }
 
     /**
@@ -211,6 +212,7 @@ class UsersController extends Controller
 
     public function search(Request $request) {
         $imgNotFound = false;
+        $makePages = false;
 
         $query = $request->search;
         $userExists = DB::table('users')
@@ -222,12 +224,12 @@ class UsersController extends Controller
             $users = DB::table('users')
             ->where('nombres', 'LIKE', '%' . $query . '%')
             ->orWhere('apellidos', 'LIKE', '%' . $query . '%')->get();
-            return view('usuarios.index', compact("users","imgNotFound"));
+            return view('usuarios.index', compact("users","imgNotFound",'makePages'));
 
         }else {
             $users = array();
             $imgNotFound = true;
-            return view('usuarios.index', compact("users","imgNotFound"));
+            return view('usuarios.index', compact("users","imgNotFound", 'makePages'));
         }
     }
 }

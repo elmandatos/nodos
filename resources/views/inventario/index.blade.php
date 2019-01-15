@@ -84,8 +84,12 @@
 	      <li><a href="{{route("almacen.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevo Articulo"><i class="material-icons">add</i></a></li>
 	  </ul>
 	</div>
+	@if($makePages)
+		<div class="center">
+  		{{ $piezas->links() }}
+		</div>
+	@endif
 	@endsection
-
 	@section("scripts")
 	  @extends("scripts/p5")
 	  <script type="text/javascript" src="{{asset('/js/scriptsAlmacen/deletePieza.js')}}"></script>

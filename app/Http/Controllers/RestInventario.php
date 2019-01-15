@@ -16,9 +16,9 @@ class RestInventario extends Controller
      */
     public function index()
     {
-       $piezas = DB::table('piezas')->get();
-
-       return view('inventario.index', compact('piezas'));
+       $piezas = DB::table('piezas')->paginate(5);
+       $makePages = true;
+       return view('inventario.index', compact('piezas', 'makePages'));
     }
 
     /**
@@ -171,6 +171,7 @@ class RestInventario extends Controller
     }
 
     public function search(Request $request) {
+        $makePages = false;
         $query = $request->pieza_a_consultar;
         $existePieza = DB::table('piezas')
         ->where('nombre', 'LIKE', '%' . $query . '%')
@@ -179,11 +180,11 @@ class RestInventario extends Controller
         if($existePieza) {
             $piezas = DB::table('piezas')
             ->where('nombre', 'LIKE', '%' . $query . '%')->get();
-            return view('inventario.index', compact("piezas"));
+            return view('inventario.index', compact("piezas", 'makePages'));
 
         }else {
             $piezas = array();
-            return view('inventario.index', compact("piezas"));
+            return view('inventario.index', compact("piezas", 'makePages'));
         }
     }
 
