@@ -143,9 +143,11 @@ $cardNumber = 0;
   </div>
   <div class="row"></div>
 @endforeach
+@if($makePages)
 <div class="center">
   {{ $users->links() }}
 </div>
+@endif
 @endsection
 
 
