@@ -22,14 +22,16 @@
 				    @for($i=0;$i<count($usuarios); $i++)
 				    	@php
 							$piecitas=array();
+							$cantidadPrestamo=array();
 				    		$usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
-				    		$idpiezas = DB::table('prestamos')->select('id_piezas')->where('id_usuario',$usuarios[$i])->get();
+				    		$idpiezas = DB::table('prestamos')->select('id_piezas','cantidad')->where('id_usuario',$usuarios[$i])->get();
 				    		// var_dump($idpiezas);
 				    		// var_dump($usuarios[$i]);
 				     	@endphp
 				     	@foreach($idpiezas as $idpieza)
 				  			@php
 				  				array_push($piecitas, $idpieza->id_piezas);
+				  				array_push($cantidadPrestamo, $idpieza->cantidad);
 				  			@endphp
 				     	@endforeach
 				     	<li>
@@ -41,7 +43,9 @@
 				      	// var_dump($piecitas);
 				      	// var_dump($piecitasNombre-> nombre);
 				      	@endphp
-				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span></div>
+				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span><br>
+				      		<span class="wordBreak">Cantidad: {{ $cantidadPrestamo[$j] }}</span>
+				      	</div>
 				    @endfor
 				    </li>
 				    @endfor
