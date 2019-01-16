@@ -64,16 +64,37 @@
 			</tr>
 		   </thead>
 		   <tbody>
-			   	@foreach($prestamos as $prestamo)
+		   		@php
+		   			$Tablapiezas = array();
+		   			$Sumacantidad = array();
+		   		@endphp
+		   		@foreach($prestamos as $prestamo)
+				    @php
+				    	if (!(in_array($prestamo->id_piezas, $Tablapiezas))) {
+				    		array_push($Tablapiezas,$prestamo->id_piezas);
+				    	}
+				    @endphp
+				@endforeach
+			   	@for($i=0;$i<count($Tablapiezas);$i++)
 				@php
-					$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
-				@endphp
+					$Sumacantidad[$i]=0;
+					$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$Tablapiezas[$i].'%')->first();
+					$pruebas = DB::table('prestamos')->select('cantidad')->where('id_piezas',$Tablapiezas[$i])->get();
+					@endphp
+				@foreach($pruebas as $prueba)
+					@php
+						$Sumacantidad[$i]+=$prueba->cantidad;
+					@endphp
+				@endforeach
 				<tr>
 					<td > <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
 					<td class="wordBreak"> {{ $pieza -> nombre }}</td>
-					<td> {{ $prestamo -> cantidad }}</td>
+					<td> {{$Sumacantidad[$i]}}</td>
 				</tr>
-				@endforeach
+				@endfor
+				@php
+					/*var_dump($Sumacantidad[2]);*/
+				@endphp
 		   </tbody>
 		</table>
 	</div>
