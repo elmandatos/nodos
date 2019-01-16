@@ -11,6 +11,7 @@
 			<ul class="collapsible">
 					@php
 						$usuarios=array();
+						$sumavalores=array();
 					@endphp
 				    @foreach($prestamos as $prestamo)
 				    @php
@@ -30,7 +31,9 @@
 				     	@endphp
 				     	@foreach($idpiezas as $idpieza)
 				  			@php
-				  				array_push($piecitas, $idpieza->id_piezas);
+				  				if(!(in_array($idpieza->id_piezas,$piecitas))){
+				  					array_push($piecitas, $idpieza->id_piezas);
+				  				}
 				  				array_push($cantidadPrestamo, $idpieza->cantidad);
 				  			@endphp
 				     	@endforeach
@@ -39,12 +42,19 @@
 				      	@for($j=0;$j<count($piecitas);$j++)
 				      	@php
 				      	// var_dump($piecitas[$j]);
+				      	$sumavalores[$j]=0;
 				      	$piecitasNombre = DB::table('piezas')->select('nombre')->where('id_piezas','LIKE','%'.$piecitas[$j].'%')->first();
+				      	$piecitasCantidad = DB::table('prestamos')->select('cantidad')->where('id_piezas',$piecitas[$j])->where('id_usuario',$usuarios[$i])->get();
 				      	// var_dump($piecitas);
 				      	// var_dump($piecitasNombre-> nombre);
 				      	@endphp
+				      	@foreach($piecitasCantidad as $piecitaCantidad)
+							@php
+								$sumavalores[$j]+=$piecitaCantidad->cantidad;
+							@endphp
+						@endforeach
 				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span><br>
-				      		<span class="wordBreak">Cantidad: {{ $cantidadPrestamo[$j] }}</span>
+				      		<span class="wordBreak">Cantidad: {{ $sumavalores[$j] }}</span>
 				      	</div>
 				    @endfor
 				    </li>
