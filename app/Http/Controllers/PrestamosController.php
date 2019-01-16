@@ -42,6 +42,7 @@ class PrestamosController extends Controller
             'id_usuario' =>$request->input('hidden-nombre'),
             'id_piezas' =>$request->input('piezasH'),
             'cantidad' =>$request->input('cantidad'),
+            'estado' =>"activo",
             'hora_ingreso'=>CARBON::now(),
         ]);
 
