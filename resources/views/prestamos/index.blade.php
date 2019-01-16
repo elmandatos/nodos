@@ -49,25 +49,28 @@
 		</div>
 	</div>
 	<div class="col s6 white lighten-4 z-depth-1" id="articulos_prestados">
-		<h4 class="center-align"><b>Piezas Prestadas</b></h4>
+		
 		<table class="highlight centered responsive-table">
 		  <thead>
+		  	<h4 class="center-align"><b>Piezas Prestadas</b></h4>
 			<tr>
 				<th>Foto</th>
 				<th>Nombre</th>
 				<th>Cantidad</th>
 			</tr>
 		   </thead>
-			@foreach($prestamos as $prestamo)
-			@php
-				$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
-			@endphp
-			<tr>
-				<td class="columnaMediana"> <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
-				<td class="wordBreak"> {{ $pieza -> nombre }}</td>
-				<td> {{ $prestamo -> cantidad }}</td>
-			</tr>
-			@endforeach
+		   <tbody>
+			   	@foreach($prestamos as $prestamo)
+				@php
+					$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$prestamo->id_piezas.'%')->first();
+				@endphp
+				<tr>
+					<td > <img class="materialboxed" width="100%" src="{{ $pieza -> foto   }}" alt=""></td>
+					<td class="wordBreak"> {{ $pieza -> nombre }}</td>
+					<td> {{ $prestamo -> cantidad }}</td>
+				</tr>
+				@endforeach
+		   </tbody>
 		</table>
 	</div>
 	<div class="col s3 blue-grey lighten-5 z-depth-1" id="formulario_prestamos">
