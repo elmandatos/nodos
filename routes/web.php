@@ -65,6 +65,8 @@ Route::post('prestamos/buscarPieza',['as' => 'prestamos.buscarPieza', 'uses'=> '
 Route::get('prestamos/searchPieza',['as' => 'prestamos.searchPieza', 'uses' => 'PrestamosController@searchPieza']);
 Route::post('prestamos', ['as' =>'prestamos.store', 'uses'=> 'PrestamosController@store']);	
 
+Route::delete('prestamos/{id}',['as' => 'prestamos.destroy', 'uses'=> 'PrestamosController@destroy']);
+
 
 ?>
 

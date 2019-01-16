@@ -55,6 +55,15 @@
 						@endforeach
 				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span><br>
 				      		<span class="wordBreak">Cantidad: {{ $sumavalores[$j] }}</span>
+				      		@php
+				      		$ab = DB::table('prestamos')->select('id')->where('id_usuario', $usuarios[$i])->where('id_piezas',$piecitas[$j])->first();
+				      		$id_ab = $ab->id;
+				      		@endphp
+				      		<form class="inline" method="POST" action="{{route('prestamos.destroy',"$id_ab")}}">
+				      			{!! csrf_field() !!}
+								{!! method_field('DELETE') !!}
+				      			<button class="btn">Devolver</button>
+				      		</form>
 				      	</div>
 				    @endfor
 				    </li>

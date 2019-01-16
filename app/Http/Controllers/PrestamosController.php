@@ -15,7 +15,7 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-        $prestamos = DB::table('prestamos')->select('id_usuario','id_piezas','cantidad')->get();
+        $prestamos = DB::table('prestamos')->select('id','id_usuario','id_piezas','cantidad','estado')->get();
         return view('prestamos.index', compact('prestamos'));
     }
 
@@ -91,7 +91,16 @@ class PrestamosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $id_pieza = DB::table('prestamos')->select('id_piezas')->where('id','LIKE','%'.$id."%")->first();
+        $id_usuario = DB::table('prestamos')->select('id_usuario')->where('id','LIKE','%'.$id.'%')->first();
+        $ids = DB::table('prestamos')->select('id')->where('id_usuario', $id_usuario->id_usuario)->where('id_piezas', $id_pieza->id_piezas)->get();
+
+        foreach ($ids as $id) {
+            DB::table('prestamos')->where('id',$id->id)->update([
+                'estado'      => "inactivo",
+            ]);
+        }
+        return redirect()->route('prestamos.index');
     }
     public function search(Request $request) {
         $query = $request->usuario_a_consultar;
