@@ -18,6 +18,7 @@ class CreatePrestamosTable extends Migration
             $table->unsignedInteger('id_usuario');
             $table->unsignedInteger('id_piezas');
             $table->unsignedInteger('cantidad');
+            $table->string('estado');
             $table->timestamp('hora_egreso')->nullable();
             $table->timestamp('hora_ingreso')->nullable();
         });
