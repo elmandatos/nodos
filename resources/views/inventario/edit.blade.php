@@ -1,6 +1,6 @@
 @extends('layout')
 @section('contenido')
-<h3 class="header-text">Editar articulo</h3>
+	<h3 class="header-text">Editar articulo</h3>
 	<div class="row">
       		<div class="col s12 l6">
 	        	<label style="font-size:15px;">Camara</label>
@@ -9,7 +9,7 @@
 	            	<i class="material-icons right">photo_camera</i>
 	          	</button>
       		</div>
-		      <div class="col s6 l4">
+		    <div class="col s6 l4">
 		        <label style="font-size:15px;">Foto actual</label>
 		        <img class="col s6 l12 materialboxed" id="desplegar" src="{{$pieza->foto}}" alt="">
       		</div>
@@ -21,14 +21,14 @@
 		{!! csrf_field() !!}
 		<div class="row">
 			<div class="input-field col s12 l4">
-				<label for="">Nombre:</label>
+				<label for="txtNombre">Nombre:</label>
 				<input type="text" id="txtNombre" name="nombre" autofocus value="{{$pieza->nombre}}">
 				{!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
 
 			<div class="input-field col s12 l4">
-				<label for="">Modelo:</label>
+				<label for="txtModelo">Modelo:</label>
 				<input type="text" id="txtModelo" name="modelo" value="{{$pieza->modelo}}">
 				<br>
 			</div>
@@ -49,14 +49,14 @@
 		
 		<div class="row noMargin">
 			<div class="input-field col s6 l6">
-				<label for="">Descripcion:</label>
+				<label for="txtDescripcion">Descripcion:</label>
 				<input type="text" id="txtDescripcion" name="descripcion" value="{{$pieza->descripcion}}">
 				{!! $errors->first("descripcion", "<span class='red-text'>:message</span>")!!}
 				<br>
 			</div>
 
 			<div class="input-field col s6 l3">
-				<label for="">Cantidad:</label>
+				<label for="txtCantidad">Cantidad:</label>
 				<input type="number" min="0" id="txtCantidad" name="cantidad" value="{{$pieza->cantidad}}" oninput="cambiarEstado()">
 				{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
 				<br>
@@ -64,7 +64,7 @@
 
 			
 			<div class="input-field col s6 l3">
-				<label for="">Anaquel:</label>
+				<label for="txtAnaquel">Anaquel:</label>
 				<input type="number" min="1" max="5" id="txtAnaquel" name="anaquel" value="{{$pieza->anaquel}}">
 				{!! $errors->first("anaquel", "<span class='red-text'>:message</span>")!!}
 				<br>
