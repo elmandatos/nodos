@@ -67,6 +67,9 @@ Route::post('prestamos', ['as' =>'prestamos.store', 'uses'=> 'PrestamosControlle
 
 Route::delete('prestamos/{id}',['as' => 'prestamos.destroy', 'uses'=> 'PrestamosController@destroy']);
 
+Route::put('prestamos/{id}',['as' => 'prestamos.update', 'uses'=> 'PrestamosController@update']);
+
+
 
 ?>
 

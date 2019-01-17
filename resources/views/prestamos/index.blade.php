@@ -74,14 +74,56 @@
 				      	<div class="collapsible-body white"><span class="wordBreak">{{ $piecitasNombre -> nombre}}</span><br>
 				      		<span class="wordBreak">Cantidad: {{ $sumavalores[$j] }}</span>
 				      		@php
-				      		$ab = DB::table('prestamos')->select('id')->where('id_usuario', $usuarios[$i])->where('id_piezas',$piecitas[$j])->first();
+				      		$ab = DB::table('prestamos')->select('id')->where('id_usuario', $usuarios[$i])->where('id_piezas',$piecitas[$j])->where('estado','activo')->first();
 				      		$id_ab = $ab->id;
+				      		// var_dump($id_ab);
 				      		@endphp
 				      		<form class="inline" method="POST" action="{{route('prestamos.destroy',"$id_ab")}}">
 				      			{!! csrf_field() !!}
 								{!! method_field('DELETE') !!}
 				      			<button class="btn">Devolver</button>
 				      		</form>
+				      		<button class="btn orange modal-trigger" data-target="modal1"{{-- onclick="transferir()" --}}>Transferir</button>
+				      		<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Nuevo prestatario</h4>
+      <div class="row">
+        <form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
+				    {!!csrf_field()!!}
+					<div class="row">
+		    			<div class="col s12">
+		      				<div class="row">		        
+							    <div class="input-field col s12 l12">
+							    	<i class="material-icons prefix">account_box</i>
+							        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus>
+							        <label for="autocomplete-input">Usuario:</label>
+							    </div>
+				    		</div>
+		    			</div>
+		  			</div>
+				</form>
+				<form action="" method="POST" action="{{route("prestamos.update","$id_ab")}}">
+					@php
+					// var_dump($id_ab);
+					@endphp
+					{!! method_field('PUT')!!}
+					{!! csrf_field() !!}
+					<input type="hidden" id="nombre" name="nombre" value="">
+					<input type="hidden" id="piezas" name="piezas" value="{{$piecitas[$j]}}">
+					<input type="hidden" name="cantidad" value="{{$sumavalores[$j]}}">
+					<div class="modal-footer">
+						<button class="btn">Actualizar</button>
+				    </div>
+				</form>
+				
+
+
+
+      </div>
+    </div>
+    
+  </div>
+
 				      	</div>
 				    	@endfor
 				    	@endif
@@ -192,5 +234,6 @@
 	  @extends("scripts/p5")
 	  <script type="text/javascript" src="{{asset('/js/scriptPrestamos.js')}}"></script>
 	  <script type="text/javascript" src="{{asset('/js/scriptPrestamoPieza.js')}}"></script>
+	  <script type="text/javascript" src="{{asset('/js/scriptCambioPrestamo.js')}}"></script>
 	  </script>
 	@endsection

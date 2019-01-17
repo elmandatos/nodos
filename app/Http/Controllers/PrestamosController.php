@@ -39,7 +39,7 @@ class PrestamosController extends Controller
     {
         //
         $id_p = DB::table('prestamos')->select('id','cantidad')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->first();
-        $ncantidad = $request->input('cantidad') + $id_p->cantidad;
+        
         if (!(DB::table('prestamos')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->exists()))
         {
             DB::table('prestamos')->insert([
@@ -51,6 +51,7 @@ class PrestamosController extends Controller
                 ]);
             }
         else{
+            $ncantidad = $request->input('cantidad') + $id_p->cantidad;
             DB::table('prestamos')->where('id',$id_p->id)->update([
                 'cantidad' =>$ncantidad,
             ]);
@@ -90,7 +91,19 @@ class PrestamosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        DB::table('prestamos')->where('id',$id)->update([
+                'estado'      => "inactivo",
+            ]);
+
+        DB::table('prestamos')->insert([
+                    'id_usuario' =>$request->input('nombre'),
+                    'id_piezas' =>$request->input('piezas'),
+                    'cantidad' =>$request->input('cantidad'),
+                    'estado' =>"activo",
+                    'hora_ingreso'=>CARBON::now(),
+                ]);
+        return redirect()->route('prestamos.index');
     }
 
     /**
