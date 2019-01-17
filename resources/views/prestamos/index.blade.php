@@ -62,7 +62,7 @@
 				      	// var_dump($piecitas[$j]);
 				      	$sumavalores[$j]=0;
 				      	$piecitasNombre = DB::table('piezas')->select('nombre')->where('id_piezas','LIKE','%'.$piecitas[$j].'%')->first();
-				      	$piecitasCantidad = DB::table('prestamos')->select('cantidad')->where('id_piezas',$piecitas[$j])->where('id_usuario',$usuarios[$i])->get();
+				      	$piecitasCantidad = DB::table('prestamos')->select('cantidad')->where('id_piezas',$piecitas[$j])->where('id_usuario',$usuarios[$i])->where('estado','activo')->get();
 				      	// var_dump($piecitas);
 				      	// var_dump($piecitasNombre-> nombre);
 				      	@endphp
@@ -105,11 +105,12 @@
 		   		@php
 		   			$Tablapiezas = array();
 		   			$Sumacantidad = array();
+		   			$Piezas = DB::table('prestamos')->select('id_piezas')->where('estado','activo')->get();
 		   		@endphp
-		   		@foreach($prestamos as $prestamo)
+		   		@foreach($Piezas as $pieza)
 				    @php
-				    	if (!(in_array($prestamo->id_piezas, $Tablapiezas))) {
-				    		array_push($Tablapiezas,$prestamo->id_piezas);
+				    	if (!(in_array($pieza->id_piezas, $Tablapiezas))) {
+				    		array_push($Tablapiezas,$pieza->id_piezas);
 				    	}
 				    @endphp
 				@endforeach
@@ -117,7 +118,7 @@
 				@php
 					$Sumacantidad[$i]=0;
 					$pieza = DB::table('piezas')->select('nombre','cantidad','foto')->where('id_piezas', 'LIKE','%'.$Tablapiezas[$i].'%')->first();
-					$pruebas = DB::table('prestamos')->select('cantidad')->where('id_piezas',$Tablapiezas[$i])->get();
+					$pruebas = DB::table('prestamos')->select('cantidad')->where('id_piezas',$Tablapiezas[$i])->where('estado','activo')->get();
 					@endphp
 				@foreach($pruebas as $prueba)
 					@php
