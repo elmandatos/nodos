@@ -22,10 +22,12 @@
 				    @endforeach
 				    @for($i=0;$i<count($usuarios); $i++)
 				    	@php
+				    		$banderita='true';
 							$piecitas=array();
+							$estados=array();
 							$cantidadPrestamo=array();
 				    		$usuarioPrestamo = DB::table('users')->select('nombres')->where('id', 'LIKE','%'.$usuarios[$i].'%')->first();
-				    		$idpiezas = DB::table('prestamos')->select('id_piezas','cantidad')->where('id_usuario',$usuarios[$i])->get();
+				    		$idpiezas = DB::table('prestamos')->select('id_piezas','cantidad')->where('id_usuario',$usuarios[$i])->where('estado','activo')->get();
 				    		// var_dump($idpiezas);
 				    		// var_dump($usuarios[$i]);
 				     	@endphp
@@ -37,6 +39,22 @@
 				  				array_push($cantidadPrestamo, $idpieza->cantidad);
 				  			@endphp
 				     	@endforeach
+				     	@php
+				     		$Consultaestados  = DB::table('prestamos')->select('estado')->where('id_usuario',$usuarios[$i])->get();
+				     	@endphp
+				     	@foreach($Consultaestados as $Consultaestado)
+				     		@php
+				     			array_push($estados, $Consultaestado->estado);
+				     		@endphp
+				     	@endforeach
+				     	@for($x=0;$x<count($estados);$x++)
+				     		@php
+				     			if ($estados[$x]==='activo') {
+				     				$banderita='false';
+				     			}
+				     		@endphp
+				     	@endfor
+				     	@if($banderita==='false')
 				     	<li>
 				      	<div class="collapsible-header"><i class="material-icons">account_circle</i>{{ $usuarioPrestamo-> nombres }}</div>
 				      	@for($j=0;$j<count($piecitas);$j++)
@@ -65,7 +83,8 @@
 				      			<button class="btn">Devolver</button>
 				      		</form>
 				      	</div>
-				    @endfor
+				    	@endfor
+				    	@endif
 				    </li>
 				    @endfor
 			</ul>		 	
