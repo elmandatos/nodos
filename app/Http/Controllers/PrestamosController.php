@@ -94,6 +94,7 @@ class PrestamosController extends Controller
         
         DB::table('prestamos')->where('id',$id)->update([
                 'estado'      => "inactivo",
+                'hora_egreso' =>Carbon::now(),
             ]);
 
         DB::table('prestamos')->insert([
@@ -121,6 +122,7 @@ class PrestamosController extends Controller
         foreach ($ids as $id) {
             DB::table('prestamos')->where('id',$id->id)->update([
                 'estado'      => "inactivo",
+                'hora_egreso' =>Carbon::now(),
             ]);
         }
         return redirect()->route('prestamos.index');
