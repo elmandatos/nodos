@@ -38,6 +38,14 @@ class PrestamosController extends Controller
     public function store(Request $request)
     {
         //
+        $rules = [
+            "hidden-nombre"   => "required",
+            "piezasH" => "required",
+            "cantidad"  => "required|min:1",
+        ];
+
+        $this->validate($request, $rules);
+
         $id_p = DB::table('prestamos')->select('id','cantidad')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->first();
         
         if (!(DB::table('prestamos')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->exists()))

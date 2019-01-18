@@ -183,6 +183,8 @@
 						    	<i class="material-icons prefix">account_box</i>
 						        <label for="usuario">Usuario:</label>
 						        <input type="text" id="usuario" class="autocomplete" name="usuario_a_consultar" autofocus>
+						        {!! $errors->first("hidden-nombre", "<span class='red-text'>:message</span>")!!}
+						       
 						    </div>
 			    		</div>
 	    			</div>
@@ -198,6 +200,8 @@
 				        		<i class="material-icons prefix">add</i>
 				        		<input type="text" id="pieza" class="autocompleteP" name="pieza_a_consultar">
 				        		<label for="pieza">Pieza:</label>
+				        		{!! $errors->first("piezasH", "<span class='red-text'>:message</span>")!!}
+				        		
 				        	</div>
 				        </div>
 				    </div>
@@ -213,8 +217,9 @@
 		      				<div class="row">
 								<div class="input-field col s12 l12">
 									<i class="material-icons prefix">add</i>
-						        	<input type="number" min="0" name="cantidad" id="cantidad">
+						        	<input type="number" min="1" name="cantidad" id="cantidad">
 						        	<label for="cantidad">Cantidad:</label>
+						        	{!! $errors->first("cantidad", "<span class='red-text'>:message</span>")!!}
 					        	</div>
 					        </div>
 					</div>
