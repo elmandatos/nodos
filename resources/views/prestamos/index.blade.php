@@ -97,6 +97,7 @@
 															    	<i class="material-icons prefix">account_box</i>
 															        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus>
 															        <label for="autocomplete-input">Usuario:</label>
+															        {!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 															    </div>
 												    		</div>
 										    			</div>
