@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		      onAutocomplete: function(val){
 		      	//$(".searchForm").submit();
 		      	$("#hidden-nombre").val(idData[val]);
-		      	$("#nombre").val(idData[val]);
+		      	// $("#nombre").val(idData[val]);
+		      	$(".classNombre").val(idData[val]);
 		      }
 		    });
 		}

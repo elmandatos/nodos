@@ -83,8 +83,8 @@
 									{!! method_field('DELETE') !!}
 					      			<button class="btn">Devolver</button>
 					      		</form>
-					      		<button class="btn orange modal-trigger" data-target="modal1"{{-- onclick="transferir()" --}}>Transferir</button>
-					      		<div id="modal1" class="modal">
+					      		<button class="btn orange modal-trigger" data-target="modal{{$i}}"{{-- onclick="transferir()" --}}>Transferir</button>
+					      		<div id="modal{{$i}}" class="modal">
 								    <div class="modal-content">
 								      <h4>Nuevo prestatario</h4>
 								      	<div class="row">
@@ -102,10 +102,10 @@
 										    			</div>
 										  			</div>
 											</form>
-											<form action="" method="POST" action="{{route("prestamos.update","$id_ab")}}">
+											<form method="POST" action="{{route("prestamos.update","$id_ab")}}">
 												{!! method_field('PUT')!!}
 												{!! csrf_field() !!}
-												<input type="hidden" id="nombre" name="nombre" value="">
+												<input class="classNombre" type="hidden" id="nombre" name="nombre" value="">
 												<input type="hidden" id="piezas" name="piezas" value="{{$piecitas[$j]}}">
 												<input type="hidden" name="cantidad" value="{{$sumavalores[$j]}}">
 												<div class="modal-footer">
