@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 
 	$.ajax({
-		url: '/prestamos/buscar',
+		url: '/prestamos/buscarUsuarios',
 		type: 'POST',
 		success: function(response){
 			var nameArray = JSON.parse(response);

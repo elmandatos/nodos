@@ -53,8 +53,6 @@
     <script src="{{asset('/js/material-dialog.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/axios.min.js')}}"></script>
     <script src="{{asset('/js/tippy.min.js')}}"></script>
-
-
     <script type="text/javascript">M.AutoInit();</script>
     @yield('scripts')
 </body>

@@ -22,6 +22,11 @@ class CreatePrestamosTable extends Migration
             $table->timestamp('hora_egreso')->nullable();
             $table->timestamp('hora_ingreso')->nullable();
         });
+
+        Schema::table('prestamos', function(Blueprint $table){
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_piezas')->references('id_piezas')->on('piezas');
+        });
     }
 
     /**

@@ -25,15 +25,15 @@
 	<table class="highlight centered responsive-table custom">
 		<thead>
 			<tr>
-				<th>Foto</th>
+				<th class="columnaMediana">Foto</th>
 				<th>Cantidad</th>
 				<th>Articulo</th>
-				<th>No. Serie</th>
+				<th class="columnaMediana">No. Serie</th>
 				<th>Descripcion</th>
 				<th>Anaquel</th>
-				<th>Entrada</th>
-				<th>Estado</th>
-				<th>Acciones</th>
+				<th class="columnaMediana">Entrada</th>
+				<th class="columnaMediana">Estado</th>
+				<th class="columnaGrande">Acciones</th>
 			</tr>
 		</thead>
 	@php

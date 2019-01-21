@@ -58,16 +58,20 @@ Route::put('almacen/{id}',['as' => 'almacen.update', 'uses'=> 'RestInventario@up
 Route::delete('almacen/{id}',['as' => 'almacen.destroy', 'uses'=> 'RestInventario@destroy']);
 //Prestamos
 Route::get('prestamos',['as' => 'prestamos.index', 'uses'=> 'PrestamosController@index']);
-Route::post('prestamos/buscar',['as' => 'prestamos.buscar', 'uses'=> 'PrestamosController@buscar']);
-Route::get('prestamos/search',['as' => 'prestamos.search', 'uses' => 'PrestamosController@search']);
-
-Route::post('prestamos/buscarPieza',['as' => 'prestamos.buscarPieza', 'uses'=> 'PrestamosController@buscarPieza']);
-Route::get('prestamos/searchPieza',['as' => 'prestamos.searchPieza', 'uses' => 'PrestamosController@searchPieza']);
 Route::post('prestamos', ['as' =>'prestamos.store', 'uses'=> 'PrestamosController@store']);	
-
-Route::delete('prestamos/{id}',['as' => 'prestamos.destroy', 'uses'=> 'PrestamosController@destroy']);
-
 Route::put('prestamos/{id}',['as' => 'prestamos.update', 'uses'=> 'PrestamosController@update']);
+Route::delete('prestamos/{id}',['as' => 'prestamos.destroy', 'uses'=> 'PrestamosController@destroy']);
+	// Buscar usuarios
+Route::get('prestamos/searchUsuarios',['as' => 'prestamos.searchUsuarios', 'uses' => 'PrestamosController@searchUsuarios']);
+Route::post('prestamos/buscarUsuarios',['as' => 'prestamos.buscarUsuarios', 'uses'=> 'PrestamosController@buscarUsuarios']);
+	// Buscar Piezas
+Route::get('prestamos/searchPieza',['as' => 'prestamos.searchPieza', 'uses' => 'PrestamosController@searchPieza']);
+Route::post('prestamos/buscarPieza',['as' => 'prestamos.buscarPieza', 'uses'=> 'PrestamosController@buscarPieza']);
+	// Retornar tablas en JSON
+Route::get('prestamos/jsonUsers', ['as' => 'prestamos.jsonUsers', 'uses' => 'PrestamosController@jsonUsers']);
+Route::get('prestamos/jsonPiezas', ['as' => 'prestamos.jsonPiezas', 'uses' => 'PrestamosController@jsonPiezas']);
+Route::get('prestamos/jsonIdPrestamos/{nombre}/{apellido}', ['as' => 'prestamos.jsonIdPrestamos', 'uses' => 'PrestamosController@jsonIdPrestamos']);
+
 
 
 
