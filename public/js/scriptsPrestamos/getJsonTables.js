@@ -1,19 +1,40 @@
 window.onload = function(){
-	var putParams;
 	axios.get('/prestamos/jsonUsers')
 		.then( function(response){
-			var txt = "";
-			var nombre, apellido;
+			let divRow, divCol, divCollapsible, i, destiny, name;
+			let nombre, apellido; 
 		    for (x in response.data) {
+		    	// Dividir nombre completo en Primer nombre y Primer Apellido
 		    	nombre   = response.data[x].nombreUsuario.split(" ");
 		    	apellido = response.data[x].apellidoUsuario.split(" ");
-			    txt += "<div class='row z-depth-1'>";
-			    txt += "<div class='col s12 m12'>";
-			    txt += '<div class="collapsible-header" onclick="getPrestamos("'+nombre[0]+'","'+apellido[0]+'")">';
-			    txt += "<i class='material-icons'>account_circle</i>"+nombre[0]+" "+apellido[0];
-			    txt += "</div></div></div>";
-		    } 
-			document.getElementById('users').innerHTML = txt;
+		    	// alert(nombre);
+		    	// Crear fila
+		    	divRow = document.createElement('div');
+			    divRow.setAttribute('class','row z-depth-1');
+			    // Crear columna
+			    divCol = document.createElement('div');
+			    divCol.setAttribute('class','col s12 m12');
+			    // Crear tarjeta clickeable
+			    divCollapsible = document.createElement('div');
+			    divCollapsible.setAttribute('class', 'collapsible-header');
+			    // Crear icono
+			    i = document.createElement('i');
+			    i.setAttribute('class','material-icons');
+			    i.innerHTML = "account_circle";
+			    // Obtener destino
+			    destiny = document.getElementById('users');
+			    // Añadir elementos por jerarquia
+			    divCollapsible.appendChild(i);
+			    divCol.appendChild(divCollapsible);
+			    divRow.appendChild(divCol);
+			    // Añadir evento mediante un cierre (closure), permitiendo conservar los valores de nombre y apellido en tiempo de ejecucion
+			    divCollapsible.addEventListener('click', getPrestamos.bind(null,nombre[0],apellido[0]));
+			    // Añadir Nombre y Apellido a la tarjeta (Lo hago así para añadirlo al final del DIV)
+			    name = document.createTextNode(nombre[0]+" "+apellido[0]);
+			    divCollapsible.appendChild(name);
+			    // Añadir todo de este usuario al DOM
+			    destiny.appendChild(divRow);
+		    } 			
 		});
 
 	axios.get('/prestamos/jsonPiezas')
@@ -41,7 +62,7 @@ function getPrestamos(nombre,apellido){
 
 	axios.get("/prestamos/jsonIdPrestamos/"+nombre+"/"+apellido)
 	.then( function(response){
-		putParams = response;
+		// alert(JSON.stringify(response));
 		var txt = "";
 		var x = 0;
 		txt += "<table class='highlight centered responsive-table'>"
@@ -53,7 +74,7 @@ function getPrestamos(nombre,apellido){
 	      	txt += "<td><img width='100%' src='" + response.data[x].fotoPieza + "'></td>";
 		    txt += "<td class='wordBreak'>" + response.data[x].nombrePieza + "</td>";
 		    txt += "<td style='width:10%;'>" + response.data[x].cantidadPrestamo + "</td>";
-		    txt += "<td><a class='waves-effect waves-light btn orange modal-trigger' data-target='modal1' onclick='transferirPrestamo("+x+","+id_usuario+")'>";
+		    txt += "<td><a class='waves-effect waves-light btn orange modal-trigger' data-target='modal1'>";
 		    txt += "<i class='material-icons right'>swap_horiz</i>Transferir</a></td></tr>";
 	    }
 	    txt += "</tbody></table>"

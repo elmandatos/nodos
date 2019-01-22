@@ -19,9 +19,12 @@ class RestInventario extends Controller
        $piezas = DB::table('piezas')->paginate(5);
        $makePages = true;
        // $prestamos =  DB::table('prestamos')
+       //                  ->join('users', 'users.id', '=', 'prestamos.id_usuario')
        //                  ->join('piezas', 'piezas.id_piezas', '=', 'prestamos.id_piezas')
-       //                  ->select('prestamos.id as idPrestamo', 'piezas.foto as fotoPieza', 'piezas.nombre as nombrePieza', 'prestamos.cantidad as cantidadPrestamo')
-       //                  ->where('id_usuario', 1)
+       //                  ->select('prestamos.id as idPrestamo', 'piezas.id_piezas as idPieza', 'piezas.foto as fotoPieza', 'piezas.nombre as nombrePieza', 'prestamos.cantidad as cantidadPrestamo')
+       //                  ->where('users.nombres', 'LIKE', '%' . 'Alejandro' . '%')
+       //                  ->where('users.apellidos', 'LIKE', '%' . 'Pérez' . '%')
+       //                  ->where('prestamos.estado','activo')
        //                  ->get();
        //  $array = json_decode(json_encode($prestamos), true);                             
        //  var_dump($array);

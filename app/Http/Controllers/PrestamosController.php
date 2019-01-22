@@ -209,8 +209,8 @@ class PrestamosController extends Controller
                         ->join('users', 'users.id', '=', 'prestamos.id_usuario')
                         ->join('piezas', 'piezas.id_piezas', '=', 'prestamos.id_piezas')
                         ->select('prestamos.id as idPrestamo', 'piezas.id_piezas as idPieza', 'piezas.foto as fotoPieza', 'piezas.nombre as nombrePieza', 'prestamos.cantidad as cantidadPrestamo')
-                        ->where('users.nombres', $nombre)
-                        ->where('users.apellidos', $apellido)
+                        ->where('users.nombres', 'LIKE', '%' . $nombre . '%')
+                        ->where('users.apellidos', 'LIKE', '%' . $apellido . '%')
                         ->where('prestamos.estado','activo')
                         ->get();
             return json_encode($prestamos);
