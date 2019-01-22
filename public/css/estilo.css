@@ -150,6 +150,10 @@
     word-break: break-all;
 }
 
+.columnaPequeña{
+    width: 5%;
+}
+
 .columnaMediana{
     width: 10%;
 }
