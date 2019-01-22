@@ -218,8 +218,12 @@
 }*/
 .sidenav {
     transform: translateX(0%) !important;
-    width: 11%;
+    width: 15%;
 }
 #ajuste{
     margin-left: 8%;
+}
+#iconos{
+    margin-right:  3%;
+    margin-left: 3%;
 }
