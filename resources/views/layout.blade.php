@@ -18,7 +18,7 @@
     @yield('meta')
 </head>
 
-<body>
+<body id="ajuste">
     <header>
         <div class="flex-container">
             <div class="NCIE_logo" style="flex-grow: 1">
@@ -42,7 +42,7 @@
                 </ul>
             </div>
         </div>
-    </header>
+    </header>  
     <div class="container">
       @yield('contenido')
     </div>
@@ -56,5 +56,19 @@
     <script type="text/javascript">M.AutoInit();</script>
     @yield('scripts')
 </body>
-
+    <ul id="slide-out" class="sidenav">
+        @if(auth()->guest())
+                    <li id="verde1"><a href="{{route("login")}}">Iniciar Sesión</a></li>
+                @else
+                    <li id="verde2"><a href="{{route("logout")}}">Cerrar Sesión</a></li>
+                @endif
+                @if(!auth()->guest())
+                    <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
+                @endif
+                    {{-- link nuevo --}}
+                    <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}">Almacen</a></li>
+                    <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}">Prestamos</a></li>
+                    <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
+    </ul>
+    {{-- <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> --}}
 </html>

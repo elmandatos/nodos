@@ -212,3 +212,10 @@
     position: fixed;
     display: inline-block;
 }*/
+.sidenav {
+    transform: translateX(0%) !important;
+    width: 11%;
+}
+#ajuste{
+    margin-left: 8%;
+}
