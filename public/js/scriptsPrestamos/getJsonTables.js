@@ -39,19 +39,37 @@ window.onload = function(){
 
 	axios.get('/prestamos/jsonPiezas')
 		.then( function(response){
-			var txt = "";
-			txt += "<table class='highlight centered responsive-table'>"
-			txt += "<thead><h4 class='center-align'><b>Piezas Prestadas</b></h4>"
-			txt += "<tr><th style='width:10%'>#</th><th>Foto</th><th>Articulo</th><th>Cantidad</th></tr></thead>"
-			txt += "<tbody>"
+			let tr, tdNumero, tdFoto, tdNombre, tdCantidad, img, destino; 
 		    for (x in response.data) {
-		      txt += "<tr><td style='width:10%'>"+(parseInt(x)+1)+"</div>";
-		      txt += "<td><img width='100%' src='" + response.data[x].fotoPieza + "'></td>";
-		      txt += "<td class='wordBreak'>" + response.data[x].nombrePieza + "</td>";
-		      txt += "<td>" + response.data[x].cantidadPieza + "</td></tr>";
+		    	tr = document.createElement('tr');
+
+		    	tdNumero = document.createElement('td');
+		    	tdNumero.setAttribute('class', 'columnaPequeña');
+		    	tdNumero.innerHTML = (parseInt(x)+1);
+
+		    	tdFoto = document.createElement('td');
+
+		    	img = document.createElement('img');
+		    	img.style.width = '100%';
+		    	img.setAttribute('src', response.data[x].fotoPieza);
+
+		    	tdNombre = document.createElement('td');
+		    	tdNombre.setAttribute('class', 'wordBreak');
+		    	tdNombre.innerHTML = response.data[x].nombrePieza;
+
+		    	tdCantidad = document.createElement('td');
+		    	tdCantidad.innerHTML = response.data[x].cantidadPieza;
+
+		    	destino = document.getElementById('bodyPiezas');
+
+		    	tdFoto.appendChild(img);
+		    	tr.appendChild(tdNumero);
+		    	tr.appendChild(tdFoto);
+		    	tr.appendChild(tdNombre);
+		    	tr.appendChild(tdCantidad);
+
+		    	destino.appendChild(tr);
 		    }
-		    txt += "</tbody></table>"    
-			document.getElementById('articulos_prestados').innerHTML = txt;
 			var elems = document.querySelectorAll('.materialboxed');
 		    var instances = M.Materialbox.init(elems, {});
 		});
@@ -62,23 +80,90 @@ function getPrestamos(nombre,apellido){
 
 	axios.get("/prestamos/jsonIdPrestamos/"+nombre+"/"+apellido)
 	.then( function(response){
-		// alert(JSON.stringify(response));
-		var txt = "";
-		var x = 0;
-		txt += "<table class='highlight centered responsive-table'>"
-		txt += "<thead><h4 class='center-align'><b>Piezas Prestadas</b></h4>"
-		txt += "<tr><th style='width:10%'>#</th><th>Foto</th><th>Articulo</th><th style='width:10%;'>Cantidad</th><th>Acciones</th></tr></thead>"
-		txt += "<tbody>"
+		let trPrestamos, tdNumero, tdFoto, imgPrestamos, tdNombre, tdCantidad;
+		let tdAcciones, aTransferir, iTrasnferir, destinoBody, tabla, tbody, thead;
+		let trHeader, thNumero, thFoto, thNombre, thCantidad, thAcciones, destinoHeader;
+
 	    for (x in response.data) {
-	      	txt += "<tr><td style='width:10%;'>"+(parseInt(x)+1)+"</td>";
-	      	txt += "<td><img width='100%' src='" + response.data[x].fotoPieza + "'></td>";
-		    txt += "<td class='wordBreak'>" + response.data[x].nombrePieza + "</td>";
-		    txt += "<td style='width:10%;'>" + response.data[x].cantidadPrestamo + "</td>";
-		    txt += "<td><a class='waves-effect waves-light btn orange modal-trigger' data-target='modal1'>";
-		    txt += "<i class='material-icons right'>swap_horiz</i>Transferir</a></td></tr>";
+	    	thead = document.createElement('thead');
+	    	thead.setAttribute('id', 'headerPiezas');
+
+	    	trHeader = document.createElement('tr');
+
+	    	thNumero = document.createElement('th');
+	    	thNumero.setAttribute('class', 'columnaPequeña');
+	    	thNumero.innerHTML = "#";
+
+	    	thFoto = document.createElement('th');
+	    	thFoto.innerHTML = "Foto";
+
+	    	thNombre = document.createElement('th');
+	    	thNombre.innerHTML = "Articulo";
+
+	    	thCantidad = document.createElement('th');
+	    	thCantidad.innerHTML = "Cantidad";
+
+	    	thAcciones = document.createElement('th');
+	    	thAcciones.setAttribute('class', 'columnaMediana');
+	    	thAcciones.innerHTML = "Acciones";
+
+	    	trHeader.appendChild(thNumero);
+	    	trHeader.appendChild(thFoto);
+	    	trHeader.appendChild(thNombre);
+	    	trHeader.appendChild(thCantidad);
+	    	trHeader.appendChild(thAcciones);
+
+	    	tbody = document.createElement('tbody');
+	    	tbody.setAttribute('id','bodyPiezas');
+
+	    	trPrestamos = document.createElement('tr');
+
+	    	tdNumero = document.createElement('td');
+	    	tdNumero.setAttribute('class', 'columnaPequeña');
+	    	tdNumero.innerHTML = (parseInt(x)+1);
+
+	    	tdFoto = document.createElement('td');
+	    	imgPrestamos = document.createElement('img');
+	    	imgPrestamos.style.width = '100%';
+	    	imgPrestamos.setAttribute('src', response.data[x].fotoPieza);
+
+	    	tdNombre = document.createElement('td');
+	    	tdNombre.setAttribute('class', 'wordBreak');
+	    	tdNombre.innerHTML = response.data[x].nombrePieza;
+
+	    	tdCantidad = document.createElement('td');
+	    	tdCantidad.setAttribute('class', 'columnaMediana');
+	    	tdCantidad.innerHTML = response.data[x].cantidadPrestamo;
+
+	    	tdAcciones = document.createElement('td');
+	    	tdAcciones.setAttribute('class', 'columnaMediana');
+	    	aTransferir  = document.createElement('a');
+	    	aTransferir.setAttribute('class', 'waves-effect waves-light btn orange modal-trigger');
+	    	aTransferir.setAttribute('data-target', 'modal1');
+
+	    	iTrasnferir = document.createElement('i');
+	    	iTrasnferir.setAttribute('class', 'material-icons right');
+	    	iTrasnferir.innerHTML = "swap_horiz";
+
+	    	tdFoto.appendChild(imgPrestamos);
+	    	aTransferir.appendChild(iTrasnferir);
+	    	tdAcciones.appendChild(aTransferir);
+
+	    	trPrestamos.appendChild(tdNumero);
+	    	trPrestamos.appendChild(tdFoto);
+	    	trPrestamos.appendChild(tdNombre);
+	    	trPrestamos.appendChild(tdCantidad);
+	    	trPrestamos.appendChild(tdAcciones);
+
+	    	thead.appendChild(trHeader);
+	    	tbody.appendChild(trPrestamos);
+
+	    	tabla = document.getElementById('tablaPiezas');
+	    	destinoHeader = document.getElementById('headerPiezas');
+	    	destinoBody = document.getElementById('bodyPiezas');
+	    	tabla.replaceChild(thead, destinoHeader);
+	    	tabla.replaceChild(tbody, destinoBody);
 	    }
-	    txt += "</tbody></table>"
-		document.getElementById('articulos_prestados').innerHTML = txt;
 		var elems = document.querySelectorAll('.materialboxed');
 		var instances = M.Materialbox.init(elems, {});
 	});
