@@ -220,15 +220,15 @@
     transform: translateX(0%) !important;
 }
 .sidenav.hid{
-    /*visibility: hidden;*/
-    width: 15%;
+    width: 179px;
+    margin-left: -25px;
 }
 .sidenav.show{
-    width:5%;
-    margin-left: -1.5%;
+    width:67px;
+    margin-left: -22px;
 }
 #ajuste{
-    margin-left: 8%;
+    margin-left: 100px;
 }
 #iconos{
     margin-right:  3%;
