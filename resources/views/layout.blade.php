@@ -42,7 +42,7 @@
                 </ul>
             </div>
         </div>
-    </header>  
+    </header>
     <div class="container">
       @yield('contenido')
     </div>
@@ -54,7 +54,7 @@
     <script src="{{asset('/js/axios.min.js')}}"></script>
     <script src="{{asset('/js/tippy.min.js')}}"></script>
     <script type="text/javascript">M.AutoInit();</script>
-     <script src="{{asset('/js/botonSideNav.js')}}"></script>
+     {{-- <script src="{{asset('/js/botonSideNav.js')}}"></script> --}}
     @yield('scripts')
 </body>
     <ul id="slide-out" class="sidenav">
