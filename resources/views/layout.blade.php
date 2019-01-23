@@ -54,7 +54,7 @@
     <script src="{{asset('/js/axios.min.js')}}"></script>
     <script src="{{asset('/js/tippy.min.js')}}"></script>
     <script type="text/javascript">M.AutoInit();</script>
-     {{-- <script src="{{asset('/js/botonSideNav.js')}}"></script> --}}
+    <script src="{{asset('/js/botonSideNav.js')}}"></script>
     @yield('scripts')
 </body>
     <ul id="slide-out" class="sidenav hid">
@@ -90,6 +90,6 @@
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i></a></li>
                 {{-- <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li> --}}
                 <li><div class="divider"></div></li>
-                <li class="activaAzulMarino" id="azulMarino"><a href="#"><i class="material-icons" id="iconos">home</i></a></li>
+                <li class="activaAzulMarino" id="open"><a href="#"><i class="material-icons" id="iconos">home</i></a></li>
     </ul>
 </html>

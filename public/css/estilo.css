@@ -220,7 +220,7 @@
     transform: translateX(0%) !important;
 }
 .sidenav.hid{
-    visibility: hidden;
+    /*visibility: hidden;*/
     width: 15%;
 }
 .sidenav.show{
