@@ -57,7 +57,8 @@
      <script src="{{asset('/js/botonSideNav.js')}}"></script>
     @yield('scripts')
 </body>
-    <ul id="slide-out" class="sidenav">
+    <ul id="slide-out" class="sidenav hid">
+                    <li><div class="divider"></div></li>
         @if(auth()->guest())
                     <li id="verde1"><a href="{{route("login")}}"><i class="material-icons" id="iconos">portrait</i>Iniciar Sesión</a></li>
                 @else
@@ -66,11 +67,29 @@
                 @if(!auth()->guest())
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}"><i class="material-icons" id="iconos">contacts</i>Usuarios</a></li>
                 @endif
-                    {{-- link nuevo --}}
+                    
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}"><i class="material-icons" id="iconos">business_center</i>Almacen</a></li>
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i>Prestamos</a></li>
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i>Leer QR</a></li>
+                <li><div class="divider"></div></li>
+                <li class="activaAzulMarino" id="azulMarino"><a href="#"><i class="material-icons" id="iconos">home</i>Home</a></li>
+    </ul>
+    <ul id="slide-out" class="sidenav show">
+                    <li><div class="divider"></div></li>
+        @if(auth()->guest())
+                    <li id="verde1"><a href="{{route("login")}}"><i class="material-icons" id="iconos">portrait</i></a></li>
+                @else
+                    <li id="verde2"><a href="{{route("logout")}}"><i class="material-icons" id="iconos">close</i></a></li>
+                @endif
+                @if(!auth()->guest())
+                    <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}"><i class="material-icons" id="iconos">contacts</i></a></li>
+                @endif
+                    {{-- link nuevo --}}
+                    <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}"><i class="material-icons" id="iconos">business_center</i></a></li>
+                    <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i></a></li>
+                    <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i></a></li>
                 {{-- <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li> --}}
-                <button class="btn" id="contraer">Contraer</button>
+                <li><div class="divider"></div></li>
+                <li class="activaAzulMarino" id="azulMarino"><a href="#"><i class="material-icons" id="iconos">home</i></a></li>
     </ul>
 </html>

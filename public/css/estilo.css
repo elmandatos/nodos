@@ -1,22 +1,22 @@
 /*layout.blade.php*/
 .activaVerde a{
-    border-bottom: 2px solid #39B54A;
+    border-right: 2px solid #39B54A;
 }
 
 .activaAzulClaro a{
-    border-bottom: 2px solid #00FFFF;
+    border-right: 2px solid #00FFFF;
 }
 
 .activaAzulMarino a{
-    border-bottom: 2px solid #29ABE2;
+    border-right: 2px solid #29ABE2;
 }
 
 .activaRosa a{
-    border-bottom: 2px solid #ED1E79;
+    border-right: 2px solid #ED1E79;
 }
 
 .activaAmarillo a{
-    border-bottom: 2px solid #FCEE21;
+    border-right: 2px solid #FCEE21;
 }
 
 .flex-container{
@@ -61,27 +61,27 @@
 }
 
 #verde1 a:hover{
-    border-bottom: 2px solid #39B54A;
+    border-right: 2px solid #39B54A;
 }
 
 #verde2 a:hover{
-    border-bottom: 2px solid #39B54A;
+    border-right: 2px solid #39B54A;
 }
 
 #azulClaro a:hover{
-    border-bottom: 2px solid #00FFFF;
+    border-right: 2px solid #00FFFF;
 }
 
 #azulMarino a:hover{
-    border-bottom: 2px solid #29ABE2;
+    border-right: 2px solid #29ABE2;
 }
 
 #rosa a:hover{
-    border-bottom: 2px solid #ED1E79;
+    border-right: 2px solid #ED1E79;
 }
 
 #amarillo a:hover{
-    border-bottom: 2px solid #FCEE21;
+    border-right: 2px solid #FCEE21;
 }
 
 
@@ -218,7 +218,14 @@
 }*/
 .sidenav {
     transform: translateX(0%) !important;
+}
+.sidenav.hid{
+    visibility: hidden;
     width: 15%;
+}
+.sidenav.show{
+    width:5%;
+    margin-left: -1.5%;
 }
 #ajuste{
     margin-left: 8%;
