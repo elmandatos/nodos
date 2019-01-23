@@ -234,3 +234,20 @@
     margin-right:  3%;
     margin-left: 3%;
 }
+.LogoExpand{
+    padding-top: 15px;
+    width: 200px;
+    /*height: 50px;*/
+}
+.LogoExpand img{
+    width: 100%;
+}
+.LogoColaps{
+    width: 95px;
+}
+.LogoColaps img{
+    margin-top: 15px;
+    padding-right:3px;
+    padding-left: 1px;
+    width: 120%;
+}

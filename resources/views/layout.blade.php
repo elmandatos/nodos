@@ -58,6 +58,9 @@
     @yield('scripts')
 </body>
     <ul id="slide-out" class="sidenav hid">
+                    <li class="LogoExpand">
+                        <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"></a>
+                    </li>
                     <li><div class="divider"></div></li>
         @if(auth()->guest())
                     <li id="verde1"><a href="{{route("login")}}"><i class="material-icons" id="iconos">portrait</i>Iniciar Sesión</a></li>
@@ -72,9 +75,11 @@
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i>Prestamos</a></li>
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i>Leer QR</a></li>
                 <li><div class="divider"></div></li>
-                <li class="activaAzulMarino" id="azulMarino"><a href="#"><i class="material-icons" id="iconos">home</i>Home</a></li>
     </ul>
     <ul id="slide-out" class="sidenav show">
+                    <li class="LogoColaps">
+                        <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/SideNavColaps.png')}}"></a>
+                    </li>
                     <li><div class="divider"></div></li>
         @if(auth()->guest())
                     <li id="verde1"><a href="{{route("login")}}"><i class="material-icons" id="iconos">portrait</i></a></li>
@@ -90,6 +95,5 @@
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i></a></li>
                 {{-- <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li> --}}
                 <li><div class="divider"></div></li>
-                <li class="activaAzulMarino" id="open"><a href="#"><i class="material-icons" id="iconos">home</i></a></li>
     </ul>
 </html>
