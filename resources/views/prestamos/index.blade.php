@@ -32,7 +32,7 @@
 		      <h4>Nuevo prestatario</h4>
 		      	<div class="row">
 	    			<div class="col s12">
-	      				<div class="row">		        
+	      				<div class="row">
 						    <div class="input-field col s12 l12">
 						    	<i class="material-icons prefix">account_box</i>
 						        <input type="text" id="transferir" class="autocomplete" name="usuario_a_consultar" autofocus>
@@ -59,7 +59,7 @@
 				<form class="searchForm" action="{{route("prestamos.searchUsuarios")}}" method="get" autocomplete="off">
 			    	{!!csrf_field()!!}
 	    			<div class="col s12">
-	      				<div class="row noMargin">		        
+	      				<div class="row noMargin">
 						    <div class="input-field col s12 l12">
 						    	<i class="material-icons prefix">account_box</i>
 						        <label for="usuario">Usuario</label>
@@ -83,7 +83,7 @@
 				        </div>
 				    </div>
 	        	</form>
-		    
+
 	        	<form method="POST"  action={{route('prestamos.store')}}>
 					{{ csrf_field() }}
 					<input type="hidden" id="hidden-nombre" name="hidden-nombre" value="">
