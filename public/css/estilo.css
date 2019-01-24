@@ -221,26 +221,27 @@
 }
 .sidenav.hid{
     width: 179px;
-    margin-left: -25px;
+/*    width: 250px;
+*/    margin-left: -25px;
 }
 .sidenav.show{
     width:67px;
     margin-left: -22px;
 }
-#ajuste{
-    margin-left: 100px;
+.ajuste{
+    margin-left: 180px;
 }
 #iconos{
     margin-right:  3%;
     margin-left: 3%;
 }
 .LogoExpand{
-    padding-top: 15px;
-    width: 200px;
-    /*height: 50px;*/
+   padding-top: 15px;
+   padding-left: 40px;
+    width: 150px;
 }
 .LogoExpand img{
-    width: 100%;
+    width: 80%;
 }
 .LogoColaps{
     width: 95px;
@@ -250,4 +251,9 @@
     padding-right:3px;
     padding-left: 1px;
     width: 120%;
+}
+.sidenav.fixed{
+    position: fixed;
+    width: 179px;
+    margin-left: -25px;
 }

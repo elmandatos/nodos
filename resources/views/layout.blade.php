@@ -18,7 +18,7 @@
     @yield('meta')
 </head>
 
-<body id="ajuste">
+<body id="main">
     <header>
         <div class="flex-container">
             <div class="NCIE_logo" style="flex-grow: 1">
@@ -57,9 +57,9 @@
     <script src="{{asset('/js/botonSideNav.js')}}"></script>
     @yield('scripts')
 </body>
-    <ul id="slide-out" class="sidenav hid">
+{{--     <ul id="slide-out" class="sidenav hid">
                     <li class="LogoExpand">
-                        <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"></a>
+                        <a href="#"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"><i class="tiny material-icons">radio_button_checked</i></a>
                     </li>
                     <li><div class="divider"></div></li>
         @if(auth()->guest())
@@ -75,7 +75,31 @@
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i>Prestamos</a></li>
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i>Leer QR</a></li>
                 <li><div class="divider"></div></li>
+    </ul> --}}
+{{-- NAV BAR GRANDE --}}
+<aside class="sidenav hid"  id="sidegrande">
+        <div class="LogoExpand">
+                <a href="#"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"></a><a href="##"><i class="tiny material-icons" id="radioloco">radio_button_checked</i></a>
+                    </li>
+        </div>
+        <ul id="slide-out">
+                    <li><div class="divider"></div></li>
+        @if(auth()->guest())
+                    <li id="verde1"><a href="{{route("login")}}"><i class="material-icons" id="iconos">portrait</i>Iniciar Sesión</a></li>
+                @else
+                    <li id="verde2"><a href="{{route("logout")}}"><i class="material-icons" id="iconos">close</i>Cerrar Sesión</a></li>
+                @endif
+                @if(!auth()->guest())
+                    <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}"><i class="material-icons" id="iconos">contacts</i>Usuarios</a></li>
+                @endif
+                    
+                    <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}"><i class="material-icons" id="iconos">business_center</i>Almacen</a></li>
+                    <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i>Prestamos</a></li>
+                    <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i>Leer QR</a></li>
+                <li><div class="divider"></div></li>
     </ul>
+</aside>
+{{-- NAV BAR PEQUEÑA --}}
     <ul id="slide-out" class="sidenav show">
                     <li class="LogoColaps">
                         <a href="{{route("home")}}"><img src="{{asset('NCIE_logos/SideNavColaps.png')}}"></a>
