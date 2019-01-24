@@ -43,6 +43,21 @@ function getUsers(){
 			});
 }
 
+function createImg(src){
+	let img = document.createElement('img');
+	img.style.width = '100%';
+	img.setAttribute('src',src);
+	return img;
+}
+function createTag(tag){
+	let element = document.createElement(tag);
+	return element;
+}
+function createDropDown(){
+	
+}
+
+
 //
 // 	axios.get('/prestamos/jsonPiezas')
 // 		.then( function(response){
@@ -96,23 +111,37 @@ function getPrestamos(nombre,apellido){
 
 	axios.get("/prestamos/jsonIdPrestamos/"+nombre+"/"+apellido)
 	.then( function(response){
-		// let trPrestamos, tdNumero, tdFoto, imgPrestamos, tdNombre, tdCantidad;
-		// let tdAcciones, aTransferir, iTrasnferir, destinoBody, tabla, tbody, thead;
-		// let trHeader, thNumero, thFoto, thNombre, thCantidad, thAcciones, destinoHeader;
-		let tr = document.createElement("tr");
-		let td = document.createElement("td");
-
+    	const tabla = document.getElementById('bodyPiezas');
+    	let divTable = document.getElementById('divTable');
+		let rowNumber = 1;
+		let tableHeader = document.getElementById("headerPiezas");
+		tableHeader.removeChild(tableHeader.lastChild);
 	    for (x in response.data) {
+	    
+			let tr = createTag("tr");
+			tabla.appendChild(tr);
+			tr = document.getElementById("bodyPiezas").lastChild;
+			
+			//se agrega id de la pieza
+			let td = createTag("td");
+			td.setAttribute("id","headerPiezas");
+			td.innerHTML = rowNumber;
+			rowNumber++;
+			tr.appendChild(td);
 
-				//se agrega id de la pieza
-				td.setAttribute("id","headerPiezas");
-				tr.appendChild(td);
+			// se agrega la imagen
+			td = createTag("td").appendChild(createImg(response.data[x].fotoPieza));
+			tr.appendChild(td);
 
-
-
-				tabla.appendChild(tr);
-
-
+			//se agrega nombre
+			td = createTag("td");
+			td.innerHTML= response.data[x].nombrePieza;
+			tr.appendChild(td);
+			//se agrega cantidad
+			td = createTag("td");
+			td.innerHTML= response.data[x].cantidadPrestamo;
+			tr.appendChild(td);
+			//se agrega alemento dropdown
 
 	    	// thead = document.createElement('thead');
 	    	// thead.setAttribute('id', 'headerPiezas');

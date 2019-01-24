@@ -12,18 +12,19 @@
 		</div>
 
 		{{-- COLUMNA PIEZAS PRESTADAS --}}
-		<div class="col s6 white lighten-4 z-depth-1">
+		<div class="col s6 white lighten-4 z-depth-1" id = "divTable">
 			<table class='highlight centered responsive-table' id="tablaPiezas">
 				<thead id="headerPiezas">
 					<h4 class='center-align'><b>Piezas Prestadas</b></h4>
 					<tr>
-						<th class="columnaMediana">#</th>
+						<th>#</th>
 						<th>Foto</th>
 						<th>Articulo</th>
 						<th>Cantidad</th>
 					</tr>
 				</thead>
-				<tbody id="bodyPiezas"></tbody>
+				<tbody id="bodyPiezas">
+				</tbody>
 			</table>
 		</div>
 			{{-- Modal --}}
