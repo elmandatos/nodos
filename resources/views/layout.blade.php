@@ -79,8 +79,8 @@
 {{-- NAV BAR GRANDE --}}
 <aside class="sidenav hid"  id="sidegrande">
         <div class="LogoExpand">
-                <a href="#"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"></a><a href="##"><i class="tiny material-icons" id="radioloco">radio_button_checked</i></a>
-                    </li>
+                <a href="#"><img src="{{asset('NCIE_logos/SideNavExpand.png')}}"></a>
+                <a id="ajusteRadio" href="#"><i class="tiny material-icons" id="radioloco">radio_button_checked</i></a>
         </div>
         <ul id="slide-out">
                     <li><div class="divider"></div></li>

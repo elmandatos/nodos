@@ -18,12 +18,16 @@ $(document).ready(function(){
 		$("#sidegrande").removeClass('sidenav hid');
 		$("#sidegrande").addClass('sidenav fixed');
 		$("#main").addClass('ajuste');
+		$('#radioloco').empty();
+		$('#radioloco').html("radio_button_unchecked");
 	}
 	else {
 		$("#sidegrande").removeClass('sidenav fixed');
 		$("#sidegrande").addClass('sidenav hid');
 		$('.sidenav.hid').hide();
-		$("#main").removeClass('ajuste');			
+		$("#main").removeClass('ajuste');
+		$('#radioloco').empty();
+		$('#radioloco').html("radio_button_checked");			
 	}
 
 	});
