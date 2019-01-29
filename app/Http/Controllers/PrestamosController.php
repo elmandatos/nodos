@@ -37,14 +37,19 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
-        $valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('piezasH'))->first();
-        if( $valorprestado=DB::table('prestamos')->select('cantidad')->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->exists())
+        $valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('pieza'))->first();
+        if( $valorprestado=DB::table('prestamos')->select('cantidad')->where('id_piezas',$request->input('pieza'))->where('estado','activo')->exists())
         {
-            $valorprestado=DB::table('prestamos')->select('cantidad')->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->first();
-                $valormax=$valortotal->cantidad - $valorprestado->cantidad;
+            $valorprestado=DB::table('prestamos')->select('cantidad')->where('id_piezas',$request->input('pieza'))->where('estado','activo')->get();
+            $cantidadv=0;
+            foreach ($valorprestado as $valprestado) {
+                $cantidadv+=$valprestado->cantidad;
+            }
+                $valormax=$valortotal->cantidad - $cantidadv;
             }
         else{
-            if ($valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('piezasH'))->exists()) {
+            if ($valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('pieza'))->exists()) {
+                 $valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('pieza'))->first();
                 $valormax=$valortotal->cantidad;
             }
             else{
@@ -54,20 +59,20 @@ class PrestamosController extends Controller
         }
         //
         $rules = [ 
-            "hidden-nombre"   => "required",
-            "piezasH" => "required",
+            "nombre"   => "required",
+            "pieza" => "required",
             "cantidad"  => 'required|numeric|min:1|max:'.$valormax,
         ];
 
         $this->validate($request, $rules);
 
-        $id_p = DB::table('prestamos')->select('id','cantidad')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->first();
+        $id_p = DB::table('prestamos')->select('id','cantidad')->where('id_usuario',$request->input('nombre'))->where('id_piezas',$request->input('pieza'))->where('estado','activo')->first();
         
-        if (!(DB::table('prestamos')->where('id_usuario',$request->input('hidden-nombre'))->where('id_piezas',$request->input('piezasH'))->where('estado','activo')->exists()))
+        if (!(DB::table('prestamos')->where('id_usuario',$request->input('nombre'))->where('id_piezas',$request->input('pieza'))->where('estado','activo')->exists()))
         {
             DB::table('prestamos')->insert([
-                    'id_usuario' =>$request->input('hidden-nombre'),
-                    'id_piezas' =>$request->input('piezasH'),
+                    'id_usuario' =>$request->input('nombre'),
+                    'id_piezas' =>$request->input('pieza'),
                     'cantidad' =>$request->input('cantidad'),
                     'estado' =>"activo",
                     'hora_ingreso'=>CARBON::now(),
@@ -116,21 +121,21 @@ class PrestamosController extends Controller
     {
         
         $rules = [ 
-            "nombre"   => "required",
+            "Nombre"   => "required",
         ];
         
-        if($this->validate($request, $rules))
-            {DB::table('prestamos')->where('id',$id)->update([
+        $this->validate($request, $rules);
+            DB::table('prestamos')->where('id',$id)->update([
                             'estado'      => "inactivo",
                             'hora_egreso' =>Carbon::now(),
                         ]);
                         DB::table('prestamos')->insert([
-                                        'id_usuario' =>$request->input('nombre'),
+                                        'id_usuario' =>$request->input('Nombre'),
                                         'id_piezas' =>$request->input('piezas'),
                                         'cantidad' =>$request->input('cantidad'),
                                         'estado' =>"activo",
                                         'hora_ingreso'=>CARBON::now(),
-                                    ]);}
+                                    ]);
         return redirect()->route('prestamos.index');
     }
 

@@ -97,7 +97,7 @@
 															    	<i class="material-icons prefix">account_box</i>
 															        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus>
 															        <label for="autocomplete-input">Usuario:</label>
-															        {!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
+															        {!! $errors->first("Nombre", "<span class='red-text'>:message</span>")!!}
 															    </div>
 												    		</div>
 										    			</div>
@@ -106,7 +106,7 @@
 											<form method="POST" action="{{route("prestamos.update","$id_ab")}}">
 												{!! method_field('PUT')!!}
 												{!! csrf_field() !!}
-												<input class="classNombre" type="hidden" id="nombre" name="nombre" value="">
+												<input class="classNombre" type="hidden" id="nombre" name="Nombre" value="">
 												<input type="hidden" id="piezas" name="piezas" value="{{$piecitas[$j]}}">
 												<input type="hidden" name="cantidad" value="{{$sumavalores[$j]}}">
 												<div class="modal-footer">
@@ -182,9 +182,9 @@
 	      				<div class="row">		        
 						    <div class="input-field col s12 l12">
 						    	<i class="material-icons prefix">account_box</i>
-						        <label for="usuario">Usuario:</label>
+						        <label for="usuario">Nombre:</label>
 						        <input type="text" id="usuario" class="autocomplete" name="usuario_a_consultar" autofocus>
-						        {!! $errors->first("hidden-nombre", "<span class='red-text'>:message</span>")!!}
+						        {!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 						       
 						    </div>
 			    		</div>
@@ -201,7 +201,7 @@
 				        		<i class="material-icons prefix">add</i>
 				        		<input type="text" id="pieza" class="autocompleteP" name="pieza_a_consultar">
 				        		<label for="pieza">Pieza:</label>
-				        		{!! $errors->first("piezasH", "<span class='red-text'>:message</span>")!!}
+				        		{!! $errors->first("pieza", "<span class='red-text'>:message</span>")!!}
 				        		
 				        	</div>
 				        </div>
@@ -212,8 +212,8 @@
 			<div class="row">
 	        	<form method="POST"  action={{route('prestamos.store')}}>
 					{{ csrf_field() }}
-					<input type="hidden" id="hidden-nombre" name="hidden-nombre" value="">
-					<input type="hidden" id="piezasH" name="piezasH" value="">
+					<input type="hidden" id="hidden-nombre" name="nombre" value="">
+					<input type="hidden" id="piezasH" name="pieza" value="">
 						<div class="col s12">
 		      				<div class="row">
 								<div class="input-field col s12 l12">
@@ -224,7 +224,6 @@
 					        	</div>
 					        </div>
 					</div>
-					<a class="btn-floating btn-small waves-effect waves-light red right"><i class="material-icons">add</i></a>
 			        <div class="center">
 			   			<button class="waves-effect waves-light btn-small">Realizar Prestamo</button>
 			        </div>
