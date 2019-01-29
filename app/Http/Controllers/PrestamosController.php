@@ -44,7 +44,13 @@ class PrestamosController extends Controller
                 $valormax=$valortotal->cantidad - $valorprestado->cantidad;
             }
         else{
-            $valormax=$valortotal->cantidad;
+            if ($valortotal=DB::table('piezas')->select('cantidad')->where('id_piezas',$request->input('piezasH'))->exists()) {
+                $valormax=$valortotal->cantidad;
+            }
+            else{
+                $valormax=0;
+            }
+            
         }
         //
         $rules = [ 
