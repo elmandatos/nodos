@@ -88,21 +88,21 @@
 								    <div class="modal-content">
 								      <h4>Nuevo prestatario</h4>
 								      	<div class="row">
-								        	<form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
-												    {!!csrf_field()!!}
+								        	{{-- <form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off"> --}}
+												    {{-- {!!csrf_field()!!} --}}
 													<div class="row">
 										    			<div class="col s12">
 										      				<div class="row">		        
 															    <div class="input-field col s12 l12">
 															    	<i class="material-icons prefix">account_box</i>
-															        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus>
+															        <input type="text" id="autocomplete-input" class="autocomplete" name="usuario_a_consultar" autofocus autocomplete="off">
 															        <label for="autocomplete-input">Usuario:</label>
 															        {!! $errors->first("Nombre", "<span class='red-text'>:message</span>")!!}
 															    </div>
 												    		</div>
 										    			</div>
 										  			</div>
-											</form>
+											{{-- </form> --}}
 											<form method="POST" action="{{route("prestamos.update","$id_ab")}}">
 												{!! method_field('PUT')!!}
 												{!! csrf_field() !!}
@@ -176,37 +176,37 @@
 			<h4 class="center-align"><b>Prestar piezas</b></h4>
 
 			<div class="row">
-				<form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off">
-			    	{!!csrf_field()!!}
+				{{-- <form class="searchForm" action="{{route("prestamos.search")}}" method="get" autocomplete="off"> --}}
+			    	{{-- {!!csrf_field()!!} --}}
 	    			<div class="col s12">
 	      				<div class="row">		        
 						    <div class="input-field col s12 l12">
 						    	<i class="material-icons prefix">account_box</i>
 						        <label for="usuario">Nombre:</label>
-						        <input type="text" id="usuario" class="autocomplete" name="usuario_a_consultar" autofocus>
+						        <input type="text" id="usuario" class="autocomplete" name="usuario_a_consultar" autofocus autocomplete="off">
 						        {!! $errors->first("nombre", "<span class='red-text'>:message</span>")!!}
 						       
 						    </div>
 			    		</div>
 	    			</div>
-				</form>
+				{{-- </form> --}}
   			</div>
 
 	        <div class="row">
-	        <form class="searchForm" action="{{route("prestamos.searchPieza")}}" method="get" autocomplete="off">
-		        {!!csrf_field()!!}
+	        {{-- <form class="searchForm" action="{{route("prestamos.searchPieza")}}" method="get" autocomplete="off"> --}}
+		        {{-- {!!csrf_field()!!} --}}
 					<div class="col s12">
 	      				<div class="row">
 				        	<div class="input-field col s12 l12">
 				        		<i class="material-icons prefix">add</i>
-				        		<input type="text" id="pieza" class="autocompleteP" name="pieza_a_consultar">
+				        		<input type="text" id="pieza" class="autocompleteP" name="pieza_a_consultar" autocomplete="off">
 				        		<label for="pieza">Pieza:</label>
 				        		{!! $errors->first("pieza", "<span class='red-text'>:message</span>")!!}
 				        		
 				        	</div>
 				        </div>
 				    </div>
-	        	</form>
+	        	{{-- </form> --}}
 		    </div>
 
 			<div class="row">
