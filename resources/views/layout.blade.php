@@ -34,10 +34,10 @@
                 @endif
                 @if(!auth()->guest())
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}">Usuarios</a></li>
-                @endif
-                    {{-- link nuevo --}}
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}">Almacen</a></li>
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}">Prestamos</a></li>
+                @endif
+                    {{-- link nuevo --}}
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}">Leer QR</a></li>
                 </ul>
             </div>
@@ -91,10 +91,10 @@
                 @endif
                 @if(!auth()->guest())
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}"><i class="material-icons" id="iconos">contacts</i>Usuarios</a></li>
-                @endif
                     
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}"><i class="material-icons" id="iconos">business_center</i>Almacen</a></li>
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i>Prestamos</a></li>
+                @endif
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i>Leer QR</a></li>
                 <li><div class="divider"></div></li>
     </ul>
@@ -112,10 +112,10 @@
                 @endif
                 @if(!auth()->guest())
                     <li class="{{ Request::is('users*') ? 'activaAzulClaro' : '' }}"id="azulClaro"><a href="{{route("users.index")}}"><i class="material-icons" id="iconos">contacts</i></a></li>
-                @endif
                     {{-- link nuevo --}}
                     <li class="{{ Request::is("almacen*") ? 'activaRosa' : '' }}" id="rosa"> <a href="{{route("almacen.index")}}"><i class="material-icons" id="iconos">business_center</i></a></li>
                     <li class="{{ Request::is("prestamos*") ? 'activaAmarillo' : '' }}" id="amarillo"> <a href="{{route("prestamos.index")}}"><i class="material-icons" id="iconos">today</i></a></li>
+                @endif
                     <li class="{{ Request::is("/") ? 'activaAzulMarino' : '' }}" id="azulMarino"><a href="{{route("home")}}"><i class="material-icons" id="iconos">camera</i></a></li>
                 {{-- <li><a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a></li> --}}
                 <li><div class="divider"></div></li>
