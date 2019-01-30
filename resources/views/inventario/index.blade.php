@@ -63,15 +63,11 @@
 			@endphp
 
 			<td class="columnaMediana">
-				<span id="estado" class="new badge {{$color}}" data-badge-caption="">{{$estado}}</span>
+				<span class="new badge {{$color}}" data-badge-caption="">{{$estado}}</span>
 			</td>
 
 			<td class="columnaGrande"> <a class="btn" href="{{ route('almacen.edit', $pieza->id_piezas)}}"> Editar</a> 
-				<div class="inline" action="{{ route('almacen.destroy', $pieza->id_piezas) }}">
-					{!! csrf_field() !!}
-					{!! method_field('DELETE') !!}
-					<button onclick="dialogDeleteConfirm({{$pieza->id_piezas}}, '{{csrf_token()}}', '{{$rowName}}');" class="btn red darken-3">Eliminar</button>
-				</div>
+				<button onclick="dialogDeleteConfirm({{$pieza->id_piezas}}, '{{csrf_token()}}', '{{$rowName}}');" class="btn red darken-3">Deshabilitar</button>
 			</td>
 		</tr>
 	@endforeach

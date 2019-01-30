@@ -178,7 +178,12 @@ class RestInventario extends Controller
      */
     public function destroy($id)
     {
-         DB::table('piezas')->where('id_piezas',$id)->delete();
+         DB::table('piezas')
+            ->where('id_piezas',$id)
+            ->update([
+                'id_estado' => 3,
+                'updated_at' => CARBON::now()
+            ]); // Agotado
 
         return redirect()->route('almacen.index');
     }

@@ -29,8 +29,14 @@ function dialogDeleteConfirm(id, token, rowName){
                       },
                       success: function(result) {
 
-                          $("tr[name="+rowName+"]").remove();
-                          M.toast({html: "Pieza Eliminada",displayLength:2000});
+                          var estado = $("tr[name="+rowName+"]").find("td > span");
+                          estado.html("No Disponible");
+                          estado.attr('class','new badge grey');
+
+                          var botonDeshabilitar = $("tr[name="+rowName+"]").find("td > div > button");
+                          botonDeshabilitar.attr('class', 'btn green darken-3');
+                          botonDeshabilitar.html("Habilitar");
+                          M.toast({html: "Pieza deshabilitada",displayLength:2000});
                           // location.reload();
 
                       },
