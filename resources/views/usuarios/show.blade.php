@@ -71,7 +71,7 @@
           <a class="dropdown-trigger btn" data-target="dropDown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
           <!-- Dropdown Structure -->
           <ul id='dropDown1' class='dropdown-content'>
-            @if($statusEntrada<1)
+            @if($statusSalida < 1)
               <li><a href="{{route("get_in",$user->id)}}" class="entrada">Entrada</a></li>
             @else
             <li><a href="{{route("get_out",$user->id)}}" class="salida">Salida</a></li>

@@ -121,24 +121,22 @@ class UsersController extends Controller
 
         $fecha = Carbon::now()->toDateString();
 
-        $statusEntrada = DB::select("SELECT COUNT(*) as total FROM `hours` WHERE `hora_salida` IS NULL AND `fecha` = '".$fecha."' AND user_id = $id");
+        // $statusEntrada = DB::select("SELECT COUNT(*) as total FROM `hours` WHERE `hora_salida` IS NULL AND `fecha` = '".$fecha."' AND user_id = $id");
 
-        var_dump(
-          DB::table('hours')
-          ->where("user_id", $id)
-          ->where('fecha', $fecha)
-          ->whereNull("hora_salida")
-          ->count()
-        );
-        
-        $statusEntrada=json_decode(json_encode($statusEntrada), true);
+        $statusSalida = DB::table('hours')
+                        ->where("user_id", $id)
+                        ->where('fecha', $fecha)
+                        ->whereNull("hora_salida")
+                        ->count();
+
+        // $statusEntrada=json_decode(json_encode($statusEntrada), true);
         // $statusEntrada= json_enc($statusEntrada,true);
-        $statusEntrada = $statusEntrada[0]["total"];
-        var_dump($statusEntrada);
+        // $statusEntrada = $statusEntrada[0]["total"];
+        // var_dump($statusEntrada);
 
         // SELECT COUNT(*) FROM `hours` WHERE `hora_salida` IS NULL AND `fecha` = '2018-12-04' AND user_id = 4
 
-        return view("usuarios.show",  compact("user","tiempoTotal","statusEntrada"));
+        return view("usuarios.show",  compact("user","tiempoTotal","statusSalida"));
     }
 
     /**
