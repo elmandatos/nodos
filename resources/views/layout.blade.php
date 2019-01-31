@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset('css/materialize-icons.css')}}">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{asset('css/materialize.min.css')}}" media="screen,projection" />
+    <link rel="stylesheet" href="/css/master.css">
+
     <script src="{{asset('/js/instascan.min.js')}}"></script>
 
 </head>
@@ -17,6 +19,8 @@
 <body>
     <header>
         <nav class="teal">
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
             <div class="container nav-wrapper">
               <a href="{{route("home")}}" class="brand-logo">Logo</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -30,10 +34,16 @@
               </ul>
             </div>
         </nav>
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+  <li><a href="#!">First Sidebar Link</a></li>
+  <li><a href="#!">Second Sidebar Link</a></li>
+</ul>
     </header>
-    <div class="container">
-      @yield('contenido')
-    </div>
+<main>
+  <div class="container">
+    @yield('contenido')
+  </div>
+</main>
     <!--JavaScript at end of body for optimized loading-->
     <script src="{{asset('/js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
     <script src="{{asset('/js/materialize.min.js')}}" type="text/javascript"></script>
