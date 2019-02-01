@@ -18,15 +18,23 @@
 
 <body>
     <header>
-        <nav class="teal hide-on-large-only">
-          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <div class="valign-wrapper">
+      <div class="navbar-fixed">
 
-            <div class="container nav-wrapper">
-              <a href="{{route("home")}}" class="brand-logo center">
-                <img src="{{asset("logos/NCIE-logo.jpg")}}" style="width:100%" alt="">
-              </a>
+          <nav class="white hide-on-large-only">
+            <div class="nav-wrapper">
+              <div  class="row">
+                <a href="{{route("home")}}" class="brand-logo center">
+                  <img src="{{asset("logos/Logo_NCIE_1.svg")}}" class="col s12 m12" style="max-height:50px" alt="">
+                </a>
+                <a href="#" data-target="slide-out" class="sidenav-trigger col s2 m2"><i class="material-icons grey-text text-darken-1">menu</i></a>
+              </div>
             </div>
-        </nav>
+          </nav>
+        </div>
+      </div>
+
+
         <ul id="slide-out" class="sidenav sidenav-fixed">
           <img src="{{asset("logos/NCIE-logo.jpg")}}" style="width:100%" alt="">
           <li><a href="{{route("home")}}">Leer QR</a></li>

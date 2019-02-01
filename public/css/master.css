@@ -7,6 +7,10 @@
   max-height: 400px;
 }
 
+.userCard:first-child{
+  margin-bottom: 10px;
+}
+
 header, main, footer {
   padding-left: 300px;
 }

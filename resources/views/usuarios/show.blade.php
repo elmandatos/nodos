@@ -8,7 +8,7 @@
     <div style="position: absolute;width: 100%;, left:0px;,top:0px; z-index: 4;" class="row">
   </div>
   <div class="row">
-    <div style="padding:0;" class="card-image col s12 l5">
+    <div style="padding:0;" class="card-image user col s12 l6">
       <img style="padding:0;" class="" src="{{$user->foto}}">
       <a class="btn-floating left halfway-fab waves-effect waves-light" href="{{route("users.edit",$user->id)}}">
         <i class="material-icons">edit</i>
@@ -17,7 +17,7 @@
 
     </div>
     {{-- DATOS DE USUARIO--}}
-    <div  class="col l7">
+    <div  class="col userInfo l6">
       <div class="row">
         {{-- NOMBRES --}}
         <div class="col s12 l6">

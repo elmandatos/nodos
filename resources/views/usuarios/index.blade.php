@@ -76,7 +76,7 @@ $cardNumber = 0;
       </div>
       {{-- DATOS DE USUARIO--}}
       <div  class="col userInfo l6">
-        <div class="row" style="margin-bottom:10px">
+        <div class="row">
           {{-- NOMBRES --}}
           <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Nombres:</h6>
