@@ -65,65 +65,67 @@ $cardNumber = 0;
       </div>
     </div>
     <div class="row">
-      <div style="padding:0;" class="card-image col s12 l5">
-        <img style="padding:0;" class="" src="{{$user->foto}}">
+      {{-- IMAGEN --}}
+      <div style="padding:0;" class="card-image user col s12 m12 ">
+        {{-- <div style="height:9%;display: inline-block;">
+        </div> --}}
+        <img style="padding:0;" class="col l12" src="{{$user->foto}}">
         <a class="btn-floating left halfway-fab waves-effect waves-light" href="{{route("users.edit",$user->id)}}">
           <i class="material-icons">edit</i>
         </a>
-
       </div>
       {{-- DATOS DE USUARIO--}}
-      <div  class="col l7">
-        <div class="row">
+      <div  class="col userInfo ">
+        <div class="row" style="margin-bottom:10px">
           {{-- NOMBRES --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Nombres:</h6>
             <i>{{$user->nombres}}</i>
           </div>
 
           {{-- APELLIDOS --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Apellidos:</h6>
             <i>{{$user->apellidos}}</i>
           </div>
 
           {{-- CARRERA --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Carrera:</h6>
             <i>{{$user->carrera}}</i>
           </div>
 
           {{-- MATRICULA --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Matrícula:</h6>
             <i>{{$user->matricula}}</i>
           </div>
 
           {{-- ROL --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Rol:</h6>
             <i>{{$user->rol}}</i>
           </div>
 
           {{-- TIPO DE USUARIO --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Tipo de usuario:</h6>
             <i>{{$user->tipo_de_usuario}}</i>
           </div>
 
           {{-- EMAIL --}}
-          <div class="col s12 l6">
+          <div class="col s6 m6 l6">
             <h6 style="font-weight: bold;">Email:</h6>
             <i>{{$user->email}}</i>
           </div>
 
           {{-- TELEFONO --}}
-          <div class="col s12 l6">
+          <div class="col s12 m6 l12">
             <h6 style="font-weight: bold;">Télefono:</h6>
             <i>{{$user->telefono}}</i>
           </div>
           <!-- Dropdown Trigger ACCESO -->
-          <div class="col s12 l6">
+          <div class="col s12 m6 l6">
             <a class="dropdown-trigger btn" data-target="{{$dropDownNumber}}"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
             <!-- Dropdown Structure -->
             <ul id='{{$dropDownNumber}}' class='dropdown-content'>
@@ -133,7 +135,7 @@ $cardNumber = 0;
           </div>
           @if(auth()->user()->tipo_de_usuario == "Administrador")
           <div class="col s12 l6">
-            <a class="btn" href="{{route("users.generateQr",$user->id)}}">Generar QR<i class="material-icons right">developer_board</i></a>
+            <a class="btn" href="{{route("users.generateQr",$user->id)}}">QR<i class="material-icons right">developer_board</i></a>
           </div>
           @endif
         </div>
@@ -143,9 +145,9 @@ $cardNumber = 0;
   </div>
   <div class="row"></div>
 @endforeach
-<div class="center">
+{{-- <div class="center">
   {{ $users->links() }}
-</div>
+</div> --}}
 @endsection
 
 

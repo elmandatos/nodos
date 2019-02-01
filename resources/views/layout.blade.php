@@ -18,29 +18,28 @@
 
 <body>
     <header>
-        <nav class="teal">
+        <nav class="teal hide-on-large-only">
           <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
             <div class="container nav-wrapper">
-              <a href="{{route("home")}}" class="brand-logo">Logo</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="{{route("home")}}">Leer QR</a></li>
-                <li><a href="{{route("users.index")}}">Usuarios</a></li>
-                @if(auth()->guest())
-                  <li><a href="/login">Iniciar Sesión</a></li>
-                @else
-                  <li><a href="/logout">Cerrar Sesión</a></li>
-                @endif
-              </ul>
+              <a href="{{route("home")}}" class="brand-logo center">
+                <img src="{{asset("NCIE-logo.jpg")}}" style="width:100%" alt="">
+              </a>
             </div>
         </nav>
         <ul id="slide-out" class="sidenav sidenav-fixed">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
-</ul>
+          <img src="NCIE-logo.jpg" style="width:100%" alt="">
+          <li><a href="{{route("home")}}">Leer QR</a></li>
+          <li><a href="{{route("users.index")}}">Usuarios</a></li>
+          @if(auth()->guest())
+            <li><a href="/login">Iniciar Sesión</a></li>
+          @else
+            <li><a href="/logout">Cerrar Sesión</a></li>
+          @endif
+        </ul>
     </header>
 <main>
-  <div class="container">
+  <div class="wrapper">
     @yield('contenido')
   </div>
 </main>

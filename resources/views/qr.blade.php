@@ -9,8 +9,8 @@
         {{-- <input type="text" name="search" placeholder="ID del usuario" > --}}
     </form>
 
-    <div>
-          <video id="preview"></video>
+    <div class="row center container">
+          <video class="col s12" id="preview"></video>
     </div>
 @endsection
 

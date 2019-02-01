@@ -1,10 +1,27 @@
+.wrapper{
+  width: 90%;
+  margin: auto;
+}
+header, main, footer {
+  padding-left: 300px;
+}
+@media only screen and (min-width : 300px) {
+  .userInfo{
+    margin-top: 1em;
+  }
+}
 
-    header, main, footer {
-      padding-left: 300px;
-    }
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
 
-    @media only screen and (max-width : 992px) {
-      header, main, footer {
-        padding-left: 0;
-      }
-    }
+@media only screen and (max-width : 1350px) {
+  .userInfo{
+float:none;
+  }
+  .card-image .user{
+    float:none;
+  }
+}
