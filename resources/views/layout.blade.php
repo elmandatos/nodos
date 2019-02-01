@@ -36,7 +36,7 @@
 
 
         <ul id="slide-out" class="sidenav sidenav-fixed">
-          <img src="{{asset("logos/NCIE-logo.jpg")}}" style="width:100%" alt="">
+          <img src="{{asset("logos/Logo_NCIE_1.svg")}}" style="width:90%;margin:auto;padding:15px" alt="">
           <li><a href="{{route("home")}}">Leer QR</a></li>
           <li><a href="{{route("users.index")}}">Usuarios</a></li>
           @if(auth()->guest())

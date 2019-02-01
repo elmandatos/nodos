@@ -18,7 +18,7 @@ header, main, footer {
   .userInfo{
     margin-top: 1em;
   }
-}
+}                                                                          
 
 @media only screen and (max-width : 992px) {
   header, main, footer {

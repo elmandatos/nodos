@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Hours and Emails Routes...
 Route::get('/', ['as' => 'home', 'uses' => 'PagesController@home']);
 Route::get('/user/{id}/get_in', ['as' => 'get_in', 'uses' => 'HoursController@get_in']);
 Route::get('/user/{id}/get_out', ['as' => 'get_out', 'uses' => 'HoursController@get_out']);
@@ -24,6 +24,11 @@ Route::get('users/search', "UsersController@search")->name('users.search');
 Route::resource("users", "UsersController",['parameters' => [
    'users' => 'id'
 ]]);
+
+//Borrowings Routes
+Route::resource("borrowing","BorrowingController");
+//WareHouse  Routes
+Route::resource("warehouse","WarehouseController");
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
