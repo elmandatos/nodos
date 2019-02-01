@@ -5,17 +5,21 @@
 {{-- <video width="0" height="0"></video> --}}
 <div class="row"></div>
 <div class="row">
-    <div class="col l4">
-
+    <div class="col l6">
       <label style="font-size:15px;">Camara</label>
-        <div id="canvasParent"></div>
+      <div class="row">
+        <div id="canvasParent" class="col l12"></div>
+      </div>
         <button class="btn" id="capturar">Capturar
           <i class="material-icons right">photo_camera</i>
         </button>
     </div>
-    <div class="col l4">
+
+    <div class="col l6">
       <label style="font-size:15px;">Foto actual</label>
-      <img class="col l12" id="desplegar" src="{{$user->foto}}" alt="">
+      <div class="row">
+        <img style="max-width:270px;min-height:370px;margin:auto;" id="desplegar" src="{{$user->foto}}" alt="">
+      </div>
     </div>
 </div>
 
@@ -118,7 +122,7 @@
                 <input type="radio" id="usuario" name="tipoDeUsuario" value="usuario" {{strtolower($user->tipo_de_usuario) == "usuario" ? "checked" : "" }}>
                 <span>Usuario</span>
               </label>
-           
+
 
           </p>
           <span class='red-text' id="tipoDeUsuario-span"></span>

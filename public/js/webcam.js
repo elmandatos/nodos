@@ -1,16 +1,17 @@
-let capture;
+// let capture;
 
 function setup() {
-    let canvas = createCanvas(320, 240);
+    let canvas = createCanvas(320, 400);
     canvas.parent("canvasParent");
+    canvas.className = "col l6";
     background(0);
     capture = createCapture(VIDEO);
-    capture.size(320, 240);
+    capture.size(320, 400);
     capture.hide();
 }
 
 function draw() {
-  image(capture, 0, 0, 320, 240);
+  image(capture, 0, 0, 320 , 400);
 }
 
 let button = document.getElementById("capturar");

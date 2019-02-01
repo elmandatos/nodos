@@ -66,7 +66,7 @@ $cardNumber = 0;
     </div>
     <div class="row">
       {{-- IMAGEN --}}
-      <div style="padding:0;" class="card-image user col s12 m12 ">
+      <div style="padding:0;" class="card-image user col s12 m12 l6">
         {{-- <div style="height:9%;display: inline-block;">
         </div> --}}
         <img style="padding:0;" class="col l12" src="{{$user->foto}}">
@@ -75,7 +75,7 @@ $cardNumber = 0;
         </a>
       </div>
       {{-- DATOS DE USUARIO--}}
-      <div  class="col userInfo ">
+      <div  class="col userInfo l6">
         <div class="row" style="margin-bottom:10px">
           {{-- NOMBRES --}}
           <div class="col s6 m6 l6">

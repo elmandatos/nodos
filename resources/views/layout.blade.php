@@ -23,12 +23,12 @@
 
             <div class="container nav-wrapper">
               <a href="{{route("home")}}" class="brand-logo center">
-                <img src="{{asset("NCIE-logo.jpg")}}" style="width:100%" alt="">
+                <img src="{{asset("logos/NCIE-logo.jpg")}}" style="width:100%" alt="">
               </a>
             </div>
         </nav>
         <ul id="slide-out" class="sidenav sidenav-fixed">
-          <img src="NCIE-logo.jpg" style="width:100%" alt="">
+          <img src="{{asset("logos/NCIE-logo.jpg")}}" style="width:100%" alt="">
           <li><a href="{{route("home")}}">Leer QR</a></li>
           <li><a href="{{route("users.index")}}">Usuarios</a></li>
           @if(auth()->guest())
