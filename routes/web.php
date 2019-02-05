@@ -56,6 +56,8 @@ Route::get('almacen/search',['as' => 'almacen.search', 'uses' => 'RestInventario
 Route::get('almacen/{id}/edit',['as' => 'almacen.edit', 'uses'=> 'RestInventario@edit']);
 Route::put('almacen/{id}',['as' => 'almacen.update', 'uses'=> 'RestInventario@update']);
 Route::delete('almacen/{id}',['as' => 'almacen.destroy', 'uses'=> 'RestInventario@destroy']);
+
+
 //Prestamos
 Route::get('prestamos',['as' => 'prestamos.index', 'uses'=> 'PrestamosController@index']);
 Route::post('prestamos/buscar',['as' => 'prestamos.buscar', 'uses'=> 'PrestamosController@buscar']);
@@ -68,6 +70,9 @@ Route::post('prestamos', ['as' =>'prestamos.store', 'uses'=> 'PrestamosControlle
 Route::delete('prestamos/{id}',['as' => 'prestamos.destroy', 'uses'=> 'PrestamosController@destroy']);
 
 Route::put('prestamos/{id}',['as' => 'prestamos.update', 'uses'=> 'PrestamosController@update']);
+
+Route::get('piezasData/import', 'piezasData@index')->name("piezasData.index");
+Route::post('piezasData/import', 'piezasData@importPiezas')->name("piezasData.import");
 
 
 

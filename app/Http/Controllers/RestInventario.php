@@ -191,4 +191,5 @@ class RestInventario extends Controller
     public function buscar(){
         return json_encode(DB::table('piezas')->select('nombre','foto')->get());
     }
+    
 }

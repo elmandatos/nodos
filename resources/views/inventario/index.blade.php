@@ -82,6 +82,8 @@
 	  </a>
 	  <ul>
 	      <li><a href="{{route("almacen.create")}}" class="btn-floating" data-tippy-placement="left" data-tippy="Nuevo Articulo"><i class="material-icons">add</i></a></li>
+
+	      <li><a href="{{route("piezasData.index")}}" class="btn-floating green" data-tippy-placement="left" data-tippy="Importar piezas"><i class="material-icons">cloud_upload</i></a></li>
 	  </ul>
 	</div>
 	@if($makePages)
