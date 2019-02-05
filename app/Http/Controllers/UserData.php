@@ -65,7 +65,7 @@ class UserData extends Controller
 
     public function exportUsersHours()
     {
-        Excel::create('Users', function($excel) {
+        Excel::create('HorasUsuarios', function($excel) {
 
             $usersHours = DB::table('hours')
             ->join('users','users.id','=','hours.user_id')
@@ -86,20 +86,20 @@ class UserData extends Controller
             $usersHours = json_decode(json_encode($usersHours), true);
             $totalHoras = json_decode(json_encode($totalHoras), true);
 
-            $indice = 0;
-            $usuario = 0;
-            $espacio = array(" ");
-            for ($i=0; $i < count($usersHours); $i++) {
-                if($usersHours[$i]["id"] != $usuario){
-                    $usuario = $usersHours[$i]["id"];
-                    $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
-                    $indice++;
-                    if($i!=0){
-                        array_splice($usersHours, $i,0,[array("")]);
-                        continue;
-                    }
-                }
-            }
+            // $indice = 0;
+            // $usuario = 0;
+            // $espacio = array(" ");
+            // for ($i=0; $i < count($usersHours); $i++) {
+            //     if($usersHours[$i]["id"] != $usuario){
+            //         $usuario = $usersHours[$i]["id"];
+            //         $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+            //         $indice++;
+            //         if($i!=0){
+            //             array_splice($usersHours, $i,0,[array("")]);
+            //             continue;
+            //         }
+            //     }
+            // }
 
             $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
                 $sheet->setColumnFormat(array(
@@ -111,12 +111,12 @@ class UserData extends Controller
                 ));
                 $sheet->fromArray($usersHours);
             });
-        })->export('xlsx');
+        })->export('csv');
     }
 
     public function exportUsersCelulasHours()
     {
-        Excel::create('Usuarios Celulas', function($excel) {
+        Excel::create('Horas Celulas', function($excel) {
 
             $usersHours = DB::table('hours')
             ->join('users','users.id','=','hours.user_id')
@@ -138,21 +138,22 @@ class UserData extends Controller
 
             $usersHours = json_decode(json_encode($usersHours), true);
             $totalHoras = json_decode(json_encode($totalHoras), true);
+            // var_dump($usersHours);
 
-            $indice = 0;
-            $usuario = 0;
-            $espacio = array(" ");
-            for ($i=0; $i < count($usersHours); $i++) {
-                if($usersHours[$i]["id"] != $usuario){
-                    $usuario = $usersHours[$i]["id"];
-                    $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
-                    $indice++;
-                    if($i!=0){
-                        array_splice($usersHours, $i,0,[array("")]);
-                        continue;
-                    }
-                }
-            }
+            // $indice = 0;
+            // $usuario = 0;
+            // $espacio = array(" ");
+            // for ($i=0; $i < count($usersHours); $i++) {
+            //     if($usersHours[$i]["id"] != $usuario){
+            //         $usuario = $usersHours[$i]["id"];
+            //         $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+            //         $indice++;
+            //         if($i!=0){
+            //             array_splice($usersHours, $i,0,[array("")]);
+            //             continue;
+            //         }
+            //     }
+            // }
 
             $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
                 $sheet->setColumnFormat(array(
@@ -164,6 +165,6 @@ class UserData extends Controller
                 ));
                 $sheet->fromArray($usersHours);
             });
-        })->export('xlsx');
+        })->export('csv');
     }
 }
