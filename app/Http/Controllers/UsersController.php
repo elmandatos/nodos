@@ -232,4 +232,8 @@ class UsersController extends Controller
             return view('usuarios.index', compact("users","imgNotFound", 'makePages'));
         }
     }
+
+    public function buscar(){
+        return json_encode(DB::table('users')->select('nombres','foto')->get());
+    }
 }

@@ -1,4 +1,7 @@
 @extends('layout')
+@section('meta')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
 @section('contenido')
 <div class="row">
   <div class="container">
@@ -166,5 +169,7 @@ $cardNumber = 0;
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/deleteUserModal.js')}}"></script>
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/dialogSendQRUsers.js')}}"></script>
   <script type="text/javascript" src="{{asset('/js/ajaxForModal/getIn_getOut.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/js/scriptsUsers/autocompleteUsers.js')}}"></script>
+
   </script>
 @endsection

@@ -20,6 +20,7 @@ Route::get('/{id}/sendUserEmail', ['as' => 'sendEmail', 'uses' => 'EmailsControl
 
 //Users Routes
 Route::get('users/{id}/qr', "UsersController@generateQr")->name('users.generateQr');
+Route::post('users/buscar',['as' => 'users.buscar', 'uses'=> 'UsersController@buscar']);
 Route::get('users/search', "UsersController@search")->name('users.search');
 Route::resource("users", "UsersController",['parameters' => [
    'users' => 'id'
