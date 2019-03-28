@@ -65,53 +65,65 @@ class UserData extends Controller
 
     public function exportUsersHours()
     {
-        Excel::create('HorasUsuarios', function($excel) {
+      Excel::create('Users', function($excel) {
 
-            $usersHours = DB::table('hours')
-            ->join('users','users.id','=','hours.user_id')
-            ->select('users.id', 'users.nombres', 'users.apellidos', 'hours.fecha', 'hours.hora_entrada',
-                    'hours.hora_salida',
-                DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
-            ->whereNotNull('hora_salida')
-            ->orderBy('hours.user_id')
-            ->orderBy('hours.fecha')
-            ->get();
+          $usersHours = DB::table('hours')
+          ->join('users','users.id','=','hours.user_id')
+          ->select('users.id', 'users.nombres', 'users.apellidos', 'hours.fecha', 'hours.hora_entrada',
+                  'hours.hora_salida',
+              DB::raw('TIMEDIFF(hora_salida,hora_entrada) as tiempo'))
+          ->whereNotNull('hora_salida')
+          ->orderBy('hours.user_id')
+          ->orderBy('hours.fecha')
+          ->get();
 
-            $totalHoras = DB::table('hours')
-            ->select(DB::raw('SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as total'))
-            ->whereNotNull('hora_salida')
-            ->groupBy('user_id')
-            ->get();
+          $totalHoras = DB::table('hours')
+          ->select(DB::raw('SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada))) as total'))
+          ->whereNotNull('hora_salida')
+          ->groupBy('user_id')
+          ->get();
 
-            $usersHours = json_decode(json_encode($usersHours), true);
-            $totalHoras = json_decode(json_encode($totalHoras), true);
+          $totalHoras = json_decode(json_encode($totalHoras), true);
 
-            // $indice = 0;
-            // $usuario = 0;
-            // $espacio = array(" ");
-            // for ($i=0; $i < count($usersHours); $i++) {
-            //     if($usersHours[$i]["id"] != $usuario){
-            //         $usuario = $usersHours[$i]["id"];
-            //         $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
-            //         $indice++;
-            //         if($i!=0){
-            //             array_splice($usersHours, $i,0,[array("")]);
-            //             continue;
-            //         }
-            //     }
-            // }
 
-            $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
-                $sheet->setColumnFormat(array(
-                    'D'=>'dd/mm/yy',
-                    'E'=>'h:mm:ss',
-                    'F'=>'h:mm:ss',
-                    'G'=>'h:mm:ss',
-                    'H'=>'[h]:mm:ss'
-                ));
-                $sheet->fromArray($usersHours);
-            });
-        })->export('csv');
+          for ($i=0; $i < count($totalHoras); $i++) {
+            $totalHoras[$i]["total"] = intval( $totalHoras[$i]["total"]);
+
+            $horas = floor($totalHoras[$i]["total"]  / 3600);
+            $minutos = floor(($totalHoras[$i]["total"]  - ($horas * 3600)) / 60);
+            $segundos = $totalHoras[$i]["total"]  - ($horas * 3600) - ($minutos * 60);
+            $totalHoras[$i]["total"]  = $horas . ':' . $minutos . ":" . $segundos;
+
+          }
+
+          $totalHoras = json_decode(json_encode($totalHoras), true);
+          $usersHours = json_decode(json_encode($usersHours), true);
+
+
+          $indice = 0;
+          $usuario = 0;
+          $espacio = array(" ");
+
+          for ($i=0; $i < count($usersHours); $i++) {
+
+              if(isset($usersHours[$i]["id"]) != $usuario){
+                if($indice < count($totalHoras)){
+                  $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
+                  $indice++;
+                }
+              }
+          }
+          $excel->sheet('Registro de horas', function($sheet) use($usersHours) {
+              $sheet->setColumnFormat(array(
+                  'D'=>'dd/mm/yy',
+                  'E'=>'h:mm:ss',
+                  'F'=>'h:mm:ss',
+                  'G'=>'h:mm:ss',
+                  'H'=>'[h]:mm:ss'
+              ));
+              $sheet->fromArray($usersHours);
+          });
+      })->export('CSV');
     }
 
     public function exportUsersCelulasHours()

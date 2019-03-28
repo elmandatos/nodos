@@ -71,18 +71,18 @@
           <a class="dropdown-trigger btn" data-target="dropDown1"><i class="material-icons right">arrow_drop_down_circle</i>Acceso</a>
           <!-- Dropdown Structure -->
           <ul id='dropDown1' class='dropdown-content'>
-           
+
             <li><a href="{{route("get_in",$user->id)}}" class="entrada">Entrada</a></li>
-         
+
             <li><a href="{{route("get_out",$user->id)}}" class="salida">Salida</a></li>
-         
+
           </ul>
         </div>
 
         <div class="col s12 l6">
           <span>
             <b>
-              <u>Horas totales: {{$tiempoTotal[0]->tiempo }}</u>
+              <u>Horas totales: {{$tiempoTotal}}</u>
             </b>
           </span>
 

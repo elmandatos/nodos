@@ -112,12 +112,20 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = DB::table("users")->where("id", $id)->first();
-        $tiempoTotal = DB::table("hours")
-        ->select(DB::raw("SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada)))) as tiempo"))
-        ->where("user_id",$id)
-        ->where("hora_salida","<>","NULL")
-        ->get();
+      $user = DB::table("users")->where("id", $id)->first();
+      $tiempoTotal = DB::table("hours")
+      ->select(DB::raw("SUM(TIME_TO_SEC(TIMEDIFF(hora_salida,hora_entrada))) as tiempo"))
+      ->where("user_id",$id)
+      ->where("hora_salida","<>","NULL")
+      ->get();
+
+      $tiempoTotal = intval($tiempoTotal[0]->tiempo);
+
+      $horas = floor($tiempoTotal / 3600);
+      $minutos = floor(($tiempoTotal - ($horas * 3600)) / 60);
+      $segundos = $tiempoTotal - ($horas * 3600) - ($minutos * 60);
+
+      $tiempoTotal = $horas . ':' . $minutos . ":" . $segundos;
 
         $fecha = Carbon::now()->toDateString();
 
