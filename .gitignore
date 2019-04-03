@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/usersImg/*.png
-
+/public/almacenImg/*.png
 /public/qrcodes/qrcode_id.png
 /public/storage
 /storage/*.key
