@@ -110,6 +110,13 @@ class UserData extends Controller
                 if($indice < count($totalHoras)){
                   $usersHours[$i]["horas_totales"] = $totalHoras[$indice]["total"];
                   $indice++;
+
+                  // //esto agrega una fila en blanco para separa los usuarios
+                  // if($i!=0){
+                  //     array_splice($usersHours, $i,0,[array("")]);
+                  //      ($usersHours[$i]);
+                  //     continue;
+                  // }
                 }
               }
           }
